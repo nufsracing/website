@@ -1,0 +1,11 @@
+{
+  "name": "nufs-website",
+  "private": true,
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.6"
+  }
+}
