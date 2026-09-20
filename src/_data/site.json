@@ -1,0 +1,35 @@
+{
+  "name": "Northumbria Formula Student",
+  "shortName": "NUFS Racing",
+  "tagline": "Student engineers building a Formula Student car at Northumbria University.",
+  "description": "Northumbria Formula Student designs, builds and races a single seat car for the Formula Student competition at Silverstone. Partner with us for the 2027 season.",
+  "url": "https://nufsracing.co.uk",
+  "season": "2026/27",
+  "competition": {
+    "name": "Formula Student UK",
+    "venue": "Silverstone",
+    "date": "July 2027"
+  },
+  "email": {
+    "sponsorship": "sponsorship@nufsracing.co.uk",
+    "general": "general@nufsracing.co.uk",
+    "media": "media@nufsracing.co.uk"
+  },
+  "social": {
+    "instagram": "https://instagram.com/...",
+    "linkedin": "https://linkedin.com/company/...",
+    "youtube": ""
+  },
+  "university": {
+    "name": "Northumbria University",
+    "city": "Newcastle upon Tyne",
+    "url": "https://www.northumbria.ac.uk"
+  },
+  "nav": [
+    { "label": "Home", "url": "/" },
+    { "label": "Team", "url": "/team/" },
+    { "label": "Our Partners", "url": "/partners/" },
+    { "label": "Join", "url": "/join/" },
+    { "label": "Sponsor Us", "url": "/sponsor/", "button": true }
+  ]
+}

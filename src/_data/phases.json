@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Concept and Design",
+    "duration": "Sept - Dec 2026",
+    "status": "current",
+    "summary": "Setting the car's layout, suspension cconcept and key targets."
+  },
+  {
+    "name": "Manufacturing",
+    "duration": "Jan - Mar 2027",
+    "status": "upcoming",
+    "summary": "Manufacturing the car, setting up suspension, engine, aero, electrics and brake dynamics"
+  },
+  {
+    "name": "Build and Test",
+    "duration": "Apr - Jun 2027",
+    "status": "upcoming",
+    "summary": "First assemble and shakedown, running all the checks"
+  },
+  {
+    "name": "Complete",
+    "duration": "Jul 2027",
+    "status": "upcoming",
+    "summary": "Silverstone, survive scrutineering / start the events"
+  }
+]

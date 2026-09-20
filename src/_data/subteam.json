@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Suspension & Chassis",
+    "slug": "Suspension",
+    "summary": "Designs the double wishbone pushrod suspension and Designs the tubular spaceframe chassis",
+    "image": "suspension image",
+    "lead": "Nathan",
+    "members": [
+      {
+        "name": "Jack Page",
+        "role": "Member",
+        "course": "BSc Computer Science",
+        "socials": ""
+      }
+    ]
+  },
+
+  {
+    "name": "Aerodynamics",
+    "slug": "Aero",
+    "summary": "Designs advanced aero packages",
+    "image": "aero image",
+    "lead": "",
+    "members": [
+      {
+        "name": "aero person",
+        "role": "Member",
+        "course": "BSc Aerodynamics",
+        "socials": ""
+      }
+    ]
+  }
+]
