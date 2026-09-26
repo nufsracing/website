@@ -2,3 +2,54 @@
 layout: base.njk
 title: Home
 ---
+
+<!-- Hero section of the home page-->
+<section class="hero">
+  <div class="hero-col">
+    <p>Season 2026/2027 · Northumbria University</p>
+    <h1>This year marks our debut season into Formula Student.</h1>
+    <p class="lede">
+      Northumbria University's first entry. Designed, manufactured, wired and
+      run by students at every level, from suspension geometry to the business
+      case, over twelve months and one shot at Silverstone.
+    </p>
+    <button href="/sponsor/">Sponsor Us</button>
+    <button>See the build plan</button>
+  </div>
+
+  <div class="hero-col">
+    <div class="clock" data-target="{{ site.competition.date }}"></div>
+    <p>FS UK · Silverstone</p>
+  </div>
+</section>
+
+<!-- The teams figures such as members, subteams, etc -->
+
+<section class="figures wrap">
+  <ul>
+    <li class="fig">
+      <span class="fig-value">60</span>
+      <span class="fig-label">Members</span>
+      <span class="fig-note">Across engineering, business and design.</span>
+    </li>
+    <li class="fig">
+      <span class="fig-value">8</span>
+      <span class="fig-label">Sub Teams</span>
+      <span class="fig-note"
+        >Every part of the car and the campaign behind it.</span
+      >
+    </li>
+    <li class="fig">
+      <span class="fig-value">1st</span>
+      <span class="fig-label">Season</span>
+      <span class="fig-note">Building from nothing in twelve months.</span>
+    </li>
+    <li class="fig">
+      <span class="fig-value fig-value--accent">2027</span>
+      <span class="fig-label">Silverstone</span>
+      <span class="fig-note">FS UK in July. Our first time on the grid</span>
+    </li>
+  </ul>
+</section>
+
+<!-- Team photo goes here once the full team photo is taken -->
