@@ -6,3 +6,69 @@
   --red: #e10600;
   --wrap: 1200px;
 }
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Archivo', sans-serif;
+    box-sizing: border-box;
+}
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(Images/a-red-and-black-background-with-a-bright-light-gradient-art-design-idea-template-free-vector.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 90px 8% 10px;
+}
+nav{
+    background: rgba(31, 3, 3, 0.45);
+    backdrop-filter: blur(10px);
+    padding: 15px 15%;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    left: 0%;
+    border: 1px solid rgba(5, 2, 2, 0.65);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+}
+
+.logo{
+    width: 180px;
+    cursor: pointer;
+}
+
+nav ul{
+    list-style: none;
+    width: 100%;
+    text-align: center;
+    padding-right: 80px;
+}
+
+nav ul li{
+    display: inline-block;
+    margin: 10px 20px;
+}
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+}
+.btn{
+    display: flex;
+    align-items: right;
+    padding: 10px 20px;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    background: #E5202B;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    width: fit-content;
+    justify-self: end;
+}
