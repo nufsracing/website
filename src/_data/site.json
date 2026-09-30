@@ -30,7 +30,7 @@
     { "label": "Home", "url": "/", "live": true },
     { "label": "Team", "url": "/team/", "live": false },
     { "label": "Our Partners", "url": "/partners/", "live": false },
-    { "label": "Join", "url": "/join/", "live": false },
-    { "label": "Sponsor Us", "url": "/sponsor/", "live": false }
+    { "label": "Join", "url": "/#closing", "live": true },
+    { "label": "Sponsor Us", "url": "/#closing", "live": true }
   ]
 }

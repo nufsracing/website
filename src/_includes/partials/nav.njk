@@ -1,10 +1,19 @@
-<nav> 
-<img src="Image Logo>
-<ul>
-    <li><a href="/"><b>Home</b></a></li>
-    <li><a href="/team/"><b>Team</b></a></li>
-    <li><a href="/partners/"><b>Our Sponsors</b></a></li>
-    <li><a href="/join/"><b>Join Us</b></a></li>
-</ul>
-<button class="btn"><b>Sponsor Us</b></button>
-</nav>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="mark" href="/">NUFS</a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Site">
+        {% for item in site.nav %}
+            {% if item.live %}
+                <a href="{{ item.url }}" {% if item.url == page.url %} aria-current="page" {% endif %}>{{ item.label }}</a>
+            {% endif %}
+        {% endfor %}
+        <a class="btn" href="/#closing">Sponsor Us</a>
+    </nav>
+
+    <div class="nav-cta"><a class="btn" href="/#closing">Sponsor Us</a></div>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
