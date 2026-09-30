@@ -148,8 +148,16 @@ title: Home
     <p>The Season</p>
     <h2>Our Plan</h2>
     <p>Four phases, twelve months, one deadline that does not move.</p>
-
   </div>
+  <ul>
+    <li class="plan-card" {% if phases.status == "current" %} now {% endif %}>
+      {% for phase in phases %}
+        <span>{{ phases.duration }}</span>
+        <span>{{ phases.name }}</span>
+        <span>{{ phases.summary }}</span>
+      {% endfor %}
+    </li>
+  </ul>
 </section>
 
 <!-- partership stuff -->
