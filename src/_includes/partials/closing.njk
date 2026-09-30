@@ -1,0 +1,37 @@
+<section class="band wrap" id="closing">
+  <div class="photo-grid single">
+    <figure class="ph">
+      <img src="" width="" height="" loading="lazy" alt="" />
+      <figcaption class="ph-title">
+        <span class="label">Societies fair · September 2026</span>
+        <span class="ph-h">Where the team starts.</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="closing">
+    <div class="join">
+      <p class="label">Join the team</p>
+      <h2>We need more than engineers.</h2>
+      <p>
+        A Formula Student entry runs on design reports, budgets, sponsor decks and
+        media as much as on carbon and aluminium. If you are a Northumbria student
+        and any of this sounds like your thing, pick the team you would join and
+        apply.
+      </p>
+      <div class="roles">
+        {% for team in subteam %}
+            <span class="role">{{ team.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <article class="pitch">
+        <p class="label">Sponsor us</p>
+        <h2>Put your name on a first season.</h2>
+        <p>Backing a new team buys something an established team can't sell you: a visible part in building a car from nothing. Your brand runs at Silverstone in {{ site.competition.when }} in front of industry judges and every other team on the grid, and reaches the {{ site.members }} Northumbria students behind it, from the engineers building the car to the team sharing the season online.</p>
+        <a class="btn btn-light" href="mailto:{{ site.emails.sponsorship }}">{{ site.emails.sponsorship }} <span aria-hidden="true">&rarr;</span></a>
+    </article>
+
+  </div>
+</section>
