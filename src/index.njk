@@ -142,22 +142,25 @@ title: Home
   </div>
 </section>
 
-<!-- Build log -->
-<section>
-  <div>
-    <p>The Season</p>
-    <h2>Our Plan</h2>
+<!-- plan cards -->
+<section class="band wrap rule-top" id="plan">
+  <div class="head">
+    <p class="label">The Season</p>
+    <h3>Our Plan</h3>
     <p>Four phases, twelve months, one deadline that does not move.</p>
   </div>
-  <ul>
-    <li class="plan-card" {% if phases.status == "current" %} now {% endif %}>
-      {% for phase in phases %}
-        <span>{{ phases.duration }}</span>
-        <span>{{ phases.name }}</span>
-        <span>{{ phases.summary }}</span>
-      {% endfor %}
-    </li>
-  </ul>
+  <div class="phases">
+    {% for phase in phases %}
+      <article class="phase {% if phase.status %} {{ phase.status }} {% endif %}">
+        <span class="when">{{ phase.duration }}</span>
+        {% if phase.status == "now" %}
+          <span class="label flag">Where we are now</span>
+        {% endif %}
+        <span>{{ phase.name }}</span>
+        <span>{{ phase.summary }}</span>
+      </article>
+    {% endfor %}
+  </div>
 </section>
 
 <!-- partership stuff -->
