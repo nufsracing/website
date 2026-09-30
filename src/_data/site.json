@@ -27,10 +27,10 @@
     "url": "https://www.northumbria.ac.uk"
   },
   "nav": [
-    { "label": "Home", "url": "/" },
-    { "label": "Team", "url": "/team/" },
-    { "label": "Our Partners", "url": "/partners/" },
-    { "label": "Join", "url": "/join/" },
-    { "label": "Sponsor Us", "url": "/sponsor/", "button": true }
+    { "label": "Home", "url": "/", "live": true },
+    { "label": "Team", "url": "/team/", "live": false },
+    { "label": "Our Partners", "url": "/partners/", "live": false },
+    { "label": "Join", "url": "/join/", "live": false },
+    { "label": "Sponsor Us", "url": "/sponsor/", "live": false }
   ]
 }
