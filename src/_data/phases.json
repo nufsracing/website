@@ -1,22 +1,30 @@
 [
   {
     "name": "Concept and Design",
+    "short": "Design",
+    "start": "2026-09-01",
     "duration": "Sept – Dec 2026",
     "status": "now",
     "summary": "Setting the targets the whole car is built around. Design and chassis & suspension fix the layout and geometry, powertrain settles the engine package, aero and brakes & dynamics size their systems, and business begins the cost report and business plan."
   },
   {
     "name": "Manufacturing",
+    "short": "Manufacture",
+    "start": "2027-01-01",
     "duration": "Jan – Mar 2027",
     "summary": "Drawings become parts. Manufacturing & fabrication build the chassis and machine components, powertrain prepares the engine and cooling, and aero builds the bodywork. Business tracks every part against the cost report while social media documents the car taking shape."
   },
   {
     "name": "Build and Test",
+    "short": "Build and test",
+    "start": "2027-04-01",
     "duration": "Apr – Jun 2027",
     "summary": "First assembly, then shakedown. Brakes & dynamics lead the brake and steering checks, powertrain gets the engine running reliably, and every system is tested to find what fails before a scrutineer does. Business rehearses the plan for the judges."
   },
   {
     "name": "Compete",
+    "short": "compete",
+    "start": "2027-07-01",
     "duration": "July 2027",
     "status": "last",
     "summary": "Silverstone. Scrutineering first, then the static events, where business presents the plan and the engineers defend the design. Then acceleration, skid pad, sprint and endurance, with social media covering every day of it."

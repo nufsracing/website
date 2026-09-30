@@ -22,22 +22,57 @@
     <main>
         
 <!-- Hero section of the home page-->
-<section class="hero">
-  <div class="hero-col">
-    <p>Season 2026/2027 · Northumbria University</p>
-    <h1>This year marks our debut season into Formula Student.</h1>
-    <p class="lede">
-      Northumbria University's first entry. Designed, manufactured, wired and
-      run by students at every level, from suspension geometry to the business
-      case, over twelve months and one shot at Silverstone.
-    </p>
-    <button href="/sponsor/">Sponsor Us</button>
-    <button>See the build plan</button>
-  </div>
+<section class="hero wrap">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="label">Season 2026/2027 · Northumbria University</p>
+      <h1>This year marks our debut season into <span class="soft">Formula Student.</span></h1>
+      <p class="lede">
+        A new Northumbria team, designed, manufactured, wired and
+        run by students at every level, from suspension geometry to the business
+        case, over twelve months and one shot at Silverstone.
+      </p>
+      <div class="actions">
+        <a class="btn" href="#closing">Sponsor Us <span aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-ghost" href="#plan">See the build plan</a>
+      </div>
+    </div>
 
-  <div class="hero-col">
-    <div class="clock" data-target="July 2027"></div>
-    <p>FS UK · Silverstone</p>
+    <aside class="season" id="season" aria-label="Season progress" data-phases="2026-09-01 2027-01-01 2027-04-01 2027-07-01 ">
+      <span class="label">Road to Silverstone</span>
+
+      <div class="season-count">
+        <span class="num" id="monthsLeft">10</span>
+        <span class="what">
+          <span id="monthsWhat">months to go</span>
+          <span class="label">FS UK · </span>
+        </span>
+      </div>
+
+      <div class="track" aria-hidden="true">
+        
+          <span class="seg now"></span>
+        
+          <span class="seg "></span>
+        
+          <span class="seg "></span>
+        
+          <span class="seg "></span>
+        
+      </div>
+
+      <ol class="phase-names">
+        
+        <li  class="now" aria-current="step">Design</li>
+        
+        <li >Manufacture</li>
+        
+        <li >Build and test</li>
+        
+        <li >compete</li>
+        
+      </ol>
+    </aside>
   </div>
 </section>
 
