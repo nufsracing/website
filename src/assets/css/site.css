@@ -1,17 +1,50 @@
 :root {
-  --black: #0a0a0a;
-  --off-black: #121212;
-  --white: #f5f5f5;
-  --grey: #b3b3b3;
-  --red: #e10600;
-  --wrap: 1200px;
+  /* Theme */
+  color-scheme: dark;
+  /* Background colours */
+  --ink: #070506;
+  --ink-1: #100b0d;
+  /* Reds */
+  --ember: #ff2b2b;
+  --ember-hot: #ff5b4a;
+  --ember-deep: #8d0b12;
+  /* Text */
+  --bone: #f3eeee;
+  --smoke: #b3a4a7;
+  --smoke-dim: #9a8b8e;
+  /* Light partner band */
+  --band: #ece7e5;
+  --band-ink: #14100f;
+  --band-sub: #5d5553;
+  /* dividers */
+  --hair: rgba(243, 238, 238, 0.12);
+  --hair-soft: rgba(243, 238, 238, 0.06);
+  /* Fonts */
+  --sans: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --display: "Archivo Black", "Archivo", "Helvetica Neue", Arial, sans-serif;
+  /* Layout */
+  --gutter: clamp(20px, 5vw, 72px);
+  --maxw: 1240px;
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 0.7s;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  font-family: "Archivo", sans-serif;
+  /* setting up the basic colours and fonts */
   box-sizing: border-box;
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  /* thinner, crisper light text on dark background on Macs */
+  -webkit-font-smoothing: antialiased;
+  /* creates better text for mainly iphones */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Stops sideways scroll on phones */
+  overflow-x: hidden;
 }
 
 nav {
