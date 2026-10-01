@@ -545,3 +545,73 @@ button:focus-visible {
   line-height: 1.5;
   color: var(--smoke);
 }
+
+/* What is formula student section */
+
+/* Layout */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(30px, 5vw, 72px);
+  align-items: start;
+}
+
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-body .head {
+  margin-bottom: 0;
+}
+
+/* text */
+.about-body p {
+  color: var(--smoke);
+  line-height: 1.65;
+  max-width: 62ch;
+}
+
+.about-body p.first {
+  color: var(--bone);
+  font-size: 20px;
+  line-height: 1.45;
+}
+
+/* Event list */
+.events {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ev-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.ev-group .label {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--hair);
+}
+
+.ev-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--hair-soft);
+  font-size: 14px;
+  color: var(--smoke);
+}
+
+.ev-row b {
+  color: var(--bone);
+  font-weight: 600;
+}
+
+.ev-row .m {
+  text-align: right;
+}
