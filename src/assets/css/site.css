@@ -776,3 +776,64 @@ button:focus-visible {
     left: 6%;
   }
 }
+
+/* Layout */
+.closing {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+/* join card */
+.join {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.join p {
+  color: var(--smoke);
+  line-height: 1.6;
+  max-width: 44ch;
+}
+
+.roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.role {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  border: 1px solid var(--hair);
+  border-radius: 3px;
+  padding: 6px 10px;
+}
+
+/* pitch */
+.pitch {
+  border: 1px solid rgba(255, 90, 74, 0.3);
+  border-radius: 3px;
+  background: linear-gradient(158deg, var(--ember-deep), #45060b 80%);
+  padding: clamp(28px, 3.4vw, 44px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.pitch .label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.pitch p {
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.6;
+  max-width: 52ch;
+}
