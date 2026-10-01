@@ -31,8 +31,12 @@
 }
 
 * {
-  /* setting up the basic colours and fonts */
   box-sizing: border-box;
+}
+
+body {
+  /* setting up the basic colours and fonts */
+  margin: 0;
   background: var(--ink);
   color: var(--bone);
   font-family: var(--sans);
