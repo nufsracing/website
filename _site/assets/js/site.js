@@ -121,6 +121,9 @@ if (document.documentElement.classList.contains("js-reveal")) {
     ".ev-group",
     "#plan .head",
     ".phase",
+    ".partner-band",
+    ".partner-head",
+    ".tier",
     ".join",
     ".pitch",
   ];

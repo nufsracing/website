@@ -149,8 +149,33 @@ title: Home
   </div>
 </section>
 
-<!-- partership stuff -->
+<!-- short sponsor pitch for the home page. -->
+<section class="partner-band" id="partners">
+  <div class="wrap partner-band-inner">
+    <div class="partner-head">
+      <div class="head">
+        <p class="label">Partner with us</p>
+        <h2>Four ways to back the team.</h2>
+        <p class="lede">From a logo on the website to a founding role in how the team is shaped. Every tier puts your name on the car at Silverstone.</p>
+      </div>
+      <a class="btn btn-dark" href="{{ site.sponsorUrl }}">See partner tiers <span aria-hidden="true">&rarr;</span></a>
+    </div>
 
-<!-- cards -->
- {% include "partials/closing.njk" %}
+    <ul class="tier-list">
+      {% for tier in tiers %}
+        <li class="tier{% if tier.featured %} featured{% endif %}">
+          <span class="label">{{ tier.name }}</span>
+          <span class="tier-price">{{ tier.price }}</span>
+          <span class="tier-summary">{{ tier.summary }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <!-- partner logos go here once the banner is signed off -->
+    {% include "partials/logos.njk" %}
+  </div>
+</section>
+
+<!-- join and sponsor cards -->
+{% include "partials/closing.njk" %}
 

@@ -16,6 +16,7 @@
   --band: #ece7e5;
   --band-ink: #14100f;
   --band-sub: #5d5553;
+  --band-hair: rgba(20, 16, 15, 0.14);
   /* dividers */
   --hair: rgba(243, 238, 238, 0.12);
   --hair-soft: rgba(243, 238, 238, 0.06);
@@ -663,6 +664,82 @@ button:focus-visible {
   color: var(--smoke);
 }
 
+/* The partner band */
+
+/* light strip across the full page width. the wrap inside keeps
+   the text lined up with the rest of the site */
+.partner-band {
+  background: var(--band);
+  color: var(--band-ink);
+}
+
+/* a bit tighter than the dark sections, a light block looks
+   bigger than a dark one at the same size */
+.partner-band-inner {
+  padding-block: calc(var(--gap) * 0.8);
+}
+
+/* the dark greys swap in for the light background */
+.partner-band .label,
+.partner-band .lede {
+  color: var(--band-sub);
+}
+
+/* heading on the left, button on the right */
+.partner-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.partner-head .head {
+  margin-bottom: 0;
+}
+
+/* one column per tier, split by thin lines like the figures */
+.tier-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--band-hair);
+}
+
+.tier {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px clamp(14px, 2vw, 28px) 0;
+  border-left: 1px solid var(--band-hair);
+}
+
+.tier:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.tier-price {
+  font-family: var(--display);
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* the founding tier gets the red price */
+.tier.featured .tier-price {
+  color: var(--ember-deep);
+}
+
+.tier-summary {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--band-sub);
+  max-width: 28ch;
+}
+
 /* the closing section */
 
 /* the photo pieces */
@@ -942,6 +1019,27 @@ button:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     row-gap: 32px;
   }
+
+  /* button drops under the heading, tiers go two across */
+  .partner-head {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 24px;
+  }
+
+  .partner-head .btn {
+    justify-self: start;
+  }
+
+  .tier-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 28px;
+  }
+
+  .tier:nth-child(3) {
+    border-left: 0;
+    padding-left: 0;
+  }
 }
 
 /* small tablets and phones: phone menu, figures two across */
@@ -1084,6 +1182,25 @@ button:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  /* the button goes full width like the hero buttons do */
+  .partner-head .btn {
+    justify-self: stretch;
+    justify-content: center;
+  }
+
+  /* tiers stack, with a line above each one instead of beside */
+  .tier-list {
+    grid-template-columns: 1fr;
+    row-gap: 0;
+    border-top: 0;
+  }
+
+  .tier {
+    padding: 18px 0;
+    border-left: 0;
+    border-top: 1px solid var(--band-hair);
+  }
+
   .season {
     padding: 20px 20px 18px;
   }
@@ -1147,6 +1264,20 @@ button:focus-visible {
 
 .js-reveal .venue-art.reveal.in .trace-hot {
   stroke-dashoffset: 0;
+}
+
+/* the partner band starts the same dark as the page and the light
+   switches on underneath as it scrolls in. no fade or rise, a full
+   width block sliding would leave a dark gap along its top */
+.js-reveal .partner-band.reveal {
+  opacity: 1;
+  transform: none;
+  background: var(--ink);
+  transition: background 0.6s var(--ease);
+}
+
+.js-reveal .partner-band.reveal.in {
+  background: var(--band);
 }
 
 /* photos wipe open from the bottom while the picture settles

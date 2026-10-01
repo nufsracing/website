@@ -35,5 +35,6 @@
     { "label": "Join", "url": "/#closing", "live": true }
   ],
   "joinForm": "",
+  "sponsorUrl": "/sponsor/",
   "credits": "Site by Jack Page and Aaron Gowreea"
 }
