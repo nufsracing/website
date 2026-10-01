@@ -262,6 +262,24 @@ button:focus-visible {
 
 .nav-cta {
   justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* instagram icon, padding makes it a decent tap target */
+.nav-social {
+  display: inline-flex;
+  padding: 8px;
+  margin: -8px;
+  color: var(--smoke);
+  transition: color 0.15s ease;
+}
+
+.nav-social svg {
+  display: block;
+  width: 20px;
+  height: 20px;
 }
 
 .nav-cta .btn {
@@ -290,7 +308,8 @@ button:focus-visible {
   border-bottom-color: var(--ember);
 }
 
-.nav-links .btn {
+.nav-links .btn,
+.nav-links .nav-social-row {
   display: none;
 }
 
@@ -781,6 +800,11 @@ button:focus-visible {
   color: var(--bone);
 }
 
+/* space between the figures and the photo under them */
+.photo-band {
+  padding-top: calc(var(--gap) * 0.6);
+}
+
 /* the single wide photo */
 .photo-grid.single {
   display: block;
@@ -802,7 +826,7 @@ button:focus-visible {
       180deg,
       transparent 0,
       #000 14%,
-      #000 50%,
+      #000 62%,
       transparent 100%
     ),
     linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
@@ -811,6 +835,10 @@ button:focus-visible {
   -webkit-mask-composite: source-in;
   mask-image: var(--fade);
   mask-composite: intersect;
+}
+
+#fair .ph img {
+  object-position: 50% 50%;
 }
 
 .photo-grid.single .ph::before {
@@ -851,6 +879,11 @@ button:focus-visible {
   .photo-grid.single .ph-title {
     bottom: 26%;
     left: 6%;
+  }
+
+  /* keep the screen in frame on the narrow crop */
+  #fair .ph img {
+    object-position: 30% 50%;
   }
 }
 
@@ -1078,6 +1111,10 @@ button:focus-visible {
     font-size: 16px;
   }
 
+  .nav-links.open .nav-social-row {
+    display: block;
+  }
+
   .nav-links.open .btn {
     display: inline-flex;
     margin-top: 12px;
@@ -1235,7 +1272,8 @@ button:focus-visible {
     color: var(--ember);
   }
 
-  .foot a:hover {
+  .foot a:hover,
+  .nav-social:hover {
     color: var(--ember);
   }
 }

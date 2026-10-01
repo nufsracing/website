@@ -8,10 +8,18 @@
                 <a href="{{ item.url }}" {% if item.url == page.url %} aria-current="page" {% endif %}>{{ item.label }}</a>
             {% endif %}
         {% endfor %}
+        {% if site.social.instagram %}
+            <a class="nav-social-row" href="{{ site.social.instagram }}" target="_blank" rel="noopener">Instagram</a>
+        {% endif %}
         <a class="btn" href="/#closing">Sponsor Us</a>
     </nav>
 
-    <div class="nav-cta"><a class="btn" href="/#closing">Sponsor Us</a></div>
+    <div class="nav-cta">
+        {% if site.social.instagram %}
+            <a class="nav-social" href="{{ site.social.instagram }}" target="_blank" rel="noopener" aria-label="NUFS on Instagram">{% include "partials/instagram.svg" %}</a>
+        {% endif %}
+        <a class="btn" href="/#closing">Sponsor Us</a>
+    </div>
     <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
     </button>
