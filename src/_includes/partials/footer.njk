@@ -1,64 +1,43 @@
-<footer class="site-footer">
-  <div class="footer-cta">
-    <h2>Partner with Northumbria Formula Student</h2>
-    <a href="/sponsor/" class="btn-red">Sponsor Us</a>
-  </div>
+<footer class="foot wrap">
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <a class="mark" href="/">NUFS</a>
+      <p class="foot-blurb">Northumbria University Formula Student. Newcastle upon Tyne, United Kingdom.</p>
+    </div>
 
-  <div class="footer-columns">
-    <div class="footer-col">
-      <p class="footer-wordmark">NUFS Racing</p>
-      <p>One line about the team.</p>
+    <div>
+      <h4 class="label">Pages</h4>
       <ul>
-        <li>
-          <a href="https://instagram.com/nufs_racing">Instagram</a>
-        </li>
-        <li>
-          <a
-            href="https://linkedin.com/in/nufs-northumbria-university-formula-student-5908653b8"
-            >Linkedin</a
-          >
-        </li>
+        {% for item in site.nav %}
+          {% if item.live and item.url != "/" %}
+            <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+          {% endif %}
+        {% endfor %}
+        <li><a href="/#closing">Sponsor Us</a></li>
       </ul>
     </div>
 
-    <div class="footer-col">
-      <h3>Pages</h3>
+    <div>
+      <h4 class="label">Contact</h4>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/team/">Team</a></li>
-        <li><a href="/partners/">Partners</a></li>
-        <li><a href="/join/">Join</a></li>
-        <li><a href="/sponsor/">Sponsor Us</a></li>
+        {% if site.emails.sponsorship %}<li><a href="mailto:{{ site.emails.sponsorship }}">{{ site.emails.sponsorship }}</a></li>{% endif %}
+        {% if site.emails.general %}<li><a href="mailto:{{ site.emails.general }}">{{ site.emails.general }}</a></li>{% endif %}
+        {% if site.emails.media %}<li><a href="mailto:{{ site.emails.media }}">{{ site.emails.media }}</a></li>{% endif %}
       </ul>
     </div>
 
-    <div class="footer-col">
-      <h3>Contacts</h3>
+    <div>
+      <h4 class="label">Follow</h4>
       <ul>
-        <li>
-          <a href="mailto: {{ site.emails.sponsorship }}">{{
-            site.emails.sponsorship
-          }}</a>
-        </li>
-        <li>
-          <a href="mailto: {{ site.emails.general }}">{{
-            site.emails.general
-          }}</a>
-        </li>
-        <li>
-          <a href="mailto: {{ site.emails.media }}">{{ site.emails.media }}</a>
-        </li>
+        {% if site.socials.instagram %}<li><a href="{{ site.socials.instagram }}">Instagram</a></li>{% endif %}
+        {% if site.socials.linkedin %}<li><a href="{{ site.socials.linkedin }}">LinkedIn</a></li>{% endif %}
       </ul>
-    </div>
-
-    <div class="footer-col">
-      <h3>University</h3>
-      <p>Northumbria University, Newcastle Upon Tyne</p>
     </div>
   </div>
 
-  <div class="footer-bottom">
-    <p>© 2026 Northumbria Formula Student</p>
-    <a href="/privacy/">Privacy</a>
+  <div class="foot-base">
+    <span>&copy; 2026 NUFS Racing</span>
+    <span>Season 2026 / 2027</span>
+    {% if site.credits %}<span>{{ site.credits }}</span>{% endif %}
   </div>
 </footer>
