@@ -27,7 +27,7 @@ title: Home
         <span class="num" id="monthsLeft">{{ (phases | last).start | monthsUntil }}</span>
         <span class="what">
           <span id="monthsWhat">months to go</span>
-          <span class="label">FS UK · {{ site.competition.when }}</span>
+          <span class="label">FS UK · {{ site.competition.date }}</span>
         </span>
       </div>
 
@@ -84,8 +84,8 @@ title: Home
       <p class="label">The Venue</p>
       <h2>Silverstone, Northamptonshire</h2>
       <p class="lede">Four days in July. Scrutineering first, because nothing else happens until the car passes it, then the static events and finally the rund that decide the weekend.</p>
-      <dl>
-        <div><dt class="layout">name</dt><dd>{{ site.competition.name }}</dd></div>
+      <dl class="spec">
+        <div><dt class="label">name</dt><dd>{{ site.competition.name }}</dd></div>
         <div><dt class="label">Event</dt><dd>{{ site.competition.date }}</dd></div>
       </dl>
     </div>

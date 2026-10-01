@@ -461,6 +461,7 @@ button:focus-visible {
   letter-spacing: -0.03em;
 }
 
+/* turns 2027 red */
 .fig:last-child .n {
   color: var(--ember);
 }
@@ -470,4 +471,77 @@ button:focus-visible {
   line-height: 1.5;
   color: var(--smoke);
   max-width: 26ch;
+}
+
+/* styling the Venue sections */
+
+.venue-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.6fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+}
+
+.venue-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.venue-art {
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.venue-art svg {
+  display: block;
+  height: clamp(320px, 38vw, 520px);
+  width: auto;
+  max-width: 100%;
+}
+
+/* Faint full track */
+.trace {
+  fill: none;
+  stroke: rgba(243, 238, 238, 0.18);
+  stroke-width: 8;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* the red lap on top */
+.trace-hot {
+  fill: none;
+  stroke: var(--ember);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.car {
+  fill: #fff;
+}
+
+/* The details list */
+
+.spec {
+  margin: 6px 0 0;
+  border-top: 1px solid var(--hair);
+}
+
+.spec > div {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--hair-soft);
+}
+
+.spec dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--smoke);
 }
