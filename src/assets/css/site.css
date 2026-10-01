@@ -175,3 +175,47 @@ p {
   gap: 12px;
   margin-bottom: clamp(28px, 4vw, 48px);
 }
+
+/* styling the buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  background: var(--ember);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+/* outline button example "see the plan" button */
+.btn-ghost {
+  background: transparent;
+  border-color: rgba(243, 238, 238, 0.28);
+  color: var(--bone);
+}
+
+/* white button example "sponsor email" */
+.btn-light {
+  background: #fff;
+  color: var(--band-ink);
+}
+
+/* buttons for the partner band */
+.btn-dark {
+  background: var(--band-ink);
+  color: #fff;
+}
+
+/* shows red ring when someone moves through the page with tab */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ember-hot);
+  outline-offset: 3px;
+}
