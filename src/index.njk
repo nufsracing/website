@@ -131,9 +131,9 @@ title: Home
 <!-- Build Plan -->
 <section class="band wrap rule-top" id="plan">
   <div class="head">
-    <p class="label">The Season</p>
-    <h3>Our Plan</h3>
-    <p>Four phases, twelve months, one deadline that does not move.</p>
+    <p class="label">The season</p>
+    <h2>Our plan</h2>
+    <p class="lede">Four phases, twelve months, one deadline that does not move.</p>
   </div>
   <div class="phases">
     {% for phase in phases %}
@@ -142,8 +142,8 @@ title: Home
         {% if phase.status == "now" %}
           <span class="label flag">Where we are now</span>
         {% endif %}
-        <span>{{ phase.name }}</span>
-        <span>{{ phase.summary }}</span>
+        <h3>{{ phase.name }}</h3>
+        <p>{{ phase.summary }}</p>
       </article>
     {% endfor %}
   </div>
