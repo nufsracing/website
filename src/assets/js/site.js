@@ -107,3 +107,47 @@ if (!reduce && path && dot) {
 
   place();
 }
+
+if (document.documentElement.classList.contains("js-reveal")) {
+  const groups = [
+    ".hero-copy > *",
+    ".season",
+    ".fig",
+    ".photo-grid",
+    ".venue-copy",
+    ".venue-art",
+    "#about .head",
+    ".about-body > p",
+    ".ev-group",
+    "#plan .head",
+    ".phase",
+    ".join",
+    ".pitch",
+  ];
+
+  const io = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+  );
+
+  groups.forEach(function (sel) {
+    let n = 0;
+    let lastParent = null;
+    document.querySelectorAll(sel).forEach(function (el) {
+      if (el.parentNode !== lastParent) {
+        n = 0;
+        lastParent = el.parentNode;
+      }
+      el.style.setProperty("--i", Math.min(n++, 4));
+      el.classList.add("reveal");
+      io.observe(el);
+    });
+  });
+}

@@ -1123,27 +1123,19 @@ button:focus-visible {
   }
 }
 
-/* ============================================================
-   MOTION
-   One duration, one easing, nothing moves more than 16px.
-   Content is only hidden while the script is running
-   (html.js-reveal is added by the script), and everything is
-   off under prefers-reduced-motion.
-   ============================================================ */
-
 /* scroll reveals: fade and rise, staggered within a group */
 .js-reveal .reveal {
   opacity: 0;
   transform: translateY(16px);
-  transition:
-    opacity var(--dur) var(--ease),
-    transform var(--dur) var(--ease);
-  transition-delay: calc(var(--i, 0) * 80ms);
 }
 
 .js-reveal .reveal.in {
   opacity: 1;
   transform: none;
+  transition:
+    opacity var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+  transition-delay: calc(var(--i, 0) * 80ms);
 }
 
 /* the red lap draws itself when the venue comes into view */
