@@ -771,7 +771,7 @@ button:focus-visible {
     aspect-ratio: 4 / 3;
   }
 
-  .photo-grid.single .ph.title {
+  .photo-grid.single .ph-title {
     bottom: 26%;
     left: 6%;
   }
