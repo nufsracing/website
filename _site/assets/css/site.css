@@ -296,3 +296,136 @@ button:focus-visible {
 .nav-toggle {
   display: none;
 }
+
+/* styling the Hero section */
+.hero {
+  padding-block: clamp(56px, 7vw, 96px) clamp(40px, 5vw, 72px);
+}
+
+@media (min-width: 861px) and (min-height: 640px) {
+  .hero {
+    min-height: calc(100svh - 72px);
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-grid {
+    width: 100%;
+  }
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.8fr);
+  gap: clamp(32px, 4vw, 64px);
+  align-items: end;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.hero h1 .soft {
+  color: var(--smoke-dim);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* styling the timer box */
+.season {
+  border: 1px solid var(--hair);
+  border-radius: 3px;
+  background: rgba(16, 11, 13, 0.72);
+  padding: 24px 26px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.season-count {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.season-count .num {
+  font-family: var(--display);
+  font-size: clamp(52px, 5vw, 72px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tubular-nums;
+}
+
+.saeson-count .what {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--bone);
+}
+
+/* the progress bar for the timer box */
+.track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.seg {
+  position: relative;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--hair);
+}
+
+/* red fill */
+.seg::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(var(--fill, 0) * 100);
+  border-radius: inherit;
+  background: var(--ember);
+}
+
+/* the white dot */
+.seg.now::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(var(--fill, 0) * 100);
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(255, 91, 74, 0.28);
+}
+
+/* styling the names for the phases */
+.phase-names {
+  list-style: none;
+  margin: -12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.phase-names li {
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--smoke-dim);
+}
+
+.phase-names li.now {
+  color: var(--ember);
+  font-weight: 600;
+}
