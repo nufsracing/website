@@ -720,8 +720,7 @@ button:focus-visible {
 }
 
 .photo-grid.single .ph img {
-  object-position: 50% 32%;
-  -webkit-mask-image:
+  --fade:
     linear-gradient(
       180deg,
       transparent 0,
@@ -730,8 +729,10 @@ button:focus-visible {
       transparent 100%
     ),
     linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+  object-position: 50% 32%;
+  -webkit-mask-image: var(--fade);
   -webkit-mask-composite: source-in;
-  mask-image: -webkit-mask-image;
+  mask-image: var(--fade);
   mask-composite: intersect;
 }
 
