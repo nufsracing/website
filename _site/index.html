@@ -11,6 +11,28 @@
     <link rel="stylesheet" href="/assets/css/site.css">
 </head>
 <body>
+    <svg
+  class="racing-line"
+  viewBox="0 0 1440 900"
+  preserveAspectRatio="xMidYMid slice"
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <path
+      id="rl"
+      vector-effect="non-scaling-stroke"
+      d="M 1000,-40 C 1040,150 1330,200 1350,330 C 1370,460 1000,470 900,600 C 810,720 1060,820 1140,960"
+    ></path>
+  </defs>
+  <use href="#rl" class="rl-band"></use>
+  <use href="#rl" class="rl-core"></use>
+  <g class="rl-dot" id="rlDot">
+    <circle class="rl-dot-ring" r="10"></circle>
+    <circle class="rl-dot-core" r="4"></circle>
+  </g>
+</svg>
+
     <header class="nav">
   <div class="wrap nav-inner">
     <a class="mark" href="/">NUFS</a>

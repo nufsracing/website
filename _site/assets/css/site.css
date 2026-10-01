@@ -1,70 +1,92 @@
 :root {
-  --black: #0a0a0a;
-  --off-black: #121212;
-  --white: #f5f5f5;
-  --grey: #b3b3b3;
-  --red: #e10600;
-  --wrap: 1200px;
+  /* Theme */
+  color-scheme: dark;
+  /* Background colours */
+  --ink: #070506;
+  --ink-1: #100b0d;
+  /* Reds */
+  --ember: #ff2b2b;
+  --ember-hot: #ff5b4a;
+  --ember-deep: #8d0b12;
+  /* Text */
+  --bone: #f3eeee;
+  --smoke: #b3a4a7;
+  --smoke-dim: #9a8b8e;
+  /* Light partner band */
+  --band: #ece7e5;
+  --band-ink: #14100f;
+  --band-sub: #5d5553;
+  /* dividers */
+  --hair: rgba(243, 238, 238, 0.12);
+  --hair-soft: rgba(243, 238, 238, 0.06);
+  /* Fonts */
+  --sans: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --display: "Archivo Black", "Archivo", "Helvetica Neue", Arial, sans-serif;
+  /* Layout */
+  --gutter: clamp(20px, 5vw, 72px);
+  --maxw: 1240px;
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 0.7s;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  font-family: "Archivo", sans-serif;
   box-sizing: border-box;
 }
 
-nav {
-  background: rgba(31, 3, 3, 0.45);
-  backdrop-filter: blur(10px);
-  padding: 15px 15%;
-  align-items: center;
-  justify-content: space-between;
+body {
+  /* setting up the basic colours and fonts */
+  margin: 0;
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  /* thinner, crisper light text on dark background on Macs */
+  -webkit-font-smoothing: antialiased;
+  /* creates better text for mainly iphones */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Stops sideways scroll on phones */
+  overflow-x: hidden;
+}
+
+/* rules and values of the racing line */
+.racing-line {
   position: fixed;
+  inset: 0;
   width: 100%;
-  z-index: 100;
-  top: 0;
-  left: 0%;
-  border: 1px solid rgba(5, 2, 2, 0.65);
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
 }
 
-.logo {
-  width: 180px;
-  cursor: pointer;
+/* the wide soft glow */
+.rl-band {
+  fill: none;
+  stroke: var(--ember);
+  stroke-opacity: 0.06;
+  stroke-width: 48;
 }
 
-nav ul {
-  list-style: none;
-  width: 100%;
-  text-align: center;
-  padding-right: 80px;
+/* the thin sharp line */
+.rl-core {
+  fill: none;
+  stroke: var(--ember);
+  stroke-opacity: 0.5;
+  stroke-width: 1.5;
 }
 
-nav ul li {
-  display: inline-block;
-  margin: 10px 20px;
+.rl-dot {
+  opacity: 0;
 }
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
+.rl-dot.on {
+  opacity: 1;
 }
-.btn {
-  display: flex;
-  align-items: right;
-  padding: 10px 20px;
-  border: 0;
-  outline: 0;
-  border-radius: 5px;
-  background: #e5202b;
-  color: #fff;
-  font-weight: 500;
-  cursor: pointer;
-  width: fit-content;
-  justify-self: end;
+.rl-dot-ring {
+  fill: var(--ember-hot);
+  fill-opacity: 0.28;
 }
-
-.card {
-  color: --red;
+.rl-dot-core {
+  fill: #fff;
 }

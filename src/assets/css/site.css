@@ -51,57 +51,42 @@ body {
   overflow-x: hidden;
 }
 
-nav {
-  background: rgba(31, 3, 3, 0.45);
-  backdrop-filter: blur(10px);
-  padding: 15px 15%;
-  align-items: center;
-  justify-content: space-between;
+/* rules and values of the racing line */
+.racing-line {
   position: fixed;
+  inset: 0;
   width: 100%;
-  z-index: 100;
-  top: 0;
-  left: 0%;
-  border: 1px solid rgba(5, 2, 2, 0.65);
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
 }
 
-.logo {
-  width: 180px;
-  cursor: pointer;
+/* the wide soft glow */
+.rl-band {
+  fill: none;
+  stroke: var(--ember);
+  stroke-opacity: 0.06;
+  stroke-width: 48;
 }
 
-nav ul {
-  list-style: none;
-  width: 100%;
-  text-align: center;
-  padding-right: 80px;
+/* the thin sharp line */
+.rl-core {
+  fill: none;
+  stroke: var(--ember);
+  stroke-opacity: 0.5;
+  stroke-width: 1.5;
 }
 
-nav ul li {
-  display: inline-block;
-  margin: 10px 20px;
+.rl-dot {
+  opacity: 0;
 }
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
+.rl-dot.on {
+  opacity: 1;
 }
-.btn {
-  display: flex;
-  align-items: right;
-  padding: 10px 20px;
-  border: 0;
-  outline: 0;
-  border-radius: 5px;
-  background: #e5202b;
-  color: #fff;
-  font-weight: 500;
-  cursor: pointer;
-  width: fit-content;
-  justify-self: end;
+.rl-dot-ring {
+  fill: var(--ember-hot);
+  fill-opacity: 0.28;
 }
-
-.card {
-  color: --red;
+.rl-dot-core {
+  fill: #fff;
 }
