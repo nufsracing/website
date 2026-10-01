@@ -1,11 +1,10 @@
-const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 if (reduce) {
-    const car = document.querySelector(".car")
-    if (car) {
-        car.remove();
-    }
+  const car = document.querySelector(".car");
+  if (car) {
+    car.remove();
+  }
 }
-
 
 const toggle = document.querySelector(".nav-toggle");
 const links = document.querySelector("#navLinks");
@@ -61,13 +60,50 @@ if (season) {
     const what = season.querySelector("#monthsWhat");
 
     if (months > 1) {
-        num.textContent = months;
-        what.textContent = "months to go";
+      num.textContent = months;
+      what.textContent = "months to go";
     } else if (months === 1) {
-        num.textContent = "1";
-        what.textContent = "month to go";
+      num.textContent = "1";
+      what.textContent = "month to go";
     } else {
-        num.textContent = "July";
-        what.textContent = "is race month";
+      num.textContent = "July";
+      what.textContent = "is race month";
     }
   }
+}
+
+const path = document.querySelector("#rl");
+const dot = document.querySelector("#rlDot");
+
+if (!reduce && path && dot) {
+  const total = path.getTotalLength();
+  let queued = false;
+
+  const place = function () {
+    queued = false;
+
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (max < 200) {
+      dot.classList.remove("on");
+      return;
+    }
+
+    const p = Math.min(1, Math.max(0, window.scrollY / max));
+    const pt = path.getPointAtLength((0.05 + p * 0.9) * total);
+    dot.setAttribute("transform", "translate(" + pt.x + " " + pt.y + ")");
+    dot.classList.add("on");
+  };
+
+  const queue = function () {
+    if (!queued) {
+      queued = true;
+      window.requestAnimationFrame(place);
+    }
+  };
+
+  window.addEventListener("scroll", queue, { passive: true });
+  window.addEventListener("resize", queue);
+  window.addEventListener("load", queue);
+
+  place();
+}

@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap">
     <link rel="stylesheet" href="/assets/css/site.css">
 </head>
-<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/site.js" defer>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+        document.documentElement.classList.add("js-reveal")
+    }
+</script>
 <body>
     <svg
   class="racing-line"
