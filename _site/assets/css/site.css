@@ -263,14 +263,17 @@ button:focus-visible {
   height: 72px;
 }
 
+/* the wordmark, sized by height so the width follows */
 .mark {
   justify-self: start;
-  text-decoration: none;
-  color: var(--ember);
-  font-family: var(--display);
-  font-size: 24px;
-  letter-spacing: 0.02em;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.mark img {
+  display: block;
+  height: 20px;
+  width: auto;
 }
 
 .nav-cta {
@@ -360,8 +363,9 @@ button:focus-visible {
   gap: 22px;
 }
 
+/* the two words that matter, in red */
 .hero h1 .soft {
-  color: var(--smoke-dim);
+  color: var(--ember);
 }
 
 .actions {
@@ -495,6 +499,14 @@ button:focus-visible {
   font-size: clamp(40px, 4.4vw, 60px);
   line-height: 0.95;
   letter-spacing: -0.03em;
+}
+
+/* the plus after the member count, smaller and lifted */
+.fig .plus {
+  font-size: 0.55em;
+  vertical-align: top;
+  line-height: 1.4;
+  margin-left: 2px;
 }
 
 /* turns 2027 red */
@@ -1080,6 +1092,10 @@ button:focus-visible {
   padding: 6px 10px;
 }
 
+.join-btn {
+  margin-top: 8px;
+}
+
 /* pitch */
 .pitch {
   border: 1px solid rgba(255, 90, 74, 0.3);
@@ -1132,9 +1148,8 @@ button:focus-visible {
   align-items: flex-start;
 }
 
-.foot .mark {
-  font-size: 22px;
-  color: var(--ember);
+.foot .mark img {
+  height: 18px;
 }
 
 .foot-blurb {
@@ -1372,6 +1387,11 @@ button:focus-visible {
 
   .actions .btn {
     flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .join-btn {
+    align-self: stretch;
     justify-content: center;
   }
 

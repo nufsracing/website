@@ -5,9 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | NUFS Racing</title>
     <meta name="description" content="Northumbria Formula Student designs, builds and races a single seat car for the Formula Student competition at Silverstone. Partner with us for the 2027 season.">
+    <!-- what messaging apps show when the link is shared -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="NUFS Racing">
+    <meta property="og:title" content="Northumbria Formula Student">
+    <meta property="og:description" content="Northumbria Formula Student designs, builds and races a single seat car for the Formula Student competition at Silverstone. Partner with us for the 2027 season.">
+    <meta property="og:url" content="https://nufsracing.co.uk/">
+    <meta property="og:image" content="https://nufsracing.co.uk/assets/img/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap">
+    <!-- tab icon, the N from the NUFS logo -->
+    <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
     <link rel="stylesheet" href="/assets/css/site.css">
     <script>
         if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
@@ -43,7 +56,7 @@
 
     <header class="nav">
   <div class="wrap nav-inner">
-    <a class="mark" href="/">NUFS</a>
+    <a class="mark" href="/"><img src="/assets/img/nufs-wordmark.png" alt="NUFS" width="946" height="152"></a>
 
     <nav class="nav-links" id="navLinks" aria-label="Site">
         
@@ -91,7 +104,7 @@
   <div class="hero-grid">
     <div class="hero-copy">
       <p class="label">Season 2026/2027 · Northumbria University</p>
-      <h1>This year marks our debut season into <span class="soft">Formula Student.</span></h1>
+      <h1>Northumbria's first <span class="soft">Formula Student</span> car.</h1>
       <p class="lede">
         A new Northumbria team, designed, manufactured, wired and
         run by students at every level, from suspension geometry to the business
@@ -146,7 +159,7 @@
 <section class="wrap" id="figures">
   <ul class="figures">
     <li class="fig">
-      <span class="n" data-count="60">60</span>
+      <span class="n"><span data-count="70">70</span><span class="plus">+</span></span>
       <span class="label">Members</span>
       <span class="s">Across engineering, business and design.</span>
     </li>
@@ -189,7 +202,7 @@
     <div class="venue-copy">
       <p class="label">The Venue</p>
       <h2>Silverstone, Northamptonshire</h2>
-      <p class="lede">Four days in July. Scrutineering first, because nothing else happens until the car passes it, then the static events and finally the rund that decide the weekend.</p>
+      <p class="lede">Four days in July. Scrutineering first, because nothing else happens until the car passes it, then the static events and finally the runs that decide the weekend.</p>
       <dl class="spec">
         <div><dt class="label">name</dt><dd>Formula Student UK</dd></div>
         <div><dt class="label">Event</dt><dd>July 2027</dd></div>
@@ -342,7 +355,8 @@
         <h2>Four ways to back the team.</h2>
         <p class="lede">From a logo on the website to a founding role in how the team is shaped. Every tier puts your name on the car at Silverstone.</p>
       </div>
-      <a class="btn btn-dark" href="/sponsor/">See partner tiers <span aria-hidden="true">&rarr;</span></a>
+      <!-- the tiers button comes back once the sponsor page exists:
+           <a class="btn btn-dark" href="/sponsor/">See partner tiers <span aria-hidden="true">&rarr;</span></a> -->
     </div>
 
     <ul class="tier-list">
@@ -417,12 +431,15 @@
             <span class="role">Social Media</span>
         
       </div>
+      
+        <a class="btn btn-ghost join-btn" href="https://mynsu.co.uk/activities/view/180" target="_blank" rel="noopener">Join on the SU website <span aria-hidden="true">&rarr;</span></a>
+      
     </div>
 
     <article class="pitch">
         <p class="label">Sponsor us</p>
         <h2>Put your name on a first season.</h2>
-        <p>Backing a new team buys something an established team can't sell you: a visible part in building a car from nothing. Your brand runs at Silverstone in  in front of industry judges and every other team on the grid, and reaches the 60 Northumbria students behind it, from the engineers building the car to the team sharing the season online.</p>
+        <p>Backing a new team buys something an established team can't sell you: a visible part in building a car from nothing. Your brand runs at Silverstone in July 2027 in front of industry judges and every other team on the grid, and reaches the 70 Northumbria students behind it, from the engineers building the car to the team sharing the season online.</p>
         <a class="btn btn-light" href="mailto:sponsorship@nufsracing.co.uk">sponsorship@nufsracing.co.uk <span aria-hidden="true">&rarr;</span></a>
     </article>
 
@@ -436,7 +453,7 @@
     <footer class="foot wrap">
   <div class="foot-grid">
     <div class="foot-brand">
-      <a class="mark" href="/">NUFS</a>
+      <a class="mark" href="/"><img src="/assets/img/nufs-wordmark.png" alt="NUFS" width="946" height="152"></a>
       <p class="foot-blurb">Northumbria University Formula Student. Newcastle upon Tyne, United Kingdom.</p>
     </div>
 
@@ -470,8 +487,8 @@
     <div>
       <h4 class="label">Follow</h4>
       <ul>
-        <li><a href="">Instagram</a></li>
-        <li><a href="">LinkedIn</a></li>
+        <li><a href="https://instagram.com/nufs_racing">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/company/nufs/posts/?feedView=all">LinkedIn</a></li>
       </ul>
     </div>
   </div>

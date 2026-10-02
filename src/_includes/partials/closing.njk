@@ -24,12 +24,15 @@
             <span class="role">{{ team.name }}</span>
         {% endfor %}
       </div>
+      {% if site.joinUrl %}
+        <a class="btn btn-ghost join-btn" href="{{ site.joinUrl }}" target="_blank" rel="noopener">Join on the SU website <span aria-hidden="true">&rarr;</span></a>
+      {% endif %}
     </div>
 
     <article class="pitch">
         <p class="label">Sponsor us</p>
         <h2>Put your name on a first season.</h2>
-        <p>Backing a new team buys something an established team can't sell you: a visible part in building a car from nothing. Your brand runs at Silverstone in {{ site.competition.when }} in front of industry judges and every other team on the grid, and reaches the {{ site.members }} Northumbria students behind it, from the engineers building the car to the team sharing the season online.</p>
+        <p>Backing a new team buys something an established team can't sell you: a visible part in building a car from nothing. Your brand runs at Silverstone in {{ site.competition.date }} in front of industry judges and every other team on the grid, and reaches the {{ site.members }} Northumbria students behind it, from the engineers building the car to the team sharing the season online.</p>
         <a class="btn btn-light" href="mailto:{{ site.emails.sponsorship }}">{{ site.emails.sponsorship }} <span aria-hidden="true">&rarr;</span></a>
     </article>
 
