@@ -8,12 +8,15 @@
   <defs>
     <path
       id="rl"
+      pathLength="1"
       vector-effect="non-scaling-stroke"
       d="M 1000,-40 C 1040,150 1330,200 1350,330 C 1370,460 1000,470 900,600 C 810,720 1060,820 1140,960"
     ></path>
   </defs>
   <use href="#rl" class="rl-band"></use>
-  <use href="#rl" class="rl-core"></use>
+  <!-- faint full route underneath, the bright line draws as far as you have scrolled -->
+  <use href="#rl" class="rl-core rl-core-faint"></use>
+  <use href="#rl" class="rl-core" id="rlCore"></use>
   <g class="rl-dot" id="rlDot">
     <circle class="rl-dot-ring" r="10"></circle>
     <circle class="rl-dot-core" r="4"></circle>

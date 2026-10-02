@@ -10,5 +10,10 @@ module.exports = function (eleventyConfig) {
     );
   });
 
+  // adds up the points for one type of event, static or dynamic
+  eleventyConfig.addFilter("points", (events, type) =>
+    events.filter((event) => event.type === type).reduce((total, event) => total + event.points, 0)
+  );
+
   return { dir: { input: "src" } };
 };

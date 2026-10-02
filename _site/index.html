@@ -26,12 +26,15 @@
   <defs>
     <path
       id="rl"
+      pathLength="1"
       vector-effect="non-scaling-stroke"
       d="M 1000,-40 C 1040,150 1330,200 1350,330 C 1370,460 1000,470 900,600 C 810,720 1060,820 1140,960"
     ></path>
   </defs>
   <use href="#rl" class="rl-band"></use>
-  <use href="#rl" class="rl-core"></use>
+  <!-- faint full route underneath, the bright line draws as far as you have scrolled -->
+  <use href="#rl" class="rl-core rl-core-faint"></use>
+  <use href="#rl" class="rl-core" id="rlCore"></use>
   <g class="rl-dot" id="rlDot">
     <circle class="rl-dot-ring" r="10"></circle>
     <circle class="rl-dot-core" r="4"></circle>
@@ -143,12 +146,12 @@
 <section class="wrap" id="figures">
   <ul class="figures">
     <li class="fig">
-      <span class="n">60</span>
+      <span class="n" data-count="60">60</span>
       <span class="label">Members</span>
       <span class="s">Across engineering, business and design.</span>
     </li>
     <li class="fig">
-      <span class="n">7</span>
+      <span class="n" data-count="7">7</span>
       <span class="label">Sub teams</span>
       <span class="s"
         >Every part of the car and the campaign behind it.</span
@@ -194,14 +197,11 @@
     </div>
     <div class="venue-art">
     <svg viewBox="0 0 320 485" role="img" aria-label="Outline of the Silverstone Grand Prix circuit" xmlns="http://www.w3.org/2000/svg">
-  <defs><path id="lap" panLength="1" d="M107.9 239.7C108.5 239 109.3 238.4 110.1 237.9C125.5 229.1 133.8 236.6 157.3 241.2C179.2 245.4 216.1 211.2 227.2 207.4C228.8 206.8 230.9 207 232.2 208.1C238.3 212.9 233.8 236.7 246 242.1C247.1 242.6 248.4 242.6 249.6 242.3C259 239.8 264.3 226.3 266 198C266.2 195.3 265.2 192.6 263.3 190.7L147.2 66.9C146 65.6 144.4 64.7 142.7 64.2C125.5 59.6 120.9 63.5 118.9 72.4C117.5 78 117 83.8 115.9 89.4C112 109.4 80.4 98.4 89.4 79.9L110 46.1C110.2 45.7 110.5 45.3 110.9 44.9C122.7 31.1 130.8 25.3 147.5 20.4C148.4 20.1 149.3 20 150.2 20L265.2 20C283.9 21 296.3 45.2 294.7 95.4C293.8 125.4 288.9 150.5 293.7 161.5C311.9 202.7 284.6 210.8 288.2 226.2C291.9 241.9 310.8 266.1 282.7 279.6C270.8 283.7 265.6 287.3 259.2 296.6L149.1 457.4C148.3 458.7 147.1 459.8 145.8 460.5C120.1 473.8 108.8 456.9 95.4 421.7C95.1 420.9 94.6 420 94.1 419.3L59.4 372.5C56.8 369.6 54.2 370.7 49.6 373.6C49.1 373.8 48.7 374.1 48.3 374.5C43.3 378.7 40 379.2 35.1 376.8C34 376.3 33 375.5 32.3 374.6C21.3 361.4 19.3 353.1 20.2 340.3C20.3 338.2 21.2 336.2 22.7 334.6L107.9 239.7Z"/></defs>
+  <defs><path id="lap" pathLength="1" d="M107.9 239.7C108.5 239 109.3 238.4 110.1 237.9C125.5 229.1 133.8 236.6 157.3 241.2C179.2 245.4 216.1 211.2 227.2 207.4C228.8 206.8 230.9 207 232.2 208.1C238.3 212.9 233.8 236.7 246 242.1C247.1 242.6 248.4 242.6 249.6 242.3C259 239.8 264.3 226.3 266 198C266.2 195.3 265.2 192.6 263.3 190.7L147.2 66.9C146 65.6 144.4 64.7 142.7 64.2C125.5 59.6 120.9 63.5 118.9 72.4C117.5 78 117 83.8 115.9 89.4C112 109.4 80.4 98.4 89.4 79.9L110 46.1C110.2 45.7 110.5 45.3 110.9 44.9C122.7 31.1 130.8 25.3 147.5 20.4C148.4 20.1 149.3 20 150.2 20L265.2 20C283.9 21 296.3 45.2 294.7 95.4C293.8 125.4 288.9 150.5 293.7 161.5C311.9 202.7 284.6 210.8 288.2 226.2C291.9 241.9 310.8 266.1 282.7 279.6C270.8 283.7 265.6 287.3 259.2 296.6L149.1 457.4C148.3 458.7 147.1 459.8 145.8 460.5C120.1 473.8 108.8 456.9 95.4 421.7C95.1 420.9 94.6 420 94.1 419.3L59.4 372.5C56.8 369.6 54.2 370.7 49.6 373.6C49.1 373.8 48.7 374.1 48.3 374.5C43.3 378.7 40 379.2 35.1 376.8C34 376.3 33 375.5 32.3 374.6C21.3 361.4 19.3 353.1 20.2 340.3C20.3 338.2 21.2 336.2 22.7 334.6L107.9 239.7Z"/></defs>
   <use href="#lap" class="trace"></use>
   <use href="#lap" class="trace-hot"></use>
-  <circle class="car" r="4.5">
-    <animateMotion dur="14s" repeatCount="indefinite">
-      <mpath href="#lap"/>
-    </animateMotion>
-  </circle>
+  <!-- the script moves the car round the lap as you scroll -->
+  <circle class="car" r="4.5"></circle>
 </svg>
 
     </div>
@@ -218,35 +218,84 @@
         <h2>What is Formula&nbsp;Student?</h2>
       </div>
       <p class="first">Formula Student, known as Formula SAE outside Europe, is an international engineering competition in which university teams design, build, test and race a single seater car from scratch.</p>
-      <p>It is not only a race. Teams are judged on the engineering behind the car, on the cost and manufacturing plan, and on a business case put to a panel of industry judges, so the competition rewards sound engineering and project management as much as outright speed.</p>
-      <p>Universities from across the UK, Europe and the rest of the world compete against cars built the same way: by students, on student budgets, in roughly a year.</p>
+      <p>Only <b class="pts-inline">600</b> of the 1,000 points are won on track. The rest are decided in a room, defending the design, the cost report and the business case to a panel of industry judges. A fast car with a weak case loses to a slower one with a strong one.</p>
     </div>
 
-    <div class="events">
-      <div class="ev-group">
-        <span class="label">Static events</span>
-        <div class="ev-row"><b>Business Plan</b><span class="m">the case for the car as a product</span></div>
-        <div class="ev-row"><b>Cost and Manufacturing</b><span class="m">every part, costed and justified</span></div>
-        <div class="ev-row"><b>Engineering Design</b><span class="m">defending the design to judges</span></div>
+    <!-- points per event come from events.json, FSUK 2026 rules table 1 -->
+    <div class="scoring">
+      <div class="score-head">
+        <span class="label">How the 1,000 points are won</span>
+        <div class="score-split">
+          <span class="score-fig"><b class="n static" data-count="400">400</b><span class="s">in the judging rooms</span></span>
+          <span class="score-fig"><b class="n dynamic" data-count="600">600</b><span class="s">on the track</span></span>
+        </div>
       </div>
-      <div class="ev-group">
-        <span class="label">Dynamic events</span>
-        <div class="ev-row"><b>Acceleration</b><span class="m">75 m standing start</span></div>
-        <div class="ev-row"><b>Skid Pad</b><span class="m">figure of eight</span></div>
-        <div class="ev-row"><b>Sprint</b><span class="m">one flying lap</span></div>
-        <div class="ev-row"><b>Endurance</b><span class="m">22 km</span></div>
-        <div class="ev-row"><b>Efficiency</b><span class="m">energy over the endurance run</span></div>
+
+      <!-- one strip, each segment as wide as its points -->
+      <div class="score-bar" aria-hidden="true">
+        
+          <span class="score-seg static" style="--pts: 20"></span>
+        
+          <span class="score-seg static" style="--pts: 115"></span>
+        
+          <span class="score-seg static" style="--pts: 115"></span>
+        
+          <span class="score-seg static" style="--pts: 150"></span>
+        
+          <span class="score-seg dynamic" style="--pts: 75"></span>
+        
+          <span class="score-seg dynamic" style="--pts: 75"></span>
+        
+          <span class="score-seg dynamic" style="--pts: 100"></span>
+        
+          <span class="score-seg dynamic" style="--pts: 100"></span>
+        
+          <span class="score-seg dynamic" style="--pts: 250"></span>
+        
+      </div>
+
+      <div class="events">
+        <div class="ev-group">
+          <span class="label">Static events</span>
+          
+            <div class="ev-row"><b>Lap Time Simulation</b><span class="m">a predicted lap, submitted before the car runs</span><span class="pts">20</span></div>
+          
+            <div class="ev-row"><b>Business Plan</b><span class="m">the case for the car as a product</span><span class="pts">115</span></div>
+          
+            <div class="ev-row"><b>Cost and Manufacturing</b><span class="m">every part, costed and justified</span><span class="pts">115</span></div>
+          
+            <div class="ev-row"><b>Engineering Design</b><span class="m">defending the design to judges</span><span class="pts">150</span></div>
+          
+        </div>
+        <div class="ev-group">
+          <span class="label">Dynamic events</span>
+          
+            <div class="ev-row"><b>Skid Pad</b><span class="m">figure of eight</span><span class="pts dynamic">75</span></div>
+          
+            <div class="ev-row"><b>Acceleration</b><span class="m">75 m standing start</span><span class="pts dynamic">75</span></div>
+          
+            <div class="ev-row"><b>Sprint</b><span class="m">one flying lap</span><span class="pts dynamic">100</span></div>
+          
+            <div class="ev-row"><b>Efficiency</b><span class="m">energy over the endurance run</span><span class="pts dynamic">100</span></div>
+          
+            <div class="ev-row"><b>Endurance</b><span class="m">22 km</span><span class="pts dynamic">250</span></div>
+          
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Build Plan -->
+<!-- Build Plan. the wrapper gives the section room to pin while you scroll through the phases -->
+<div class="pin-wrap" id="planPin">
 <section class="band wrap rule-top" id="plan">
   <div class="head">
     <p class="label">The season</p>
     <h2>Our plan</h2>
     <p class="lede">Four phases, twelve months, one deadline that does not move.</p>
+    <div class="track plan-track" aria-hidden="true">
+      <span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span>
+    </div>
   </div>
   <div class="phases">
     
@@ -282,6 +331,7 @@
     
   </div>
 </section>
+</div>
 
 <!-- short sponsor pitch for the home page. -->
 <section class="partner-band" id="partners">

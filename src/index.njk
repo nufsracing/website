@@ -51,12 +51,12 @@ title: Home
 <section class="wrap" id="figures">
   <ul class="figures">
     <li class="fig">
-      <span class="n">{{ site.members }}</span>
+      <span class="n" data-count="{{ site.members }}">{{ site.members }}</span>
       <span class="label">Members</span>
       <span class="s">Across engineering, business and design.</span>
     </li>
     <li class="fig">
-      <span class="n">{{ subteam | length }}</span>
+      <span class="n" data-count="{{ subteam | length }}">{{ subteam | length }}</span>
       <span class="label">Sub teams</span>
       <span class="s"
         >Every part of the car and the campaign behind it.</span
@@ -116,35 +116,54 @@ title: Home
         <h2>What is Formula&nbsp;Student?</h2>
       </div>
       <p class="first">Formula Student, known as Formula SAE outside Europe, is an international engineering competition in which university teams design, build, test and race a single seater car from scratch.</p>
-      <p>It is not only a race. Teams are judged on the engineering behind the car, on the cost and manufacturing plan, and on a business case put to a panel of industry judges, so the competition rewards sound engineering and project management as much as outright speed.</p>
-      <p>Universities from across the UK, Europe and the rest of the world compete against cars built the same way: by students, on student budgets, in roughly a year.</p>
+      <p>Only <b class="pts-inline">{{ events | points("dynamic") }}</b> of the 1,000 points are won on track. The rest are decided in a room, defending the design, the cost report and the business case to a panel of industry judges. A fast car with a weak case loses to a slower one with a strong one.</p>
     </div>
 
-    <div class="events">
-      <div class="ev-group">
-        <span class="label">Static events</span>
-        <div class="ev-row"><b>Business Plan</b><span class="m">the case for the car as a product</span></div>
-        <div class="ev-row"><b>Cost and Manufacturing</b><span class="m">every part, costed and justified</span></div>
-        <div class="ev-row"><b>Engineering Design</b><span class="m">defending the design to judges</span></div>
+    <!-- points per event come from events.json, FSUK 2026 rules table 1 -->
+    <div class="scoring">
+      <div class="score-head">
+        <span class="label">How the 1,000 points are won</span>
+        <div class="score-split">
+          <span class="score-fig"><b class="n static" data-count="{{ events | points("static") }}">{{ events | points("static") }}</b><span class="s">in the judging rooms</span></span>
+          <span class="score-fig"><b class="n dynamic" data-count="{{ events | points("dynamic") }}">{{ events | points("dynamic") }}</b><span class="s">on the track</span></span>
+        </div>
       </div>
-      <div class="ev-group">
-        <span class="label">Dynamic events</span>
-        <div class="ev-row"><b>Acceleration</b><span class="m">75 m standing start</span></div>
-        <div class="ev-row"><b>Skid Pad</b><span class="m">figure of eight</span></div>
-        <div class="ev-row"><b>Sprint</b><span class="m">one flying lap</span></div>
-        <div class="ev-row"><b>Endurance</b><span class="m">22 km</span></div>
-        <div class="ev-row"><b>Efficiency</b><span class="m">energy over the endurance run</span></div>
+
+      <!-- one strip, each segment as wide as its points -->
+      <div class="score-bar" aria-hidden="true">
+        {% for event in events %}
+          <span class="score-seg {{ event.type }}" style="--pts: {{ event.points }}"></span>
+        {% endfor %}
+      </div>
+
+      <div class="events">
+        <div class="ev-group">
+          <span class="label">Static events</span>
+          {% for event in events %}{% if event.type == "static" %}
+            <div class="ev-row"><b>{{ event.name }}</b><span class="m">{{ event.summary }}</span><span class="pts">{{ event.points }}</span></div>
+          {% endif %}{% endfor %}
+        </div>
+        <div class="ev-group">
+          <span class="label">Dynamic events</span>
+          {% for event in events %}{% if event.type == "dynamic" %}
+            <div class="ev-row"><b>{{ event.name }}</b><span class="m">{{ event.summary }}</span><span class="pts dynamic">{{ event.points }}</span></div>
+          {% endif %}{% endfor %}
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Build Plan -->
+<!-- Build Plan. the wrapper gives the section room to pin while you scroll through the phases -->
+<div class="pin-wrap" id="planPin">
 <section class="band wrap rule-top" id="plan">
   <div class="head">
     <p class="label">The season</p>
     <h2>Our plan</h2>
     <p class="lede">Four phases, twelve months, one deadline that does not move.</p>
+    <div class="track plan-track" aria-hidden="true">
+      {% for phase in phases %}<span class="seg"></span>{% endfor %}
+    </div>
   </div>
   <div class="phases">
     {% for phase in phases %}
@@ -159,6 +178,7 @@ title: Home
     {% endfor %}
   </div>
 </section>
+</div>
 
 <!-- short sponsor pitch for the home page. -->
 <section class="partner-band" id="partners">

@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Lap Time Simulation",
+    "type": "static",
+    "points": 20,
+    "summary": "a predicted lap, submitted before the car runs"
+  },
+  {
+    "name": "Business Plan",
+    "type": "static",
+    "points": 115,
+    "summary": "the case for the car as a product"
+  },
+  {
+    "name": "Cost and Manufacturing",
+    "type": "static",
+    "points": 115,
+    "summary": "every part, costed and justified"
+  },
+  {
+    "name": "Engineering Design",
+    "type": "static",
+    "points": 150,
+    "summary": "defending the design to judges"
+  },
+  {
+    "name": "Skid Pad",
+    "type": "dynamic",
+    "points": 75,
+    "summary": "figure of eight"
+  },
+  {
+    "name": "Acceleration",
+    "type": "dynamic",
+    "points": 75,
+    "summary": "75 m standing start"
+  },
+  {
+    "name": "Sprint",
+    "type": "dynamic",
+    "points": 100,
+    "summary": "one flying lap"
+  },
+  {
+    "name": "Efficiency",
+    "type": "dynamic",
+    "points": 100,
+    "summary": "energy over the endurance run"
+  },
+  {
+    "name": "Endurance",
+    "type": "dynamic",
+    "points": 250,
+    "summary": "22 km"
+  }
+]

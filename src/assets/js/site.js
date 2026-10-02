@@ -36,7 +36,12 @@ if (season) {
       1,
       Math.max(0, (now - edges[i]) / (edges[i + 1] - edges[i])),
     );
-    segs[i].style.setProperty("--fill", fill);
+    // set after the first paint so the css transition runs the fill in
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        segs[i].style.setProperty("--fill", fill);
+      });
+    });
 
     const current = now >= edges[i] && now < edges[i + 1];
     segs[i].classList.toggle("now", current);
@@ -61,6 +66,7 @@ if (season) {
 
     if (months > 1) {
       num.textContent = months;
+      num.dataset.count = months;
       what.textContent = "months to go";
     } else if (months === 1) {
       num.textContent = "1";
@@ -74,6 +80,7 @@ if (season) {
 
 const path = document.querySelector("#rl");
 const dot = document.querySelector("#rlDot");
+const core = document.querySelector("#rlCore");
 
 if (!reduce && path && dot) {
   const total = path.getTotalLength();
@@ -92,6 +99,62 @@ if (!reduce && path && dot) {
     const pt = path.getPointAtLength((0.05 + p * 0.9) * total);
     dot.setAttribute("transform", "translate(" + pt.x + " " + pt.y + ")");
     dot.classList.add("on");
+    core.style.strokeDashoffset = 1 - (0.05 + p * 0.9);
+    placeCar();
+    placePin();
+    placeNav();
+  };
+
+  // the car goes round the lap as the venue crosses the screen
+  const lap = document.querySelector("#lap");
+  const car = document.querySelector(".car");
+  const venueArt = document.querySelector(".venue-art");
+  const lapLength = lap ? lap.getTotalLength() : 0;
+  const placeCar = function () {
+    if (!lap || !car || !venueArt) return;
+    const box = venueArt.getBoundingClientRect();
+    const viewHeight = window.innerHeight;
+    const p = Math.min(1, Math.max(0, (viewHeight - box.top) / (viewHeight + box.height)));
+    const pt = lap.getPointAtLength(p * lapLength);
+    car.setAttribute("transform", "translate(" + pt.x + " " + pt.y + ")");
+  };
+
+  // the plan pins for three screens, scroll position picks the lit phase
+  const pin = document.querySelector("#planPin");
+  const pinMedia = window.matchMedia("(min-width: 861px) and (min-height: 640px)");
+  const phases = document.querySelectorAll(".phase");
+  const planSegs = document.querySelectorAll(".plan-track .seg");
+  const placePin = function () {
+    if (!pin || !pinMedia.matches) {
+      document.documentElement.classList.remove("js-pin");
+      return;
+    }
+    document.documentElement.classList.add("js-pin");
+    const inner = pin.firstElementChild;
+    const top = pin.getBoundingClientRect().top + window.scrollY;
+    const range = pin.offsetHeight - inner.offsetHeight;
+    const p = Math.min(1, Math.max(0, (window.scrollY - top) / range));
+    const active = Math.min(phases.length - 1, Math.floor(p * phases.length));
+    phases.forEach(function (phase, i) {
+      phase.classList.toggle("active", i === active);
+    });
+    planSegs.forEach(function (seg, i) {
+      seg.style.setProperty("--fill", Math.min(1, Math.max(0, p * planSegs.length - i)));
+    });
+  };
+
+  // nav slides away on the way down and back on the way up
+  const nav = document.querySelector(".nav");
+  let lastY = window.scrollY;
+  const placeNav = function () {
+    const y = window.scrollY;
+    const menuOpen = links.classList.contains("open");
+    if (!menuOpen && y > lastY + 4 && y > 160) {
+      nav.classList.add("nav-hidden");
+    } else if (y < lastY - 4 || y <= 160) {
+      nav.classList.remove("nav-hidden");
+    }
+    lastY = y;
   };
 
   const queue = function () {
@@ -109,30 +172,52 @@ if (!reduce && path && dot) {
 }
 
 if (document.documentElement.classList.contains("js-reveal")) {
+  // selector, then which reveal it gets
   const groups = [
-    ".hero-copy > *",
-    ".season",
-    ".fig",
-    ".photo-grid",
-    ".venue-copy",
-    ".venue-art",
-    "#about .head",
-    ".about-body > p",
-    ".ev-group",
-    "#plan .head",
-    ".phase",
-    ".partner-band",
-    ".partner-head",
-    ".tier",
-    ".join",
-    ".pitch",
+    [".hero-copy > *", "rise"],
+    [".season", "rise"],
+    [".fig", "rise"],
+    [".photo-grid", "wipe"],
+    [".venue-copy", "rise"],
+    [".venue-art", "rise"],
+    ["#about .head", "rise"],
+    [".about-body > p", "rise"],
+    [".score-head", "rise"],
+    [".score-seg", "grow"],
+    [".ev-group .label", "rise"],
+    [".ev-row", "slide"],
+    ["#plan .head", "rise"],
+    [".phase", "line"],
+    [".partner-band", "band"],
+    [".partner-head", "rise"],
+    [".tier", "rise"],
+    [".join", "rise"],
+    [".pitch", "rise"],
+    [".rule-top", "rule"],
+    [".foot", "rule"],
   ];
+
+  // numbers run up from zero over 1.4s, waiting for their own stagger first
+  const countUp = function (el) {
+    const target = Number(el.dataset.count);
+    const owner = el.closest(".reveal");
+    const wait = owner ? Number(owner.style.getPropertyValue("--i") || 0) * 80 : 0;
+    const start = performance.now() + wait;
+    const step = function (now) {
+      const t = Math.min(1, Math.max(0, (now - start) / 1400));
+      const eased = 1 - (1 - t) * (1 - t);
+      el.textContent = Math.round(eased * target);
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
 
   const io = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) {
           e.target.classList.add("in");
+          e.target.querySelectorAll("[data-count]").forEach(countUp);
           io.unobserve(e.target);
         }
       });
@@ -140,16 +225,22 @@ if (document.documentElement.classList.contains("js-reveal")) {
     { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
   );
 
-  groups.forEach(function (sel) {
+  groups.forEach(function (group) {
+    const selector = group[0];
+    const effect = group[1];
     let n = 0;
     let lastParent = null;
-    document.querySelectorAll(sel).forEach(function (el) {
+    document.querySelectorAll(selector).forEach(function (el) {
       if (el.parentNode !== lastParent) {
         n = 0;
         lastParent = el.parentNode;
       }
-      el.style.setProperty("--i", Math.min(n++, 4));
+      el.style.setProperty("--i", Math.min(n++, 9));
+      el.dataset.reveal = effect;
       el.classList.add("reveal");
+      el.querySelectorAll("[data-count]").forEach(function (number) {
+        number.textContent = "0";
+      });
       io.observe(el);
     });
   });
