@@ -1729,8 +1729,8 @@ button:focus-visible {
 
 .race-units {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  grid-template-columns: auto repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .race-units > div {
@@ -1743,7 +1743,7 @@ button:focus-visible {
 
 .race-n {
   font-family: var(--display);
-  font-size: clamp(36px, 4vw, 52px);
+  font-size: clamp(32px, 3.1vw, 44px);
   line-height: 0.9;
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
