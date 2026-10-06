@@ -21,27 +21,21 @@ title: Home
     </div>
 
     <aside class="season" id="season" aria-label="Season progress" data-phases="{% for phase in phases %}{{ phase.start }} {% endfor %}{{ site.competition.seasonEnd }}">
-      <span class="label">Road to Silverstone</span>
-
-      <div class="season-count">
-        <span class="num" id="monthsLeft">{{ (phases | last).start | monthsUntil }}</span>
-        <span class="what">
-          <span id="monthsWhat">months to go</span>
-          <span class="label">FS UK · {{ site.competition.date }}</span>
-        </span>
+      <div class="race-top">
+        <span class="race-title">Race Day</span>
+        <span class="label race-live"><span class="race-dot"></span>Counting down</span>
       </div>
-
-      <div class="track" aria-hidden="true">
-        {% for phase in phases %}
-          <span class="seg {% if phase.status == 'now' %}now{% endif %}"></span>
-        {% endfor %}
+      <div class="race-units" aria-hidden="true">
+        <div><span class="race-n" data-unit="days">0</span><span class="lebel">Days</span></div>
+        <div><span class="race-n" data-unit="hours">00</span><span class="label">Hours</span></div>
+        <div><span class="race-n" data-unit="mins">00</span><span class="label">Mins</span></div>
+        <div><span class="race-n" data-unit="secs">00</span><span class="label">Sec</span></div>
       </div>
-
-      <ol class="phase-names">
-        {% for phase in phases %}
-        <li {% if phase.status == "now" %} class="now" aria-current="step"{% endif %}>{{ phase.short }}</li>
-        {% endfor %}
-      </ol>
+      <p class="visually-hidden" id="raceSummary"></p>
+      <div class="race-foot label">
+        <span>FS UK · Silverstone</span>
+        <span>{% if site.competition.raceDayConfirmed %}{{ site.raceDayLabel }}{% else %}July 2027 · date TBC</span>
+      </div>
     </aside>
   </div>
 </section>
@@ -158,6 +152,10 @@ title: Home
 <div class="pin-wrap" id="planPin">
 <section class="band wrap rule-top" id="plan">
   <div class="head">
+    <div class="season-count">
+      <span class="num">10</span>
+      <span class="what">months to go</span>
+    </div>
     <p class="label">The season</p>
     <h2>Our plan</h2>
     <p class="lede">Four phases, twelve months, one deadline that does not move.</p>
