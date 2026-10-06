@@ -20,13 +20,13 @@ title: Home
       </div>
     </div>
 
-    <aside class="season" id="season" aria-label="Season progress" data-phases="{% for phase in phases %}{{ phase.start }} {% endfor %}{{ site.competition.seasonEnd }}">
+    <aside class="race" id="raceDay" aria-label="Season progress" data-start="{{ site.competition.raceDay }}">
       <div class="race-top">
         <span class="race-title">Race Day</span>
         <span class="label race-live"><span class="race-dot"></span>Counting down</span>
       </div>
       <div class="race-units" aria-hidden="true">
-        <div><span class="race-n" data-unit="days">0</span><span class="lebel">Days</span></div>
+        <div><span class="race-n" data-unit="days">0</span><span class="label">Days</span></div>
         <div><span class="race-n" data-unit="hours">00</span><span class="label">Hours</span></div>
         <div><span class="race-n" data-unit="mins">00</span><span class="label">Mins</span></div>
         <div><span class="race-n" data-unit="secs">00</span><span class="label">Sec</span></div>
@@ -34,7 +34,7 @@ title: Home
       <p class="visually-hidden" id="raceSummary"></p>
       <div class="race-foot label">
         <span>FS UK · Silverstone</span>
-        <span>{% if site.competition.raceDayConfirmed %}{{ site.raceDayLabel }}{% else %}July 2027 · date TBC</span>
+        <span>{% if site.competition.raceDayConfirmed %}{{ site.competition.raceDayLabel }}{% else %}July 2027 · date TBC{% endif %}</span>
       </div>
     </aside>
   </div>
@@ -153,7 +153,7 @@ title: Home
 <section class="band wrap rule-top" id="plan">
   <div class="head">
     <div class="season-count">
-      <span class="num">10</span>
+      <span class="num" id="monthsLeft">10</span>
       <span class="what">months to go</span>
     </div>
     <p class="label">The season</p>

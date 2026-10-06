@@ -1699,3 +1699,76 @@ button:focus-visible {
     animation: none !important;
   }
 }
+
+/* race day countdown, same red as sponsor card */
+.race {
+  border: 1px solid rgba(255, 90, 74, 0.3);
+  border-radius: 3px;
+  background: linear-gradient(158deg, var(--ember-deep), #45060b 80%);
+  padding: 24px 26px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.race-top,
+.race-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.race-foot {
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.race .label {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.race-units {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.race-units > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* tubular so the digits don't shuffle every second */
+
+.race-n {
+  font-family: var(--display);
+  font-size: clamp(36px, 4vw, 52px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.race-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #fff;
+  animation: race-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes race-pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}

@@ -9,10 +9,11 @@
   "competition": {
     "name": "Formula Student UK",
     "venue": "Silverstone",
-    "raceDay": "2027-07-17T09:00:00+1:00",
+    "raceDay": "2027-07-17T09:00:00+01:00",
     "location": "Northamptonshire",
     "raceDayConfirmed": false,
     "raceDayLabel": "17 July 2027",
+    "date": "July 2027",
     "seasonEnd": "2027-08-01"
   },
   "emails": {

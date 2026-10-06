@@ -22,60 +22,43 @@ links.addEventListener("click", function (event) {
   }
 });
 
-//Red line for the season tracker
-const season = document.querySelector("#season");
+//race day countdown, it ticks once per second
+const race = document.querySelector("#raceDay");
 
-if (season) {
-  const edges = season.dataset.phases.split(" ").map(Date.parse);
+if (race) {
+  const start = Date.parse(race.dataset.start);
+  const units = [];
+  race.querySelectorAll("[data-unit]").forEach(function (el) {
+    units[el.dataset.unit] = el;
+  });
+  const summary = document.querySelector("#raceSummary");
+  const pad = function (n) {
+    return String(n).padStart(2, "0");
+  };
 
-  const segs = season.querySelectorAll(".seg");
-  const names = season.querySelectorAll(".phase-names li");
-  const now = Date.now();
-  for (let i = 0; i < segs.length; i++) {
-    const fill = Math.min(
-      1,
-      Math.max(0, (now - edges[i]) / (edges[i + 1] - edges[i])),
-    );
-    // set after the first paint so the css transition runs the fill in
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        segs[i].style.setProperty("--fill", fill);
-      });
-    });
+  const tick = function () {
+    const left = Math.max(0, start - Date.now());
+    const days = Math.floor(left / 86400000);
+    const hours = Math.floor(left / 3600000) % 24;
+    const mins = Math.floor(left / 60000) % 60;
+    const secs = Math.floor(left / 1000) % 60;
 
-    const current = now >= edges[i] && now < edges[i + 1];
-    segs[i].classList.toggle("now", current);
-    names[i].classList.toggle("now", current);
+    units.days.textContent = days;
+    units.hours.textContent = pad(hours);
+    units.mins.textContent = pad(mins);
+    units.secs.textContent = pad(secs);
+    summary.textContent = days + " days to race day";
 
-    if (current) {
-      names[i].setAttribute("aria-current", "step");
-    } else {
-      names[i].removeAttribute("aria-current");
+    //once the events start don't count into the negatives
+    if (left === 0) {
+      race.classList.add("race-on");
+      race.querySelector(".race-live").lastChild.textContent = "Race Week";
+      clearInterval(timer);
     }
-  }
+  };
 
-  if (season) {
-    const race = new Date(edges[3]);
-    const today = new Date(now);
-    const months =
-      (race.getFullYear() - today.getFullYear()) * 12 +
-      race.getMonth() -
-      today.getMonth();
-    const num = season.querySelector(".num");
-    const what = season.querySelector("#monthsWhat");
-
-    if (months > 1) {
-      num.textContent = months;
-      num.dataset.count = months;
-      what.textContent = "months to go";
-    } else if (months === 1) {
-      num.textContent = "1";
-      what.textContent = "month to go";
-    } else {
-      num.textContent = "July";
-      what.textContent = "is race month";
-    }
-  }
+  const timer = setInterval(tick, 1000);
+  tick();
 }
 
 const path = document.querySelector("#rl");
@@ -114,16 +97,23 @@ if (!reduce && path && dot) {
     if (!lap || !car || !venueArt) return;
     const box = venueArt.getBoundingClientRect();
     const viewHeight = window.innerHeight;
-    const p = Math.min(1, Math.max(0, (viewHeight - box.top) / (viewHeight + box.height)));
+    const p = Math.min(
+      1,
+      Math.max(0, (viewHeight - box.top) / (viewHeight + box.height)),
+    );
     const pt = lap.getPointAtLength(p * lapLength);
     car.setAttribute("transform", "translate(" + pt.x + " " + pt.y + ")");
   };
 
   // the plan pins for three screens, scroll position picks the lit phase
   const pin = document.querySelector("#planPin");
-  const pinMedia = window.matchMedia("(min-width: 861px) and (min-height: 640px)");
+  const pinMedia = window.matchMedia(
+    "(min-width: 861px) and (min-height: 640px)",
+  );
   const phases = document.querySelectorAll(".phase");
   const planSegs = document.querySelectorAll(".plan-track .seg");
+  const monthsEl = document.querySelector("#monthsLeft");
+  const totalMonths = 10;
   const placePin = function () {
     if (!pin || !pinMedia.matches) {
       document.documentElement.classList.remove("js-pin");
@@ -134,12 +124,16 @@ if (!reduce && path && dot) {
     const top = pin.getBoundingClientRect().top + window.scrollY;
     const range = pin.offsetHeight - inner.offsetHeight;
     const p = Math.min(1, Math.max(0, (window.scrollY - top) / range));
+    monthsEl.textContent = Math.round(totalMonths * (1 - p));
     const active = Math.min(phases.length - 1, Math.floor(p * phases.length));
     phases.forEach(function (phase, i) {
       phase.classList.toggle("active", i === active);
     });
     planSegs.forEach(function (seg, i) {
-      seg.style.setProperty("--fill", Math.min(1, Math.max(0, p * planSegs.length - i)));
+      seg.style.setProperty(
+        "--fill",
+        Math.min(1, Math.max(0, p * planSegs.length - i)),
+      );
     });
   };
 
@@ -201,7 +195,9 @@ if (document.documentElement.classList.contains("js-reveal")) {
   const countUp = function (el) {
     const target = Number(el.dataset.count);
     const owner = el.closest(".reveal");
-    const wait = owner ? Number(owner.style.getPropertyValue("--i") || 0) * 80 : 0;
+    const wait = owner
+      ? Number(owner.style.getPropertyValue("--i") || 0) * 80
+      : 0;
     const start = performance.now() + wait;
     const step = function (now) {
       const t = Math.min(1, Math.max(0, (now - start) / 1400));
