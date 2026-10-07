@@ -83,27 +83,50 @@ if (!reduce && path && dot) {
     dot.setAttribute("transform", "translate(" + pt.x + " " + pt.y + ")");
     dot.classList.add("on");
     core.style.strokeDashoffset = 1 - (0.05 + p * 0.9);
-    placeCar();
     placePin();
     placeNav();
   };
 
-  // the car goes round the lap as the venue crosses the screen
+  // the car laps silverstone on its own
   const lap = document.querySelector("#lap");
   const car = document.querySelector(".car");
   const venueArt = document.querySelector(".venue-art");
-  const lapLength = lap ? lap.getTotalLength() : 0;
-  const placeCar = function () {
-    if (!lap || !car || !venueArt) return;
-    const box = venueArt.getBoundingClientRect();
-    const viewHeight = window.innerHeight;
-    const p = Math.min(
-      1,
-      Math.max(0, (viewHeight - box.top) / (viewHeight + box.height)),
-    );
-    const pt = lap.getPointAtLength(p * lapLength);
-    car.setAttribute("transform", "translate(" + pt.x + " " + pt.y + ")");
-  };
+
+  if (!reduce && lap && car && venueArt) {
+    const lapLength = lap.getTotalLength();
+    const lapTime = 9000;
+    let lapPos = 0;
+    let lastTime = null;
+    let lapFrame = null;
+
+    const moveCar = function () {
+      const pt = lap.getPointAtLength(lapPos * lapLength);
+      car.setAttribute("transform", "translate(" + pt.x + " " + pt.y + ")");
+    };
+
+    const drive = function (now) {
+      if (lastTime !== null) {
+        lapPos = (lapPos + (now - lastTime) / lapTime) % 1;
+      }
+
+      lastTime = now;
+      moveCar();
+      lapFrame = requestAnimationFrame(drive);
+    };
+
+    const lapWatch = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        if (lapFrame === null) lapFrame = requestAnimationFrame(drive);
+      } else if (lapFrame !== null) {
+        cancelAnimationFrame(lapFrame);
+        lapFrame = null;
+        lastTime = null;
+      }
+    });
+
+    moveCar();
+    lapWatch.observe(venueArt);
+  }
 
   // the plan pins for three screens, scroll position picks the lit phase
   const pin = document.querySelector("#planPin");

@@ -11,12 +11,18 @@
         {% if site.social.instagram %}
             <a class="nav-social-row" href="{{ site.social.instagram }}" target="_blank" rel="noopener">Instagram</a>
         {% endif %}
+        {% if site.social.linkedin %}
+            <a class="nav-social-row" href="{{ site.social.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+        {% endif %}
         <a class="btn" href="/#closing">Sponsor Us</a>
     </nav>
 
     <div class="nav-cta">
         {% if site.social.instagram %}
             <a class="nav-social" href="{{ site.social.instagram }}" target="_blank" rel="noopener" aria-label="NUFS on Instagram">{% include "partials/instagram.svg" %}</a>
+        {% endif %}
+        {% if site.social.linkedin %}
+            <a class="nav-social" href="{{ site.social.linkedin }}" target="_blank" rel="noopener" aria-label="NUFS on LinkedIn">{% include "partials/linkedin.svg" %}</a>
         {% endif %}
         <a class="btn" href="/#closing">Sponsor Us</a>
     </div>
