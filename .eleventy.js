@@ -16,10 +16,13 @@ module.exports = function (eleventyConfig) {
   );
 
   // the live address, so link previews point at the right image. cloudflare
-  // and netlify set these on their preview builds, otherwise it is the real domain
+  // sets CF_PAGES_URL on every build, so only branch previews use it and the
+  // live site always uses the real domain
+  const isPreview =
+    process.env.CF_PAGES_BRANCH && process.env.CF_PAGES_BRANCH !== "main";
   eleventyConfig.addGlobalData(
     "baseUrl",
-    process.env.CF_PAGES_URL || process.env.URL || "https://nufsracing.co.uk",
+    isPreview ? process.env.CF_PAGES_URL : "https://nufsracing.co.uk",
   );
 
   return { dir: { input: "src" } };
