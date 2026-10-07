@@ -1,7 +1,7 @@
 [
   {
     "name": "Community Partner",
-    "price": "from £500",
+    "price": "TBC",
     "summary": "For local businesses wanting to back student engineering.",
     "featured": false,
     "benefits": [
@@ -12,7 +12,7 @@
   },
   {
     "name": "Team Partner",
-    "price": "from £1,000",
+    "price": "TBC",
     "summary": "A closer partnership with greater visibility and direct connection.",
     "featured": false,
     "benefits": [
@@ -24,7 +24,7 @@
   },
   {
     "name": "Innovation Partner",
-    "price": "from £2,500",
+    "price": "TBC",
     "summary": "For organisations that want their story told and a direct line to our students.",
     "featured": false,
     "benefits": [
@@ -36,7 +36,7 @@
   },
   {
     "name": "Founding Partner - Bespoke",
-    "price": "negotiated",
+    "price": "TBC",
     "summary": "For an organisation that wants a genuine role in shaping NUFS from the very beginning.",
     "featured": true,
     "benefits": [
