@@ -38,6 +38,12 @@
   <div class="foot-base">
     <span>&copy; 2026 NUFS Racing</span>
     <span>Season 2026 / 2027</span>
+    {% if site.analyticsId %}
+      <span>
+        We use Google Analytics to count visits.
+        <button type="button" class="link-btn" id="analyticsToggle" data-ga="{{ site.analyticsId }}">Turn off</button>
+      </span>
+    {% endif %}
     {% if site.credits %}<span>{{ site.credits }}</span>{% endif %}
   </div>
 </footer>

@@ -1190,6 +1190,17 @@ button:focus-visible {
   color: var(--smoke-dim);
 }
 
+/* the analytics switch in the footer, styled as a link */
+.link-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /* tablets and small laptops: two column layouts stack */
 @media (max-width: 1040px) {
   .hero-grid {

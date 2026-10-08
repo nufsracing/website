@@ -27,6 +27,24 @@
             document.documentElement.classList.add("js-reveal")
             }
     </script>
+{% if site.analyticsId %}
+<script>
+  // skip analytics if this visitor turned it off in the footer
+  let analyticsOff = false;
+  try { analyticsOff = localStorage.getItem("analytics-off") === "1"; } catch (e) {}
+  // only count visits on the real site, not local dev or preview links
+  if (location.hostname === "nufsracing.co.uk" && !analyticsOff) {
+    const ga = document.createElement("script");
+    ga.async = true;
+    ga.src = "https://www.googletagmanager.com/gtag/js?id={{ site.analyticsId }}";
+    document.head.appendChild(ga);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag("js", new Date());
+    gtag("config", "{{ site.analyticsId }}");
+  }
+</script>
+{% endif %}
 </head>
 <body>
     {% include "partials/racing-line.njk" %}

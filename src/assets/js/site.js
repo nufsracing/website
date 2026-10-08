@@ -264,3 +264,40 @@ if (document.documentElement.classList.contains("js-reveal")) {
     });
   });
 }
+
+// footer switch for analytics, the choice is remembered in this browser
+const analyticsToggle = document.querySelector("#analyticsToggle");
+
+if (analyticsToggle) {
+  const gaId = analyticsToggle.dataset.ga;
+  let isOff = false;
+  try {
+    isOff = localStorage.getItem("analytics-off") === "1";
+  } catch (e) {}
+
+  const showState = function () {
+    analyticsToggle.textContent = isOff ? "Turn back on" : "Turn off";
+  };
+
+  analyticsToggle.addEventListener("click", function () {
+    isOff = !isOff;
+    try {
+      localStorage.setItem("analytics-off", isOff ? "1" : "0");
+    } catch (e) {}
+
+    if (isOff) {
+      // stop tracking straight away and clear the cookies GA already set
+      window["ga-disable-" + gaId] = true;
+      document.cookie.split(";").forEach(function (cookie) {
+        const name = cookie.split("=")[0].trim();
+        if (name.startsWith("_ga")) {
+          document.cookie =
+            name + "=; Max-Age=0; path=/; domain=.nufsracing.co.uk";
+        }
+      });
+    }
+    showState();
+  });
+
+  showState();
+}
