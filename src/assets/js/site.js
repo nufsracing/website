@@ -218,6 +218,8 @@ if (document.documentElement.classList.contains("js-reveal")) {
     ["#tiers .head", "rise"],
     [".pkg", "rise"],
     [".flagship", "rise"],
+    ["#why .head", "rise"],
+    [".why-item", "rise"],
     [".rule-top", "rule"],
     [".foot", "rule"],
   ];

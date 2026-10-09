@@ -16,6 +16,8 @@ if (spLive) {
   };
 
   showDays();
+  // hidden in the HTML so it never shows without a number
+  spLive.hidden = false;
   setInterval(showDays, 60000);
 }
 

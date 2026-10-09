@@ -24,7 +24,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
     </button>
     <div class="gantry-foot">
       <p class="label gantry-msg" id="gantryMsg" aria-live="polite">Tap the lights to start</p>
-      <p class="label gantry-days" id="spLive" data-start="{{ site.competition.raceDay }}">
+      <p class="label gantry-days" id="spLive" data-start="{{ site.competition.raceDay }}" hidden>
         <span id="spDays"></span> days to lights out at {{ site.competition.venue }}{% if not site.competition.raceDayConfirmed %} &middot; date TBC{% endif %}
       </p>
       <p class="label gantry-best" id="gantryBest"></p>
@@ -40,6 +40,41 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
   </div>
 </section>
 
+
+<!-- why a first season, between the head and the tiers -->
+<section class="band wrap rule-top" id="why">
+  <div class="why-grid">
+    <div class="head why-head">
+      <p class="label">Why now</p>
+      <h2>What an established team can't offer you.</h2>
+      {% if site.instagramFollowers %}<p class="why-reach"><b class="why-fig">{{ site.instagramFollowers }}</b> people already follow the build on Instagram.</p>{% endif %}
+    </div>
+    <ol class="why-list">
+      <li class="why-item">
+        <span class="why-n">01</span>
+        <div>
+          <h3>Your name on car one</h3>
+          <p>The partners who back the first NUFS car are part of how the team started, not a logo added later.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <span class="why-n">02</span>
+        <div>
+          <h3>Room on the car</h3>
+          <p>Established teams carry dozens of logos. A first car carries a few, so yours isn't lost in the crowd.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <span class="why-n">03</span>
+        <div>
+          <!-- reword this one in January, the design phase ends in December -->
+          <h3>Your input still counts</h3>
+          <p>We're in concept and design until December. Advice from your engineers now can still change how the car is built.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
 
 <section class="band wrap rule-top" id="tiers">
 
@@ -70,7 +105,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
           </div>
           <span class="label">Tier {{ tier.tier }} &middot; Flagship &middot; Price {{ tier.price }}</span>
           <div class="flag-name">
-            <h2>{{ tier.name }}</h2>
+            <h3>{{ tier.name }}</h3>
             {% if tier.tag %}<span class="flag-tag">{{ tier.tag }}</span>{% endif %}
           </div>
           <p>{{ tier.summary }} {{ tier.foot }}</p>
@@ -166,7 +201,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
       <label class="field" for="enqNote"><span class="label">Anything to add <em>optional</em></span><textarea id="enqNote" rows="3" placeholder="We machine aluminium parts and have spare capacity in spring."></textarea></label>
     </form>
 
-    <article class="enq-mail" aria-live="polite">
+    <article class="enq-mail">
       <div class="enq-meta">
         <span class="label">To</span><span class="enq-to">{{ site.emails.sponsorship }}</span>
         <span class="label">Subject</span><span id="enqSubject">NUFS partnership enquiry</span>
