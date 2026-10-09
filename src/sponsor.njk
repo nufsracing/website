@@ -8,12 +8,12 @@ pageJs: sponsor.js
 racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880 730,960"
 ---
 
-<!-- shift lights fixed above the nav, sponsor.js fills them as you scroll -->
+<!-- shift lights above the nav on sponsor page -->
 <div class="rev-bar" id="revBar" aria-hidden="true">
   {%- for n in range(0, 12) %}<i style="--n:{{ n }}"></i>{% endfor -%}
 </div>
 
-<!-- page head: start lights hang above the headline -->
+<!-- page head  -->
 <section class="hero wrap sp-head">
   <div class="gantry-wrap">
     <button class="gantry" id="gantry" type="button" aria-describedby="gantryMsg">
@@ -43,7 +43,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
 
 <section class="band wrap rule-top" id="tiers">
 
-  <!-- pattnership banner goes here -->
+  <!-- pattnership banner goes here when we get sponsors -->
 
   <!-- sponsor tier card section -->
   <div class="head">

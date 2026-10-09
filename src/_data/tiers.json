@@ -1,6 +1,6 @@
 [
   {
-    "id": "Community",
+    "id": "community",
     "tier": 1,
     "name": "Community Partner",
     "price": "TBC",
@@ -11,7 +11,8 @@
       "Logo and link on the NUFS website throughout the season",
       "Named in the season launch and end-of-year social posts",
       "Invitation to partner events held at the university"
-    ]
+    ],
+    "foot": "For organisations who want to back a local team from the beginning."
   },
   {
     "id": "team",
@@ -23,11 +24,11 @@
     "lights": 5,
     "inherits": "Community Partner",
     "benefits": [
-      "Everything in Community Partner",
       "Active social media collaboration, your organisation featured in our content",
       "Logo placement on a specific area of the car",
       "Logo on sponsor backdrop and behind-the-scenes content"
-    ]
+    ],
+    "foot": "For organisations who want their name on the car and a real presence in our story."
   },
   {
     "id": "innovation",
@@ -39,11 +40,11 @@
     "lights": 8,
     "inherits": "Team Partner",
     "benefits": [
-      "Everything in Team Partner",
       "Dedicated sponsor spotlight content, your story, told to our audience",
       "Increased logo placement on the car",
       "Opportunities to engage directly with students, mentoring, recruitment, project discussions"
-    ]
+    ],
+    "foot": "For organisations who want to meet the engineers, not just be seen by them."
   },
   {
     "id": "founding",
@@ -53,15 +54,16 @@
     "price": "TBC",
     "summary": "For an organisation that wants a genuine role in shaping NUFS from the very beginning.",
     "featured": false,
+    "flagship": true,
     "lights": 10,
     "inherits": "Innovation Partner",
     "benefits": [
-      "Everything in Innovation Partner",
       "Prioritised and prominent logo placement across all team assets - car, kit, and materials",
       "First right of renewal for future seasons",
       "Bespoke student engagement - mentoring, placements, site visits, and graduates",
       "Input into how your partnership is structured and developed over time",
       "Recognition as a Founding Partner of NUFS, the team that started it all"
-    ]
+    ],
+    "foot": "Founding Partner is not a fixed package. It starts with a conversation."
   }
 ]
