@@ -1,0 +1,867 @@
+/* sponsor page, loads after site.css */
+
+/* page head */
+.hero.sp-head {
+  /* the homepage hero is a flex row, this one stacks */
+  display: block;
+  min-height: 0;
+  padding-block: clamp(56px, 7vw, 96px) clamp(48px, 6vw, 80px);
+}
+
+.sp-head .hero-grid {
+  align-items: end;
+}
+
+/* tier cards */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.pkg {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border: 1px solid var(--hair);
+  border-radius: 3px;
+  background: rgba(16, 11, 13, 0.72);
+  padding: clamp(22px, 2.4vw, 30px);
+}
+
+.pkg-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.pkg-price {
+  font-family: var(--display);
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.pkg-summary {
+  color: var(--smoke);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* "Includes X" line */
+.inherits {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ember-hot);
+}
+
+.benefits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--hair-soft);
+}
+
+.benefits li {
+  position: relative;
+  padding: 10px 0 10px 20px;
+  border-bottom: 1px solid var(--hair-soft);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* red dash before each benefit */
+.benefits li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 19px;
+  width: 10px;
+  border-top: 2px solid var(--ember);
+}
+
+/* pushed down so the buttons line up */
+.pkg-foot {
+  margin-top: auto;
+  padding-top: 6px;
+  font-size: 13px;
+  color: var(--smoke-dim);
+}
+
+.pkg .btn {
+  align-self: flex-start;
+}
+
+/* Founding Partner card */
+.flagship {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(28px, 5vw, 72px);
+  border: 1px solid rgba(255, 90, 74, 0.3);
+  border-radius: 3px;
+  background: linear-gradient(158deg, var(--ember-deep), #45060b 80%);
+  padding: clamp(28px, 3.4vw, 44px);
+}
+
+.flag-left,
+.flag-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.flagship .label {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.flag-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+
+.flag-tag {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+
+.flagship p {
+  color: rgba(255, 255, 255, 0.86);
+  max-width: 48ch;
+}
+
+.flagship .inherits {
+  color: #fff;
+}
+
+.flagship .benefits {
+  align-self: stretch;
+  border-top-color: rgba(255, 255, 255, 0.16);
+}
+
+.flagship .benefits li {
+  border-bottom-color: rgba(255, 255, 255, 0.16);
+}
+
+.flagship .benefits li::before {
+  border-top-color: #fff;
+}
+
+.sp-email {
+  font-size: 14px;
+  user-select: all;
+}
+
+/* card shift lights */
+.lights {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+}
+
+.lights i {
+  height: 4px;
+  border-radius: 1px;
+  background: var(--hair);
+}
+
+.lights i.on {
+  background: var(--ember);
+}
+
+/* lights come on one by one after the card appears */
+.js-reveal .reveal .lights i.on {
+  background: var(--hair);
+}
+
+.js-reveal .reveal.in .lights i.on {
+  background: var(--ember);
+  transition: background 0.15s ease calc(var(--n) * 60ms + 350ms);
+}
+
+/* rev the lights on hover */
+@media (hover: hover) {
+  .pkg {
+    transition: border-color 0.2s ease;
+  }
+
+  .pkg:hover {
+    border-color: rgba(255, 43, 43, 0.45);
+  }
+
+  .pkg:hover .lights i.on {
+    animation: rev 0.5s ease calc(var(--n) * 40ms) both;
+  }
+}
+
+@keyframes rev {
+  0% { background: var(--hair); }
+  60% { background: var(--ember-hot); }
+  100% { background: var(--ember); }
+}
+
+/* Founding Partner lights all on and flashing */
+.lights-max {
+  align-self: stretch;
+}
+
+.lights-max i.on,
+.js-reveal .reveal.in .lights-max i.on {
+  background: #fff;
+}
+
+.reveal.in .lights-max i.on,
+html:not(.js-reveal) .lights-max i.on {
+  animation: limiter 1.6s steps(1) 1.2s infinite;
+}
+
+@keyframes limiter {
+  50% { background: rgba(255, 255, 255, 0.25); }
+}
+
+/* enquiry builder */
+#enquire {
+  padding-bottom: calc(var(--gap) * 1.1);
+}
+
+.enquiry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+
+.enq-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.enq-tiers {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.enq-tiers legend {
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+/* radios styled as chips */
+.chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.chip span {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  border: 1px solid var(--hair);
+  border-radius: 3px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.chip input:checked + span {
+  color: #fff;
+  background: var(--ember-deep);
+  border-color: var(--ember);
+}
+
+.chip input:focus-visible + span {
+  outline: 2px solid var(--ember-hot);
+  outline-offset: 3px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field em {
+  font-style: normal;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.field input,
+.field textarea {
+  font: inherit;
+  font-size: 15px;
+  color: var(--bone);
+  background: var(--ink-1);
+  border: 1px solid var(--hair);
+  border-radius: 3px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--smoke-dim);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--ember-hot);
+}
+
+/* email preview */
+.enq-mail {
+  border: 1px solid var(--hair);
+  border-radius: 3px;
+  background: rgba(16, 11, 13, 0.72);
+  padding: clamp(20px, 2.4vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.enq-meta {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px 16px;
+  align-items: baseline;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--hair-soft);
+  font-size: 14px;
+}
+
+.enq-meta span:not(.label) {
+  overflow-wrap: anywhere;
+}
+
+.enq-body {
+  margin: 0;
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--smoke);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* rev bar across the top, fills with scroll */
+.rev-bar {
+  position: fixed;
+  top: env(safe-area-inset-top, 0px);
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 3px;
+  padding: 0 3px;
+  pointer-events: none;
+}
+
+.rev-bar i {
+  height: 3px;
+  background: transparent;
+  transition: background 0.12s ease;
+}
+
+.rev-bar i.on {
+  background: var(--ember);
+}
+
+/* last third white, like on a steering wheel */
+.rev-bar i.on:nth-child(n + 9) {
+  background: #fff;
+}
+
+/* flash three times at the bottom, then stay lit */
+.rev-bar.limit i {
+  animation: limiter 0.5s steps(1) 3;
+}
+
+/* statement band */
+.statement {
+  padding-block: calc(var(--gap) * 1.1);
+}
+
+.scrub {
+  font-family: var(--display);
+  font-size: clamp(32px, 5.2vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  max-width: 18ch;
+}
+
+.scrub em {
+  font-style: normal;
+  color: var(--ember);
+}
+
+/* words light up as you scroll, key words in red */
+.scrub .w {
+  color: rgba(243, 238, 238, 0.14);
+  transition: color 0.25s ease;
+}
+
+.scrub .w.lit {
+  color: var(--bone);
+}
+
+.scrub .w.key.lit {
+  color: var(--ember);
+}
+
+/* kit picker */
+.kit {
+  border: 0;
+  margin: 4px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.kit legend {
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.kit-chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.kit-chip span {
+  display: inline-block;
+  font-size: 13px;
+  border: 1px solid var(--band-hair);
+  border-radius: 3px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.kit-chip input:checked + span {
+  background: var(--band-ink);
+  border-color: var(--band-ink);
+  color: #fff;
+}
+
+.kit-chip input:focus-visible + span {
+  outline: 2px solid var(--ember-deep);
+  outline-offset: 2px;
+}
+
+.kit-uses {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: var(--ember-deep);
+  font-weight: 600;
+}
+
+.kit-uses:empty {
+  display: none;
+}
+
+/* start lights hanging from a beam */
+.gantry-wrap {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(16px, 3vw, 40px);
+  padding-top: 18px;
+  margin-bottom: clamp(36px, 5vw, 64px);
+}
+
+.gantry-wrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-top: 2px solid var(--hair);
+}
+
+.gantry {
+  display: block;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.gantry-lights {
+  display: grid;
+  grid-template-columns: repeat(5, clamp(44px, 5vw, 64px));
+  gap: clamp(8px, 1vw, 12px);
+}
+
+/* each pod has two lights on a short stalk */
+.pod {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  background: #000;
+  border: 1px solid var(--hair-soft);
+  border-radius: 6px;
+}
+
+.pod::before {
+  content: "";
+  position: absolute;
+  top: -19px;
+  left: 50%;
+  height: 18px;
+  border-left: 2px solid var(--hair);
+}
+
+.pod i {
+  width: 62%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #2a1215;
+  transition: background 0.06s linear, box-shadow 0.06s linear;
+}
+
+.pod.on i {
+  background: var(--ember);
+  box-shadow: 0 0 18px rgba(255, 43, 43, 0.55);
+}
+
+.gantry-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.gantry-msg {
+  color: var(--bone);
+}
+
+.gantry-days {
+  font-variant-numeric: tabular-nums;
+}
+
+.sp-copy {
+  max-width: 760px;
+}
+
+@media (hover: hover) {
+  .gantry:hover .pod {
+    border-color: rgba(243, 238, 238, 0.3);
+  }
+
+  .route-tiers a:hover span:first-child {
+    color: var(--ember);
+  }
+}
+
+/* tier list in the Cash half */
+.route-tiers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-self: stretch;
+  border-top: 1px solid var(--hair);
+}
+
+.route-tiers a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--hair);
+  color: var(--bone);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.mini-lights {
+  display: grid;
+  grid-template-columns: repeat(10, 8px);
+  gap: 3px;
+}
+
+.mini-lights i {
+  height: 4px;
+  background: var(--hair);
+}
+
+.mini-lights i.on {
+  background: var(--ember);
+}
+
+/* --p goes 0 to 1 as the words light up, so the photo brightens with them */
+.statement-band {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  --p: 1;
+}
+
+.statement-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 40%;
+  z-index: -2;
+  opacity: calc(0.25 + var(--p) * 0.65);
+  transform: scale(calc(1.1 - var(--p) * 0.1));
+  filter: grayscale(calc(1 - var(--p) * 0.6));
+}
+
+/* fade the photo into the page */
+.statement-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, var(--ink) 0%, rgba(7, 5, 6, 0) 22%, rgba(7, 5, 6, 0) 78%, var(--ink) 100%),
+    linear-gradient(90deg, rgba(7, 5, 6, 0.92) 0%, rgba(7, 5, 6, 0.72) 45%, rgba(7, 5, 6, 0.12) 100%);
+}
+
+.statement {
+  gap: 24px;
+}
+
+.statement-cap {
+  color: rgba(243, 238, 238, 0.55);
+}
+
+/* red email card */
+.enq-mail {
+  border-color: rgba(255, 90, 74, 0.3);
+  background: linear-gradient(158deg, var(--ember-deep), #45060b 80%);
+}
+
+.enq-mail .label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.enq-meta {
+  border-bottom-color: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.enq-mail .enq-body {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.enq-mail .btn-ghost {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+/* cash and kit split, edge to edge */
+.split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* --gap only exists on .wrap, so the split needs its own */
+  --gap: clamp(64px, 8vw, 120px);
+}
+
+.split-half {
+  display: flex;
+  align-items: flex-start;
+  padding-block: calc(var(--gap) * 1.2);
+}
+
+.split-cash {
+  background: var(--ink-1);
+  padding-inline: max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter))) clamp(28px, 4vw, 64px);
+}
+
+.split-kit {
+  background: var(--band);
+  color: var(--band-ink);
+  padding-inline: clamp(28px, 4vw, 64px) max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter)));
+}
+
+.split-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 520px;
+}
+
+.split-inner > .label {
+  margin-bottom: -12px;
+}
+
+.split-inner .kit,
+.split-inner .route-tiers {
+  margin-top: 8px;
+}
+
+.split-inner > p:not(.label) {
+  max-width: 46ch;
+  color: var(--smoke);
+}
+
+.split-kit .label,
+.split-kit .split-inner > p:not(.label) {
+  color: var(--band-sub);
+}
+
+.split-word {
+  font-size: clamp(56px, 8vw, 120px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.split-cash .split-word {
+  color: var(--ember);
+}
+
+@media (max-width: 1040px) {
+  .flagship {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* stack the cards on smaller screens */
+@media (max-width: 860px) {
+  .tier-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .enquiry {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 560px) {
+  .pkg .btn,
+  .flagship .btn,
+  .split .btn {
+    align-self: stretch;
+    justify-content: center;
+  }
+}
+
+/* one section per screen on desktop */
+@media (min-width: 861px) and (min-height: 640px) {
+  .hero.sp-head {
+    min-height: calc(100svh - 72px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* full width instead of centred */
+    align-items: stretch;
+  }
+
+  .statement,
+  #enquire {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #tiers {
+    padding-block: calc(var(--gap) * 1.5);
+  }
+}
+
+/* phones: extra padding instead of full screen sections */
+@media (max-width: 860px) {
+  .statement {
+    min-height: 80svh;
+    display: flex;
+    align-items: center;
+  }
+
+  #tiers,
+  #enquire {
+    padding-block: calc(var(--gap) * 1.4);
+  }
+}
+
+@media (max-width: 860px) {
+  .statement {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .statement-photo {
+    object-position: 80% 40%;
+  }
+
+  .statement-band::before {
+    background:
+      linear-gradient(180deg, var(--ink) 0%, rgba(7, 5, 6, 0.25) 25%, rgba(7, 5, 6, 0.25) 75%, var(--ink) 100%),
+      linear-gradient(90deg, rgba(7, 5, 6, 0.7), rgba(7, 5, 6, 0.35));
+  }
+}
+
+@media (max-width: 860px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .split-cash,
+  .split-kit {
+    padding-inline: var(--gutter);
+  }
+
+  .gantry-wrap {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* desktop: photo on the right, faded on its left edge */
+@media (min-width: 861px) {
+  .statement-photo {
+    left: 38%;
+    width: 62%;
+    object-position: 60% 50%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 35%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 35%);
+  }
+
+  .statement-band::before {
+    background: linear-gradient(180deg, var(--ink) 0%, rgba(7, 5, 6, 0) 22%, rgba(7, 5, 6, 0) 78%, var(--ink) 100%);
+  }
+}
