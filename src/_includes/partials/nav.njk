@@ -14,7 +14,7 @@
         {% if site.social.linkedin %}
             <a class="nav-social-row" href="{{ site.social.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
         {% endif %}
-        <a class="btn" href="/#closing">Sponsor Us</a>
+        <a class="btn" href="{{ site.sponsorUrl }}" data-track="sponsor_us"{% if page.url == site.sponsorUrl %} aria-current="page"{% endif %}>Sponsor Us</a>
     </nav>
 
     <div class="nav-cta">
@@ -24,7 +24,7 @@
         {% if site.social.linkedin %}
             <a class="nav-social" href="{{ site.social.linkedin }}" target="_blank" rel="noopener" aria-label="NUFS on LinkedIn">{% include "partials/linkedin.svg" %}</a>
         {% endif %}
-        <a class="btn" href="/#closing">Sponsor Us</a>
+        <a class="btn" href="{{ site.sponsorUrl }}" data-track="sponsor_us"{% if page.url == site.sponsorUrl %} aria-current="page"{% endif %}>Sponsor Us</a>
     </div>
     <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
