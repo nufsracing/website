@@ -1,9 +1,12 @@
 [
   {
+    "id": "Community",
+    "tier": 1,
     "name": "Community Partner",
     "price": "TBC",
     "summary": "For local businesses wanting to back student engineering.",
     "featured": false,
+    "lights": 3,
     "benefits": [
       "Logo and link on the NUFS website throughout the season",
       "Named in the season launch and end-of-year social posts",
@@ -11,10 +14,14 @@
     ]
   },
   {
+    "id": "team",
+    "tier": 2,
     "name": "Team Partner",
     "price": "TBC",
     "summary": "A closer partnership with greater visibility and direct connection.",
     "featured": false,
+    "lights": 5,
+    "inherits": "Community Partner",
     "benefits": [
       "Everything in Community Partner",
       "Active social media collaboration, your organisation featured in our content",
@@ -23,10 +30,14 @@
     ]
   },
   {
+    "id": "innovation",
+    "tier": 3,
     "name": "Innovation Partner",
     "price": "TBC",
     "summary": "For organisations that want their story told and a direct line to our students.",
     "featured": false,
+    "lights": 8,
+    "inherits": "Team Partner",
     "benefits": [
       "Everything in Team Partner",
       "Dedicated sponsor spotlight content, your story, told to our audience",
@@ -35,10 +46,15 @@
     ]
   },
   {
-    "name": "Founding Partner - Bespoke",
+    "id": "founding",
+    "tier": 4,
+    "name": "Founding Partner",
+    "tag": "Bespoke",
     "price": "TBC",
     "summary": "For an organisation that wants a genuine role in shaping NUFS from the very beginning.",
     "featured": false,
+    "lights": 10,
+    "inherits": "Innovation Partner",
     "benefits": [
       "Everything in Innovation Partner",
       "Prioritised and prominent logo placement across all team assets - car, kit, and materials",
