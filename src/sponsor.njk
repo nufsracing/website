@@ -1,7 +1,181 @@
 ---
 layout: base.njk
-title: Sponsor
-permalink: false
+title: Sponsor Us
+permalink: /sponsor/
+description: "Back Northumbria's first Formula Student team on its way to Silverstone in July 2027. Four partner tiers, or support the build in kind with materials, machining or software."
+pageCss: sponsor.css
+pageJs: sponsor.js
+racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880 730,960"
 ---
 
-<h1>Sponsor</h1>
+<!-- shift lights fixed above the nav, sponsor.js fills them as you scroll -->
+<div class="rev-bar" id="revBar" aria-hidden="true">
+  {%- for n in range(0, 12) %}<i style="--n:{{ n }}"></i>{% endfor -%}
+</div>
+
+<!-- page head: start lights hang above the headline -->
+<section class="hero wrap sp-head">
+  <div class="gantry-wrap">
+    <button class="gantry" id="gantry" type="button" aria-describedby="gantryMsg">
+      <span class="gantry-lights" aria-hidden="true">
+        {%- for n in range(0, 5) %}<span class="pod"><i></i><i></i></span>{% endfor -%}
+      </span>
+      <span class="visually-hidden">Reaction test</span>
+    </button>
+    <div class="gantry-foot">
+      <p class="label gantry-msg" id="gantryMsg" aria-live="polite">Tap the lights to start</p>
+      <p class="label gantry-days" id="spLive" data-start="{{ site.competition.raceDay }}">
+        <span id="spDays"></span> days to lights out at {{ site.competition.venue }}{% if not site.competition.raceDayConfirmed %} &middot; date TBC{% endif %}
+      </p>
+      <p class="label gantry-best" id="gantryBest"></p>
+    </div>
+  </div>
+
+  <div class="hero-copy sp-copy">
+    <h1>Why back a <span class="soft">first season.</span></h1>
+    <p class="lede">{{ site.members }} Northumbria students are building the university's first Formula Student car from scratch and taking it to {{ site.competition.venue }} in {{ site.competition.date }}. Partners who join now are with us from the first cut of metal.</p>
+    <div class="actions">
+      <a class="btn" href="#tiers" data-track="sponsor_tiers">See partner tiers <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+
+<section class="band wrap rule-top" id="tiers">
+
+  <!-- pattnership banner goes here -->
+
+  <!-- sponsor tier card section -->
+  <div class="head">
+    <p class="label">Partner tiers</p>
+    <h2>Four ways to back the team.</h2>
+    <p class="lede">Each tier includes everything in the one before it. Prices are still being set, so ask and we'll tell you where they stand.</p>
+  </div>
+
+  <div class="tier-grid">
+    {% for tier in tiers %}
+      {% if not tier.flagship %}
+        {% include "partials/tier-card.njk" %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- Founding partner gets the red card-->
+  {% for tier in tiers %}
+    {% if tier.flagship %}
+      <article class="flagship" id="tier-{{ tier.id }}">
+        <div class="flag-left">
+          <div class="lights lights-max" aria-hidden="true">
+            {%- for n in range(0, 10) %}<i class="{{ 'on' if n < tier.lights }}" style="--n:{{ n }}"></i>{% endfor -%}
+          </div>
+          <span class="label">Tier {{ tier.tier }} &middot; Flagship &middot; Price {{ tier.price }}</span>
+          <div class="flag-name">
+            <h2>{{ tier.name }}</h2>
+            {% if tier.tag %}<span class="flag-tag">{{ tier.tag }}</span>{% endif %}
+          </div>
+          <p>{{ tier.summary }} {{ tier.foot }}</p>
+        </div>
+        <div class="flag-right">
+          <p class="inherits">Includes {{ tier.inherits }}</p>
+          <ul class="benefits">
+            {% for benefit in tier.benefits %}
+              <li>{{ benefit }}</li>
+            {% endfor %}
+          </ul>
+          <a class="btn btn-light" href="#enquire" data-tier="{{ tier.name }}">Start the conversation <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+    {% endif %}
+  {% endfor %}
+</section>
+
+<!-- big statement with picture -->
+<section class="statement-band" id="statementBand" aria-label="Founding Partner">
+  <img class="statement-photo" src="/assets/img/sim-wheel.webp" width="1920" height="1280" loading="lazy" alt="">
+  <div class="statement wrap">
+    <p class="scrub" id="scrub">After we compete at {{ site.competition.venue }}, we will <em>never</em> be a new team again. Founding Partner happens <em>once.</em></p>
+    <p class="label statement-cap">Societies fair &middot; September 2026</p>
+  </div>
+</section>
+
+<!-- cash and kit section -->
+<section class="split" id="inkind">
+  <div class="split-half split-cash">
+    <div class="split-inner">
+      <p class="label">Two ways to help</p>
+      <h2 class="split-word">Cash.</h2>
+      <p>Pick a partner tier. Each one includes everything in the tier before it.</p>
+      <ul class="route-tiers">
+        {% for tier in tiers %}
+          <li>
+            <a href="#tier-{{ tier.id }}">
+              <span>{{ tier.name }}</span>
+              <span class="mini-lights" aria-hidden="true">
+                {%- for n in range(0, 10) %}<i class="{{ 'on' if n < tier.lights }}"></i>{% endfor -%}
+              </span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="split-half split-kit">
+    <div class="split-inner">
+      <p class="label">Both count the same</p>
+      <h2 class="split-word">Kit.</h2>
+      <p>Materials, machining time, software, testing space, transport or expertise. Kit partners get credited the same way cash partners do, and we'll write up how your work ended up on the car.</p>
+      <fieldset class="kit" id="kitPicker">
+        <legend class="label">What could you offer?</legend>
+        <label class="kit-chip"><input type="checkbox" value="Steel and aluminium" data-team="Chassis &amp; Suspension"><span>Steel and aluminium</span></label>
+        <label class="kit-chip"><input type="checkbox" value="Carbon fibre and composites" data-team="Aerodynamics"><span>Carbon and composites</span></label>
+        <label class="kit-chip"><input type="checkbox" value="Machining time" data-team="Manufacturing &amp; Fabrication"><span>Machining time</span></label>
+        <label class="kit-chip"><input type="checkbox" value="Engine and fuel system parts" data-team="Powertrain &amp; Engine"><span>Engine parts</span></label>
+        <label class="kit-chip"><input type="checkbox" value="Brake components" data-team="Brakes &amp; Dynamics"><span>Brakes</span></label>
+        <label class="kit-chip"><input type="checkbox" value="Wiring, sensors and electronics" data-team="Electrical"><span>Electronics</span></label>
+        <label class="kit-chip"><input type="checkbox" value="CAD and simulation software" data-team="every engineering team"><span>Software</span></label>
+        <label class="kit-chip"><input type="checkbox" value="Transport" data-team="getting the car to Silverstone"><span>Transport</span></label>
+      </fieldset>
+      <ul class="kit-uses" id="kitUses" aria-live="polite"></ul>
+      <a class="btn btn-dark" href="#enquire" data-tier="In kind support">Offer support <span aria-hidden="true">&rarr;</span></a>
+      <p class="sp-email">{{ site.emails.sponsorship }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Writes small email for potential sponsors -->
+<section class="band wrap" id="enquire">
+  <div class="head">
+    <p class="label">Get in touch</p>
+    <h2>Let's build this together.</h2>
+    <p class="lede">Tell us which tier you're interested in, or ask about something that doesn't fit one. The email writes itself as you fill this in, so send it from your own inbox or copy it.</p>
+  </div>
+
+  <div class="enquiry">
+    <form class="enq-form" id="enqForm" data-email="{{ site.emails.sponsorship }}" data-season="{{ site.season }}">
+      <fieldset class="enq-tiers">
+        <legend class="label">Interested in</legend>
+        {% for tier in tiers %}
+          <label class="chip"><input type="radio" name="tier" value="{{ tier.name }}"><span>{{ tier.id | capitalize }}</span></label>
+        {% endfor %}
+        <label class="chip"><input type="radio" name="tier" value="In kind support"><span>In kind</span></label>
+        <label class="chip"><input type="radio" name="tier" value="" checked><span>Not sure yet</span></label>
+      </fieldset>
+      <label class="field" for="enqOrg"><span class="label">Organisation</span><input id="enqOrg" type="text" autocomplete="organization" placeholder="Tyne Precision Ltd"></label>
+      <label class="field" for="enqName"><span class="label">Your name</span><input id="enqName" type="text" autocomplete="name" placeholder="Sam Taylor"></label>
+      <label class="field" for="enqNote"><span class="label">Anything to add <em>optional</em></span><textarea id="enqNote" rows="3" placeholder="We machine aluminium parts and have spare capacity in spring."></textarea></label>
+    </form>
+
+    <article class="enq-mail" aria-live="polite">
+      <div class="enq-meta">
+        <span class="label">To</span><span class="enq-to">{{ site.emails.sponsorship }}</span>
+        <span class="label">Subject</span><span id="enqSubject">NUFS partnership enquiry</span>
+      </div>
+      <pre class="enq-body" id="enqBody"></pre>
+      <div class="actions">
+        <a class="btn btn-light" id="enqSend" href="mailto:{{ site.emails.sponsorship }}" data-track="sponsor_email">Open in email <span aria-hidden="true">&rarr;</span></a>
+        <button class="btn btn-ghost" type="button" id="enqCopy">Copy email</button>
+      </div>
+    </article>
+  </div>
+</section>
