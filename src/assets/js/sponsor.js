@@ -232,15 +232,17 @@ if (gantry) {
       pods.forEach(function (pod) {
         pod.classList.remove("on");
       });
-      if (gantryState === "demo") {
-        gantryState = "idle";
-        gantryMsg.textContent = "Lights out. Tap to test your reaction";
-        return;
-      }
+      // the demo is timed too, so a tap at lights out counts
+      const wasDemo = gantryState === "demo";
       gantryState = "armed";
       lightsOutAt = performance.now();
       gantryMsg.textContent = "Go!";
       gantryTimers.push(setTimeout(function () {
+        if (wasDemo) {
+          gantryState = "idle";
+          gantryMsg.textContent = "Tap the lights to start";
+          return;
+        }
         gantryState = "done";
         gantryMsg.textContent = "Too slow. Tap to try again";
       }, 3000));
