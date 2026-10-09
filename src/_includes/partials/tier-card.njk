@@ -1,0 +1,20 @@
+<!-- Sponsorship tier cards -->
+ <article class="pkg" id="tier-{{ tier.id }}">
+    <div class="lights" aria-hidden="true">
+        {% for n in range(0, 10) %}<i{% if n < tier.lights %} class="on"{% endif %} style="--n:{{ n }}"></i>{% endfor -%}
+    </div>
+    <div class="pkg-top">
+        <span class="label">Tier {{ tier.tier }}</span>
+        <span class="pkg-price">{{ tier.price }}</span>
+    </div>
+    <h3>{{ tier.name }}</h3>
+    <p class="pkg-summary">{{ tier.summary }}</p>
+    {% if tier.inherits %}<p class="inherits">Includes {{ tier.inherits }}</p>{% endif %}
+    <ul class="benefits">
+        {% for benefit in tier.benefits %}
+            <li>{{ benefit }}</li>
+        {% endfor %}
+    </ul>
+    <p class="pkg-foot">{{ tier.foot }}</p>
+    <a class="btn btn-ghost" href="#enquire" data-tier="{{ tier.name }}">Enquire</a>
+ </article>
