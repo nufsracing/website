@@ -335,9 +335,9 @@ html:not(.js-reveal) .lights-max i.on {
 
 /* email preview */
 .enq-mail {
-  border: 1px solid var(--hair);
+  border: 1px solid rgba(255, 90, 74, 0.3);
   border-radius: 3px;
-  background: rgba(16, 11, 13, 0.72);
+  background: linear-gradient(158deg, var(--ember-deep), #45060b 80%);
   padding: clamp(20px, 2.4vw, 28px);
   display: flex;
   flex-direction: column;
@@ -350,8 +350,9 @@ html:not(.js-reveal) .lights-max i.on {
   gap: 8px 16px;
   align-items: baseline;
   padding-bottom: 16px;
-  border-bottom: 1px solid var(--hair-soft);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
   font-size: 14px;
+  color: #fff;
 }
 
 .enq-meta span:not(.label) {
@@ -363,7 +364,7 @@ html:not(.js-reveal) .lights-max i.on {
   font: inherit;
   font-size: 15px;
   line-height: 1.6;
-  color: var(--smoke);
+  color: rgba(255, 255, 255, 0.88);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
@@ -405,6 +406,7 @@ html:not(.js-reveal) .lights-max i.on {
 /* statement band */
 .statement {
   padding-block: calc(var(--gap) * 1.1);
+  gap: 24px;
 }
 
 .scrub {
@@ -652,13 +654,7 @@ html:not(.js-reveal) .lights-max i.on {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background:
-    linear-gradient(180deg, var(--ink) 0%, rgba(7, 5, 6, 0) 22%, rgba(7, 5, 6, 0) 78%, var(--ink) 100%),
-    linear-gradient(90deg, rgba(7, 5, 6, 0.92) 0%, rgba(7, 5, 6, 0.72) 45%, rgba(7, 5, 6, 0.12) 100%);
-}
-
-.statement {
-  gap: 24px;
+  background: linear-gradient(180deg, var(--ink) 0%, rgba(7, 5, 6, 0) 22%, rgba(7, 5, 6, 0) 78%, var(--ink) 100%);
 }
 
 .statement-cap {
@@ -666,22 +662,8 @@ html:not(.js-reveal) .lights-max i.on {
 }
 
 /* red email card */
-.enq-mail {
-  border-color: rgba(255, 90, 74, 0.3);
-  background: linear-gradient(158deg, var(--ember-deep), #45060b 80%);
-}
-
 .enq-mail .label {
   color: rgba(255, 255, 255, 0.7);
-}
-
-.enq-meta {
-  border-bottom-color: rgba(255, 255, 255, 0.16);
-  color: #fff;
-}
-
-.enq-mail .enq-body {
-  color: rgba(255, 255, 255, 0.88);
 }
 
 .enq-mail .btn-ghost {
@@ -758,18 +740,6 @@ html:not(.js-reveal) .lights-max i.on {
   }
 }
 
-/* stack the cards on smaller screens */
-@media (max-width: 860px) {
-  .tier-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .enquiry {
-    grid-template-columns: 1fr;
-  }
-
-}
-
 @media (max-width: 560px) {
   .pkg .btn,
   .flagship .btn,
@@ -803,22 +773,22 @@ html:not(.js-reveal) .lights-max i.on {
   }
 }
 
-/* phones: extra padding instead of full screen sections */
+/* phones and small tablets */
 @media (max-width: 860px) {
-  .statement {
-    min-height: 80svh;
-    display: flex;
-    align-items: center;
+  .tier-grid,
+  .enquiry,
+  .split {
+    grid-template-columns: 1fr;
   }
 
   #tiers,
   #enquire {
     padding-block: calc(var(--gap) * 1.4);
   }
-}
 
-@media (max-width: 860px) {
   .statement {
+    min-height: 80svh;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -832,12 +802,6 @@ html:not(.js-reveal) .lights-max i.on {
     background:
       linear-gradient(180deg, var(--ink) 0%, rgba(7, 5, 6, 0.25) 25%, rgba(7, 5, 6, 0.25) 75%, var(--ink) 100%),
       linear-gradient(90deg, rgba(7, 5, 6, 0.7), rgba(7, 5, 6, 0.35));
-  }
-}
-
-@media (max-width: 860px) {
-  .split {
-    grid-template-columns: 1fr;
   }
 
   .split-cash,
@@ -859,9 +823,5 @@ html:not(.js-reveal) .lights-max i.on {
     object-position: 60% 50%;
     -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 35%);
     mask-image: linear-gradient(90deg, transparent 0%, #000 35%);
-  }
-
-  .statement-band::before {
-    background: linear-gradient(180deg, var(--ink) 0%, rgba(7, 5, 6, 0) 22%, rgba(7, 5, 6, 0) 78%, var(--ink) 100%);
   }
 }
