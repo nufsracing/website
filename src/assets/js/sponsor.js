@@ -232,7 +232,7 @@ if (gantry) {
       pods.forEach(function (pod) {
         pod.classList.remove("on");
       });
-      if (isDemo) {
+      if (gantryState === "demo") {
         gantryState = "idle";
         gantryMsg.textContent = "Lights out. Tap to test your reaction";
         return;
@@ -248,7 +248,11 @@ if (gantry) {
   };
 
   gantry.addEventListener("click", function () {
-    if (gantryState === "arming") {
+    // a tap during the demo turns it into a real start, so the lights keep going
+    if (gantryState === "demo") {
+      gantryState = "arming";
+      gantryMsg.textContent = "Wait for lights out…";
+    } else if (gantryState === "arming") {
       resetLights();
       gantryState = "done";
       gantryMsg.textContent = "Jump start. Tap to try again";
