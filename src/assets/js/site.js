@@ -210,6 +210,14 @@ if (document.documentElement.classList.contains("js-reveal")) {
     [".tier", "rise"],
     [".join", "rise"],
     [".pitch", "rise"],
+    // sponsor page
+    [".gantry-wrap", "rise"],
+    [".split-inner", "rise"],
+    ["#enquire .head", "rise"],
+    [".enquiry > *", "rise"],
+    ["#tiers .head", "rise"],
+    [".pkg", "rise"],
+    [".flagship", "rise"],
     [".rule-top", "rule"],
     [".foot", "rule"],
   ];
