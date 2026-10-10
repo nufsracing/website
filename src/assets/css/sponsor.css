@@ -227,17 +227,19 @@
   }
 }
 
-/* Founding Partner lights all on and flashing */
+/* Founding Partner lights rev up to the top once the card is on screen */
 .lights-max {
   align-self: stretch;
 }
 
+/* .flagship.in rather than .reveal.in, the tiers section is a reveal too
+   and would start the lights before anyone scrolls down to this card */
 .lights-max i.on,
-.js-reveal .reveal.in .lights-max i.on {
+.js-reveal .flagship.in .lights-max i.on {
   background: #fff;
 }
 
-.reveal.in .lights-max i.on,
+.flagship.in .lights-max i.on,
 html:not(.js-reveal) .lights-max i.on {
   animation: rev-up 0.4s ease calc(var(--n) * 120ms + 600ms) both;
 }
