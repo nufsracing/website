@@ -38,7 +38,8 @@ if (enqForm) {
 
   const buildEmail = function () {
     const tier = enqForm.querySelector("input[name=tier]:checked").value;
-    const org = orgInput.value.trim() || "[organisation]";
+    // organisation is optional so individuals can use the form too
+    const org = orgInput.value.trim();
     const name = nameInput.value.trim() || "[your name]";
     const note = noteInput.value.trim();
     const kit = Array.from(document.querySelectorAll("#kitPicker input:checked")).map(function (box) {
@@ -47,16 +48,18 @@ if (enqForm) {
 
     let ask;
     if (tier === "In kind support") {
-      ask = "We'd like to talk about supporting the team in kind.";
+      ask = "I'm interested in discussing a partnership with NUFS Racing through in kind support";
     } else if (tier) {
-      ask = "We're interested in becoming a " + tier + " for the " + season + " season.";
+      ask = "I'm interested in discussing a partnership with NUFS Racing at the " + tier + " level for the " + season + " season";
     } else {
-      ask = "We're interested in partnering with the team and would like to hear about the options.";
+      ask = "I'm interested in discussing a partnership with NUFS Racing and would like to hear about the options";
     }
 
-    const subject = "NUFS " + (tier || "partnership") + " enquiry from " + org;
-    const lines = ["Hi NUFS Racing,", "", "I'm " + name + " from " + org + ". " + ask];
-    if (kit.length) lines.push("", "We could offer: " + kit.join(", ") + ".");
+    // only mention the organisation when one is given
+    const intro = org ? "I'm " + name + " from " + org : "I'm " + name;
+    const subject = "NUFS " + (tier || "partnership") + " enquiry from " + (org || name);
+    const lines = ["Hi NUFS Racing,", "", intro + ", and " + ask + "."];
+    if (kit.length) lines.push("", "I could offer: " + kit.join(", ") + ".");
     if (note) lines.push("", note);
     lines.push("", "Could you send over more details on how it would work?", "", "Thanks,", name);
     const body = lines.join("\n");

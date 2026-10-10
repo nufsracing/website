@@ -1,12 +1,28 @@
 [
   {
-    "id": "community",
+    "id": "supporting",
     "tier": 1,
+    "name": "Supporting Partner",
+    "price": "TBC",
+    "summary": "For individuals who want to help the team in any way they can.",
+    "featured": false,
+    "lights": 2,
+    "benefits": [
+      "Your name on the supporters list on the NUFS website",
+      "A thank you in our social posts",
+      "Updates from the build through the season"
+    ],
+    "foot": "Every bit of support helps get a first car to the start line."
+  },
+  {
+    "id": "community",
+    "tier": 2,
     "name": "Community Partner",
     "price": "TBC",
     "summary": "For local businesses wanting to back student engineering.",
     "featured": false,
-    "lights": 3,
+    "lights": 4,
+    "inherits": "Supporting Partner",
     "benefits": [
       "Logo and link on the NUFS website throughout the season",
       "Named in the season launch and end-of-year social posts",
@@ -16,12 +32,12 @@
   },
   {
     "id": "team",
-    "tier": 2,
+    "tier": 3,
     "name": "Team Partner",
     "price": "TBC",
     "summary": "A closer partnership with greater visibility and direct connection.",
     "featured": false,
-    "lights": 5,
+    "lights": 6,
     "inherits": "Community Partner",
     "benefits": [
       "Active social media collaboration, your organisation featured in our content",
@@ -32,7 +48,7 @@
   },
   {
     "id": "innovation",
-    "tier": 3,
+    "tier": 4,
     "name": "Innovation Partner",
     "price": "TBC",
     "summary": "For organisations that want their story told and a direct line to our students.",
@@ -48,7 +64,7 @@
   },
   {
     "id": "founding",
-    "tier": 4,
+    "tier": 5,
     "name": "Founding Partner",
     "tag": "Bespoke",
     "price": "TBC",

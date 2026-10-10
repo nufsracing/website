@@ -15,7 +15,7 @@
 /* tier cards */
 .tier-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   align-items: stretch;
 }
@@ -197,7 +197,7 @@
 
 .js-reveal .reveal.in .lights i.on {
   background: var(--ember);
-  transition: background 0.15s ease calc(var(--n) * 60ms + 350ms);
+  transition: background 0.3s ease calc(var(--n) * 140ms + 350ms);
 }
 
 /* rev the lights on hover */
@@ -211,14 +211,20 @@
   }
 
   .pkg:hover .lights i.on {
-    animation: rev 0.5s ease calc(var(--n) * 40ms) both;
+    animation: rev 0.9s ease calc(var(--n) * 90ms) both;
   }
 }
 
 @keyframes rev {
-  0% { background: var(--hair); }
-  60% { background: var(--ember-hot); }
-  100% { background: var(--ember); }
+  0% {
+    background: var(--hair);
+  }
+  60% {
+    background: var(--ember-hot);
+  }
+  100% {
+    background: var(--ember);
+  }
 }
 
 /* Founding Partner lights all on and flashing */
@@ -233,11 +239,22 @@
 
 .reveal.in .lights-max i.on,
 html:not(.js-reveal) .lights-max i.on {
-  animation: limiter 1.6s steps(1) 1.2s infinite;
+  animation: rev-up 0.4s ease calc(var(--n) * 120ms + 600ms) both;
+}
+
+@keyframes rev-up {
+  from {
+    background: rgba(255, 255, 255, 0.25);
+  }
+  to {
+    background: #fff;
+  }
 }
 
 @keyframes limiter {
-  50% { background: rgba(255, 255, 255, 0.25); }
+  50% {
+    background: rgba(255, 255, 255, 0.25);
+  }
 }
 
 /* enquiry builder */
@@ -290,7 +307,10 @@ html:not(.js-reveal) .lights-max i.on {
   border-radius: 3px;
   padding: 10px 14px;
   cursor: pointer;
-  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background 0.15s ease;
 }
 
 .chip input:checked + span {
@@ -472,7 +492,10 @@ html:not(.js-reveal) .lights-max i.on {
   border-radius: 3px;
   padding: 8px 12px;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .kit-chip input:checked + span {
@@ -497,6 +520,14 @@ html:not(.js-reveal) .lights-max i.on {
 
 .kit-uses:empty {
   display: none;
+}
+
+/* prompt above the start lights */
+.gantry-ask {
+  margin: 0 0 14px;
+  font-family: var(--display);
+  font-size: clamp(22px, 2.4vw, 32px);
+  line-height: 1.1;
 }
 
 /* start lights hanging from a beam */
@@ -559,7 +590,9 @@ html:not(.js-reveal) .lights-max i.on {
   aspect-ratio: 1;
   border-radius: 50%;
   background: #2a1215;
-  transition: background 0.06s linear, box-shadow 0.06s linear;
+  transition:
+    background 0.06s linear,
+    box-shadow 0.06s linear;
 }
 
 .pod.on i {
@@ -661,7 +694,13 @@ html:not(.js-reveal) .lights-max i.on {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, var(--ink) 0%, rgba(7, 5, 6, 0) 22%, rgba(7, 5, 6, 0) 78%, var(--ink) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--ink) 0%,
+    rgba(7, 5, 6, 0) 22%,
+    rgba(7, 5, 6, 0) 78%,
+    var(--ink) 100%
+  );
 }
 
 .statement-cap {
@@ -694,13 +733,18 @@ html:not(.js-reveal) .lights-max i.on {
 
 .split-cash {
   background: var(--ink-1);
-  padding-inline: max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter))) clamp(28px, 4vw, 64px);
+  padding-inline: max(
+      var(--gutter),
+      calc((100vw - var(--maxw)) / 2 + var(--gutter))
+    )
+    clamp(28px, 4vw, 64px);
 }
 
 .split-kit {
   background: var(--band);
   color: var(--band-ink);
-  padding-inline: clamp(28px, 4vw, 64px) max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter)));
+  padding-inline: clamp(28px, 4vw, 64px)
+    max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter)));
 }
 
 .split-inner {
@@ -731,8 +775,9 @@ html:not(.js-reveal) .lights-max i.on {
   color: var(--band-sub);
 }
 
+/* sized so Financial. fits inside half the screen */
 .split-word {
-  font-size: clamp(56px, 8vw, 120px);
+  font-size: clamp(48px, 5.6vw, 96px);
   line-height: 0.9;
   letter-spacing: -0.03em;
 }
@@ -807,7 +852,13 @@ html:not(.js-reveal) .lights-max i.on {
 
   .statement-band::before {
     background:
-      linear-gradient(180deg, var(--ink) 0%, rgba(7, 5, 6, 0.25) 25%, rgba(7, 5, 6, 0.25) 75%, var(--ink) 100%),
+      linear-gradient(
+        180deg,
+        var(--ink) 0%,
+        rgba(7, 5, 6, 0.25) 25%,
+        rgba(7, 5, 6, 0.25) 75%,
+        var(--ink) 100%
+      ),
       linear-gradient(90deg, rgba(7, 5, 6, 0.7), rgba(7, 5, 6, 0.35));
   }
 
@@ -926,7 +977,7 @@ html:not(.js-reveal) .lights-max i.on {
 }
 
 .statement-band.pinned .scrub {
-  font-size: clamp(44px, 7.4vw, 124px);
+  font-size: clamp(44px, min(7.4vw, 10.5svh), 124px);
   line-height: 1;
   max-width: 15ch;
 }
@@ -961,7 +1012,8 @@ html:not(.js-reveal) .lights-max i.on {
 .statement-video {
   opacity: calc(0.35 + var(--p) * 0.65);
   transform: scale(calc(1.08 - var(--p) * 0.08));
-  filter: saturate(calc(0.5 + var(--p) * 0.6)) brightness(calc(0.75 + var(--p) * 0.4));
+  filter: saturate(calc(0.5 + var(--p) * 0.6))
+    brightness(calc(0.75 + var(--p) * 0.4));
 }
 
 /* the still hides once the clip has a frame */
@@ -971,8 +1023,19 @@ html:not(.js-reveal) .lights-max i.on {
 
 .statement-band.pinned::before {
   background:
-    linear-gradient(180deg, var(--ink) 0%, rgba(7, 5, 6, 0) 16%, rgba(7, 5, 6, 0) 84%, var(--ink) 100%),
-    linear-gradient(90deg, rgba(7, 5, 6, 0.7) 0%, rgba(7, 5, 6, 0.3) 45%, rgba(7, 5, 6, 0) 100%);
+    linear-gradient(
+      180deg,
+      var(--ink) 0%,
+      rgba(7, 5, 6, 0) 16%,
+      rgba(7, 5, 6, 0) 84%,
+      var(--ink) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(7, 5, 6, 0.7) 0%,
+      rgba(7, 5, 6, 0.3) 45%,
+      rgba(7, 5, 6, 0) 100%
+    );
 }
 
 /* phones: the clip sits behind all the words, so a more even shade */
@@ -991,7 +1054,13 @@ html:not(.js-reveal) .lights-max i.on {
 
   .statement-band.pinned::before {
     background:
-      linear-gradient(180deg, var(--ink) 0%, rgba(7, 5, 6, 0.2) 18%, rgba(7, 5, 6, 0.2) 82%, var(--ink) 100%),
+      linear-gradient(
+        180deg,
+        var(--ink) 0%,
+        rgba(7, 5, 6, 0.2) 18%,
+        rgba(7, 5, 6, 0.2) 82%,
+        var(--ink) 100%
+      ),
       linear-gradient(90deg, rgba(7, 5, 6, 0.6), rgba(7, 5, 6, 0.25));
   }
 }

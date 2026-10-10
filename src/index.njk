@@ -184,8 +184,8 @@ title: Home
     <div class="partner-head">
       <div class="head">
         <p class="label">Partner with us</p>
-        <h2>Four ways to back the team.</h2>
-        <p class="lede">From a logo on the website to a founding role in how the team is shaped. Every tier puts your name on the car at Silverstone.</p>
+        <h2>Five ways to back the team.</h2>
+        <p class="lede">From individuals helping however they can to a founding role in how the team is shaped.</p>
       </div>
       <a class="btn btn-dark" href="{{ site.sponsorUrl }}" data-track="sponsor_tiers">See partner tiers <span aria-hidden="true">&rarr;</span></a>
     </div>
@@ -194,7 +194,6 @@ title: Home
       {% for tier in tiers %}
         <li class="tier{% if tier.featured %} featured{% endif %}">
           <span class="label">{{ tier.name }}</span>
-          <span class="tier-price">{{ tier.price }}</span>
           <span class="tier-summary">{{ tier.summary }}</span>
         </li>
       {% endfor %}

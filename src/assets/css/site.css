@@ -889,7 +889,7 @@ button:focus-visible {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   border-top: 1px solid var(--band-hair);
 }
 
@@ -1249,7 +1249,7 @@ button:focus-visible {
     row-gap: 28px;
   }
 
-  .tier:nth-child(3) {
+  .tier:nth-child(2n + 1) {
     border-left: 0;
     padding-left: 0;
   }

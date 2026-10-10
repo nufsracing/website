@@ -2,7 +2,7 @@
 layout: base.njk
 title: Sponsor Us
 permalink: /sponsor/
-description: "Back Northumbria's first Formula Student team on its way to Silverstone in July 2027. Four partner tiers, or support the build in kind with materials, machining or software."
+description: "Back Northumbria's first Formula Student team on its way to Silverstone. Five partner tiers, or support the build in kind with materials, machining or software."
 pageCss: sponsor.css
 pageJs: sponsor.js
 racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880 730,960"
@@ -15,6 +15,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
 
 <!-- page head  -->
 <section class="hero wrap sp-head">
+  <p class="gantry-ask">How quick are you?</p>
   <div class="gantry-wrap">
     <button class="gantry" id="gantry" type="button" aria-describedby="gantryMsg">
       <span class="gantry-lights" aria-hidden="true">
@@ -33,7 +34,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
 
   <div class="hero-copy sp-copy">
     <h1>Why back a <span class="soft">first season.</span></h1>
-    <p class="lede">{{ site.members }} Northumbria students are building the university's first Formula Student car from scratch and taking it to {{ site.competition.venue }} in {{ site.competition.date }}. Partners who join now are with us from the first cut of metal.</p>
+    <p class="lede">{{ site.members }} Northumbria students are building the university's first Formula Student car from scratch and taking it to {{ site.competition.venue }}. Partners who join now are with us from the first cut of metal.</p>
     <div class="actions">
       <a class="btn" href="#enquire" data-track="sponsor_enquire">Get in touch <span aria-hidden="true">&rarr;</span></a>
     </div>
@@ -47,7 +48,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
     <div class="head why-head">
       <p class="label">Why now</p>
       <h2>What an established team can't offer you.</h2>
-      {% if site.instagramFollowers %}<p class="why-reach"><b class="why-fig">{{ site.instagramFollowers }}</b> people already follow the build on Instagram.</p>{% endif %}
+      {% if site.instagramAvgViews %}<p class="why-reach">Our Instagram posts get <b class="why-fig">{{ site.instagramAvgViews }}</b> views on average.</p>{% endif %}
     </div>
     <ol class="why-list">
       <li class="why-item">
@@ -83,7 +84,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
   <!-- sponsor tier card section -->
   <div class="head">
     <p class="label">Partner tiers</p>
-    <h2>Four ways to back the team.</h2>
+    <h2>Five ways to back the team.</h2>
     <p class="lede">Each tier includes everything in the one before it. Prices are still being set, so ask and we'll tell you where they stand.</p>
   </div>
 
@@ -138,7 +139,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
   <div class="split-half split-cash">
     <div class="split-inner">
       <p class="label">Two ways to help</p>
-      <h2 class="split-word">Cash.</h2>
+      <h2 class="split-word">Financial.</h2>
       <p>Pick a partner tier. Each one includes everything in the tier before it.</p>
       <ul class="route-tiers">
         {% for tier in tiers %}
@@ -158,8 +159,8 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
   <div class="split-half split-kit">
     <div class="split-inner">
       <p class="label">Both count the same</p>
-      <h2 class="split-word">Kit.</h2>
-      <p>Materials, machining time, software, testing space, transport or expertise. Kit partners get credited the same way cash partners do, and we'll write up how your work ended up on the car.</p>
+      <h2 class="split-word">In kind.</h2>
+      <p>Materials, machining time, software, testing space, transport or expertise. We price your package on the value of what you give us, and we'll align your support with the correct partner package. We'll also write up how your work ended up on the car.</p>
       <fieldset class="kit" id="kitPicker">
         <legend class="label">What could you offer?</legend>
         <label class="kit-chip"><input type="checkbox" value="Steel and aluminium" data-team="Chassis &amp; Suspension"><span>Steel and aluminium</span></label>
@@ -196,7 +197,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
         <label class="chip"><input type="radio" name="tier" value="In kind support"><span>In kind</span></label>
         <label class="chip"><input type="radio" name="tier" value="" checked><span>Not sure yet</span></label>
       </fieldset>
-      <label class="field" for="enqOrg"><span class="label">Organisation</span><input id="enqOrg" type="text" autocomplete="organization" placeholder="Tyne Precision Ltd"></label>
+      <label class="field" for="enqOrg"><span class="label">Organisation <em>optional</em></span><input id="enqOrg" type="text" autocomplete="organization" placeholder="Tyne Precision Ltd"></label>
       <label class="field" for="enqName"><span class="label">Your name</span><input id="enqName" type="text" autocomplete="name" placeholder="Sam Taylor"></label>
       <label class="field" for="enqNote"><span class="label">Anything to add <em>optional</em></span><textarea id="enqNote" rows="3" placeholder="We machine aluminium parts and have spare capacity in spring."></textarea></label>
     </form>
