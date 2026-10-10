@@ -136,8 +136,7 @@ if (enqForm) {
   buildEmail();
 }
 
-// rev bar fills with scroll and flashes at the bottom
-const revBar = document.querySelector("#revBar");
+// statement words light up as you scroll
 const scrub = document.querySelector("#scrub");
 const statementBand = document.querySelector("#statementBand");
 let scrubWords = [];
@@ -235,33 +234,6 @@ if (scrubWords.length) {
   }).observe(pin);
 }
 
-if (revBar) {
-  const revLights = revBar.querySelectorAll("i");
-  let revQueued = false;
-
-  const placeRev = function () {
-    revQueued = false;
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = max > 0 ? Math.min(1, window.scrollY / max) : 0;
-    const lit = Math.round(progress * revLights.length);
-    revLights.forEach(function (light, i) {
-      light.classList.toggle("on", i < lit);
-    });
-    revBar.classList.toggle("limit", lit === revLights.length);
-  };
-
-  const queueRev = function () {
-    if (!revQueued) {
-      revQueued = true;
-      requestAnimationFrame(placeRev);
-    }
-  };
-
-  window.addEventListener("scroll", queueRev, { passive: true });
-  window.addEventListener("resize", queueRev);
-  placeRev();
-}
-
 // start lights reaction test, tapping before lights out is a jump start
 const gantry = document.querySelector("#gantry");
 
@@ -278,7 +250,7 @@ if (gantry) {
     gantryTimers.forEach(clearTimeout);
     gantryTimers = [];
     pods.forEach(function (pod) {
-      pod.classList.remove("on");
+      pod.classList.remove("on", "go");
     });
   };
 
@@ -296,8 +268,10 @@ if (gantry) {
     // random hold, like a real start
     const hold = 600 * pods.length + 400 + Math.random() * 1800;
     gantryTimers.push(setTimeout(function () {
+      // lights go green at lights out
       pods.forEach(function (pod) {
         pod.classList.remove("on");
+        pod.classList.add("go");
       });
       // the demo is timed too, so a tap at lights out counts
       const wasDemo = gantryState === "demo";
@@ -305,6 +279,7 @@ if (gantry) {
       lightsOutAt = performance.now();
       gantryMsg.textContent = "Go!";
       gantryTimers.push(setTimeout(function () {
+        resetLights();
         if (wasDemo) {
           gantryState = "idle";
           gantryMsg.textContent = "Tap the lights to start";
