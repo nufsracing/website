@@ -3,30 +3,29 @@
     "id": "supporting",
     "tier": 1,
     "name": "Supporting Partner",
-    "price": "TBC",
-    "summary": "For individuals who want to help the team in any way they can.",
+    "price": "£100 or kit",
+    "summary": "An entry point for anyone who wants to support Northumbria students' journey, with money or with kit like materials, tools or parts.",
     "featured": false,
     "lights": 2,
     "benefits": [
-      "Your name on the supporters list on the NUFS website",
-      "A thank you in our social posts",
-      "Updates from the build through the season"
+      "Name on the car alongside other Supporting Partners",
+      "Invitation to partner events held at the university"
     ],
-    "foot": "Every bit of support helps get a first car to the start line."
+    "foot": "Not cash? Giving us something we need counts just the same."
   },
   {
     "id": "community",
     "tier": 2,
     "name": "Community Partner",
-    "price": "TBC",
-    "summary": "For local businesses wanting to back student engineering.",
+    "price": "From £500",
+    "summary": "The right entry point for local businesses and organisations who want to support Northumbria students doing something ambitious.",
     "featured": false,
     "lights": 4,
     "inherits": "Supporting Partner",
     "benefits": [
-      "Logo and link on the NUFS website throughout the season",
+      "Logo on the car and link on the NUFS website throughout the season",
       "Named in the season launch and end-of-year social posts",
-      "Invitation to partner events held at the university"
+      "Visual presence at Formula Student UK, Silverstone 2027"
     ],
     "foot": "For organisations who want to back a local team from the beginning."
   },
@@ -34,8 +33,8 @@
     "id": "team",
     "tier": 3,
     "name": "Team Partner",
-    "price": "TBC",
-    "summary": "A closer partnership with greater visibility and direct connection.",
+    "price": "From £1,000",
+    "summary": "A closer partnership with greater visibility and direct connection to the team and its work.",
     "featured": false,
     "lights": 6,
     "inherits": "Community Partner",
@@ -50,36 +49,37 @@
     "id": "innovation",
     "tier": 4,
     "name": "Innovation Partner",
-    "price": "TBC",
-    "summary": "For organisations that want their story told and a direct line to our students.",
+    "price": "From £2,500",
+    "summary": "A meaningful partnership for organisations who want to be visible, engaged, and connected to the students building the car.",
     "featured": false,
     "lights": 8,
     "inherits": "Team Partner",
     "benefits": [
-      "Dedicated sponsor spotlight content, your story, told to our audience",
+      "Dedicated sponsor spotlight content, your story told to our audience",
       "Increased logo placement on the car",
-      "Opportunities to engage directly with students, mentoring, recruitment, project discussions"
+      "Logo on team kit",
+      "Opportunities to engage directly with students through mentoring, recruitment and discussions"
     ],
-    "foot": "For organisations who want to meet the engineers, not just be seen by them."
+    "foot": "For organisations that see the value in connecting with the next generation of engineers and professionals."
   },
   {
     "id": "founding",
     "tier": 5,
     "name": "Founding Partner",
     "tag": "Bespoke",
-    "price": "TBC",
-    "summary": "For an organisation that wants a genuine role in shaping NUFS from the very beginning.",
+    "price": "Negotiated",
+    "summary": "Our flagship partnership, designed for an organisation that wants to play a genuine role in shaping NUFS from the very beginning.",
     "featured": false,
     "flagship": true,
     "lights": 10,
     "inherits": "Innovation Partner",
     "benefits": [
-      "Prioritised and prominent logo placement across all team assets - car, kit, and materials",
+      "Prioritised and prominent logo placement across all team assets, car, kit and materials",
       "First right of renewal for future seasons",
-      "Bespoke student engagement - mentoring, placements, site visits, and graduates",
+      "Bespoke student engagement, mentoring, placements, site visits and graduate recruitment",
       "Input into how your partnership is structured and developed over time",
       "Recognition as a Founding Partner of NUFS, the team that started it all"
     ],
-    "foot": "Founding Partner is not a fixed package. It starts with a conversation."
+    "foot": "Founding Partner is not a fixed package. It is a conversation."
   }
 ]
