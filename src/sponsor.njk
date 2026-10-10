@@ -83,12 +83,20 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
     <p class="lede">Each tier includes everything in the one before it. Prices are a starting point, so if something doesn't fit, ask and we'll work it out.</p>
   </div>
 
-  <!-- Supporting Partner runs as a strip above the cards -->
-  {% for tier in tiers %}
-    {% if tier.strip %}{% include "partials/tier-strip.njk" %}{% endif %}
-  {% endfor %}
-
   <div class="tier-grid">
+    <!-- Supporting Partner sits over Team and Innovation -->
+    {% for tier in tiers %}
+      {% if tier.strip %}{% include "partials/tier-strip.njk" %}{% endif %}
+    {% endfor %}
+
+    <!-- cash or kit note, above Community -->
+    <aside class="tier-note" aria-label="Cash or in kind">
+      <span class="label">Cash or in kind</span>
+      <h3>Every tier can be backed in kind.</h3>
+      <p>Give money, or anything you can offer, from materials and software to expertise or your time. We value what you give and place you in the tier it matches.</p>
+      <a class="note-link" href="#inkind">Ideas for what you could offer <span aria-hidden="true">&rarr;</span></a>
+    </aside>
+
     {% for tier in tiers %}
       {% if not tier.flagship and not tier.strip %}
         {% include "partials/tier-card.njk" %}
@@ -160,7 +168,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
     <div class="split-inner">
       <p class="label">Both count the same</p>
       <h2 class="split-word">In kind.</h2>
-      <p>Materials, machining time, software, testing space, transport or expertise. We price your package on the value of what you give us, and we'll align your support with the correct partner package. We'll also write up how your work ended up on the car.</p>
+      <p>Materials, machining time, software, testing space, transport or expertise. We'll work out what your support is worth and match it to the right partner tier.</p>
       <fieldset class="kit" id="kitPicker">
         <legend class="label">What could you offer?</legend>
         <label class="kit-chip"><input type="checkbox" value="Steel and aluminium" data-team="Chassis &amp; Suspension"><span>Steel and aluminium</span></label>
@@ -212,6 +220,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
         <a class="btn btn-light" id="enqSend" href="mailto:{{ site.emails.sponsorship }}" data-track="sponsor_email">Open in email <span aria-hidden="true">&rarr;</span></a>
         <button class="btn btn-ghost" type="button" id="enqCopy">Copy email</button>
       </div>
+      <p class="enq-hint">The Open in email button starts the message in your default mail app. If nothing opens, use the Copy email button and paste it into whichever email app you use.</p>
     </article>
   </div>
 </section>

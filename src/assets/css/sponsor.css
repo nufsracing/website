@@ -202,16 +202,33 @@
 
 /* rev the lights on hover */
 @media (hover: hover) {
-  .pkg {
+  .pkg,
+  .strip {
     transition: border-color 0.2s ease;
   }
 
-  .pkg:hover {
+  .pkg:hover,
+  .strip:hover {
     border-color: rgba(255, 43, 43, 0.45);
   }
 
-  .pkg:hover .lights i.on {
+  .pkg:hover .lights i.on,
+  .strip:hover .lights i.on {
     animation: rev 0.9s ease calc(var(--n) * 90ms) both;
+  }
+
+  /* Founding revs again in white. a new animation name so it restarts */
+  .flagship.in:hover .lights-max i.on {
+    animation: rev-white 0.9s ease calc(var(--n) * 90ms) both;
+  }
+}
+
+@keyframes rev-white {
+  0% {
+    background: rgba(255, 255, 255, 0.25);
+  }
+  100% {
+    background: #fff;
   }
 }
 
@@ -685,6 +702,13 @@ html:not(.js-reveal) .lights-max i.on {
   color: #fff;
 }
 
+.enq-hint {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+}
+
 /* cash and kit split, edge to edge */
 .split {
   display: grid;
@@ -1033,18 +1057,16 @@ html:not(.js-reveal) .lights-max i.on {
   }
 }
 
-/* Supporting Partner strip above the tier cards */
+/* Supporting Partner strip, over Team and Innovation */
 .strip {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: clamp(20px, 3vw, 44px);
-  align-items: center;
-  margin-bottom: 16px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(18px, 2.4vw, 32px);
+  align-items: start;
   border: 1px solid var(--hair);
-  border-left: 3px solid var(--ember);
   border-radius: 3px;
   background: rgba(16, 11, 13, 0.72);
-  padding: clamp(22px, 2.4vw, 30px);
+  padding: clamp(18px, 2vw, 24px);
 }
 
 .strip-head,
@@ -1054,65 +1076,54 @@ html:not(.js-reveal) .lights-max i.on {
   gap: 10px;
 }
 
-.strip-head .lights {
-  max-width: 220px;
-}
-
-/* cash or kit, side by side */
-.strip-ways {
-  display: flex;
-  align-items: stretch;
-  gap: 14px;
-}
-
-.way {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  border: 1px solid var(--hair);
-  border-radius: 3px;
-  padding: 14px 16px;
-}
-
-.way-value {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(17px, 1.4vw, 20px);
-  line-height: 1.2;
-}
-
-.way-or {
-  align-self: center;
-  color: var(--smoke-dim);
-  font-size: 13px;
-}
-
 .strip-get .btn {
   align-self: flex-start;
-  margin-top: 4px;
 }
 
-@media (max-width: 1040px) {
-  .strip {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .strip-head {
-    grid-column: 1 / -1;
-  }
+/* first row of the grid: the note over Community, Supporting over Team and Innovation */
+.tier-grid .strip {
+  grid-column: 2 / span 2;
+  grid-row: 1;
 }
 
+.tier-note {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px dashed rgba(255, 90, 74, 0.45);
+  border-radius: 3px;
+  padding: clamp(18px, 2vw, 24px);
+}
+
+.tier-note .label {
+  color: var(--ember-hot);
+}
+
+.tier-note p {
+  color: var(--smoke);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.note-link {
+  margin-top: auto;
+  padding-top: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--bone);
+}
+
+/* one column: Supporting first, then the note, then the cards */
 @media (max-width: 860px) {
   .strip {
     grid-template-columns: 1fr;
   }
-}
 
-/* phones: cash and kit stack */
-@media (max-width: 520px) {
-  .strip-ways {
-    flex-direction: column;
-    gap: 8px;
+  .tier-grid .strip,
+  .tier-note {
+    grid-column: auto;
+    grid-row: auto;
   }
 }

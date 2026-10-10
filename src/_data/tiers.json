@@ -3,14 +3,10 @@
     "id": "supporting",
     "tier": 1,
     "name": "Supporting Partner",
-    "price": "£100 or kit",
+    "price": "From £100",
     "summary": "An entry point for anyone who wants to support Northumbria students' journey.",
     "featured": false,
     "strip": true,
-    "ways": [
-      { "label": "Cash", "value": "From £100" },
-      { "label": "Kit", "value": "Materials, tools or parts" }
-    ],
     "lights": 2,
     "benefits": [
       "Name on the car alongside other Supporting Partners",
