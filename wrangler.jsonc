@@ -1,0 +1,11 @@
+{
+  // the Worker this site deploys to
+  "name": "nufswebsite",
+  "compatibility_date": "2026-10-10",
+  // eleventy builds the site into _site
+  "assets": {
+    "directory": "./_site"
+  },
+  // lets branch pushes make preview links
+  "previews": {}
+}
