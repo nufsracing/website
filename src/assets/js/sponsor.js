@@ -157,6 +157,81 @@ if (scrub && !reduceMotion) {
   scrub.classList.add("scrubbing");
 }
 
+// the statement pins to the screen for a couple of screens of scrolling.
+// the words fade in, then light one by one while the sim wheel clip plays
+if (scrubWords.length) {
+  const pin = document.createElement("div");
+  pin.className = "statement-pin";
+  statementBand.before(pin);
+  pin.appendChild(statementBand);
+  statementBand.classList.add("pinned");
+
+  const still = statementBand.querySelector(".statement-photo");
+  const clip = document.createElement("video");
+  let clipReady = false;
+
+  // only browsers that can play the mp4 get the clip, the rest keep the photo
+  if (clip.canPlayType('video/mp4; codecs="avc1.64001f"')) {
+    clip.className = "statement-photo statement-video";
+    clip.poster = statementBand.dataset.poster;
+    clip.muted = true;
+    clip.playsInline = true;
+    clip.setAttribute("muted", "");
+    clip.setAttribute("playsinline", "");
+    clip.setAttribute("aria-hidden", "true");
+    still.after(clip);
+
+    // load the whole clip first so every frame can be jumped to
+    fetch(statementBand.dataset.clip)
+      .then(function (res) { return res.blob(); })
+      .then(function (blob) { clip.src = URL.createObjectURL(blob); })
+      .catch(function () { clip.remove(); });
+
+    clip.addEventListener("loadeddata", function () {
+      // some phones only allow jumping around once the clip has played
+      const warm = clip.play();
+      if (warm) warm.then(function () { clip.pause(); }).catch(function () {});
+      clipReady = true;
+      statementBand.classList.add("has-video");
+    });
+  }
+
+  const between = function (t, start, end) {
+    return Math.min(1, Math.max(0, (t - start) / (end - start)));
+  };
+
+  let shown = 0;
+  let onScreen = false;
+
+  const placeStatement = function () {
+    if (!onScreen) return;
+    const range = pin.offsetHeight - window.innerHeight;
+    const t = range > 0 ? between(-pin.getBoundingClientRect().top, 0, range) : 1;
+
+    scrub.style.setProperty("--in", between(t, 0.02, 0.2).toFixed(3));
+    const lit = Math.round(between(t, 0.2, 0.85) * scrubWords.length);
+    scrubWords.forEach(function (word, i) {
+      word.classList.toggle("lit", i < lit);
+    });
+
+    const p = between(t, 0.05, 0.9);
+    statementBand.style.setProperty("--p", p.toFixed(3));
+    if (clipReady && clip.duration) {
+      // ease toward the scroll position so fast flicks don't jump
+      shown += (p * (clip.duration - 0.05) - shown) * 0.25;
+      if (Math.abs(clip.currentTime - shown) > 0.02) clip.currentTime = shown;
+    }
+    requestAnimationFrame(placeStatement);
+  };
+
+  // only runs while the scene is on screen
+  new IntersectionObserver(function (entries) {
+    const wasOn = onScreen;
+    onScreen = entries[0].isIntersecting;
+    if (onScreen && !wasOn) requestAnimationFrame(placeStatement);
+  }).observe(pin);
+}
+
 if (revBar) {
   const revLights = revBar.querySelectorAll("i");
   let revQueued = false;
@@ -170,19 +245,6 @@ if (revBar) {
       light.classList.toggle("on", i < lit);
     });
     revBar.classList.toggle("limit", lit === revLights.length);
-
-    // light the statement word by word as it crosses the screen
-    if (scrubWords.length) {
-      const box = scrub.getBoundingClientRect();
-      const start = window.innerHeight * 0.85;
-      const end = window.innerHeight * 0.35;
-      const scrubProgress = Math.min(1, Math.max(0, (start - box.top) / (start - end + box.height * 0.5)));
-      const litWords = Math.round(scrubProgress * scrubWords.length);
-      statementBand.style.setProperty("--p", scrubProgress.toFixed(3));
-      scrubWords.forEach(function (word, i) {
-        word.classList.toggle("lit", i < litWords);
-      });
-    }
   };
 
   const queueRev = function () {
