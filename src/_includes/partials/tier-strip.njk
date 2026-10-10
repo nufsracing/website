@@ -1,0 +1,24 @@
+<!-- Supporting Partner strip, cash or kit -->
+<article class="strip" id="tier-{{ tier.id }}">
+  <div class="strip-head">
+    <div class="lights" aria-hidden="true">
+      {%- for n in range(0, 10) %}<i class="{{ 'on' if n < tier.lights }}" style="--n:{{ n }}"></i>{% endfor -%}
+    </div>
+    <span class="label">Tier {{ tier.tier }}</span>
+    <h3>{{ tier.name }}</h3>
+    <p class="pkg-summary">{{ tier.summary }}</p>
+  </div>
+  <div class="strip-ways">
+    {% for way in tier.ways %}
+      {% if not loop.first %}<span class="way-or">or</span>{% endif %}
+      <div class="way"><span class="label">{{ way.label }}</span><b class="way-value">{{ way.value }}</b></div>
+    {% endfor %}
+  </div>
+  <div class="strip-get">
+    <span class="label">Either way you get</span>
+    <ul class="benefits">
+      {% for benefit in tier.benefits %}<li>{{ benefit }}</li>{% endfor %}
+    </ul>
+    <a class="btn btn-ghost" href="#enquire" data-tier="{{ tier.name }}">Enquire</a>
+  </div>
+</article>

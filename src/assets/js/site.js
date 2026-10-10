@@ -217,6 +217,7 @@ if (document.documentElement.classList.contains("js-reveal")) {
     [".enquiry > *", "rise"],
     ["#tiers .head", "rise"],
     [".pkg", "rise"],
+    [".strip", "rise"],
     [".flagship", "rise"],
     ["#why .head", "rise"],
     [".why-item", "rise"],

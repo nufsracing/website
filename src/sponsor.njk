@@ -83,9 +83,14 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
     <p class="lede">Each tier includes everything in the one before it. Prices are a starting point, so if something doesn't fit, ask and we'll work it out.</p>
   </div>
 
+  <!-- Supporting Partner runs as a strip above the cards -->
+  {% for tier in tiers %}
+    {% if tier.strip %}{% include "partials/tier-strip.njk" %}{% endif %}
+  {% endfor %}
+
   <div class="tier-grid">
     {% for tier in tiers %}
-      {% if not tier.flagship %}
+      {% if not tier.flagship and not tier.strip %}
         {% include "partials/tier-card.njk" %}
       {% endif %}
     {% endfor %}
