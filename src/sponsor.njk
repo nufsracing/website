@@ -10,7 +10,8 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
 
 <!-- page head  -->
 <section class="hero wrap sp-head">
-  <p class="gantry-ask">How quick are you?</p>
+  <p class="gantry-ask">Check your reaction time.</p>
+  <p class="gantry-how">Click the lights to start, then click again the moment they go green.</p>
   <div class="gantry-wrap">
     <button class="gantry" id="gantry" type="button" aria-describedby="gantryMsg">
       <span class="gantry-lights" aria-hidden="true">
@@ -19,7 +20,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
       <span class="visually-hidden">Reaction test</span>
     </button>
     <div class="gantry-foot">
-      <p class="label gantry-msg" id="gantryMsg" aria-live="polite">Tap the lights to start</p>
+      <p class="label gantry-msg" id="gantryMsg" aria-live="polite">Click the lights to start</p>
       <p class="label gantry-days" id="spLive" data-start="{{ site.competition.raceDay }}" hidden>
         <span id="spDays"></span> days to lights out at {{ site.competition.venue }}{% if not site.competition.raceDayConfirmed %} &middot; date TBC{% endif %}
       </p>
@@ -31,7 +32,8 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
     <h1>Why back a <span class="soft">first season.</span></h1>
     <p class="lede">{{ site.members }} Northumbria students are building the university's first Formula Student car from scratch and taking it to {{ site.competition.venue }}. Partners who join now are with us from the first cut of metal.</p>
     <div class="actions">
-      <a class="btn" href="#enquire" data-track="sponsor_enquire">Get in touch <span aria-hidden="true">&rarr;</span></a>
+      <a class="btn" href="#tiers" data-track="sponsor_packages">See sponsorship packages <span aria-hidden="true">&rarr;</span></a>
+      <a class="btn btn-ghost" href="#enquire" data-track="sponsor_enquire">Get in touch</a>
     </div>
   </div>
 </section>

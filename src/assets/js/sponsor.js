@@ -254,10 +254,10 @@ if (gantry) {
     });
   };
 
-  const runLights = function (isDemo) {
+  const runLights = function () {
     resetLights();
-    gantryState = isDemo ? "demo" : "arming";
-    if (!isDemo) gantryMsg.textContent = "Wait for lights out…";
+    gantryState = "arming";
+    gantryMsg.textContent = "Wait for green…";
 
     pods.forEach(function (pod, i) {
       gantryTimers.push(setTimeout(function () {
@@ -273,51 +273,33 @@ if (gantry) {
         pod.classList.remove("on");
         pod.classList.add("go");
       });
-      // the demo is timed too, so a tap at lights out counts
-      const wasDemo = gantryState === "demo";
       gantryState = "armed";
       lightsOutAt = performance.now();
       gantryMsg.textContent = "Go!";
       gantryTimers.push(setTimeout(function () {
         resetLights();
-        if (wasDemo) {
-          gantryState = "idle";
-          gantryMsg.textContent = "Tap the lights to start";
-          return;
-        }
         gantryState = "done";
-        gantryMsg.textContent = "Too slow. Tap to try again";
+        gantryMsg.textContent = "Too slow. Click to try again";
       }, 3000));
     }, hold));
   };
 
   gantry.addEventListener("click", function () {
-    // a tap during the demo turns it into a real start, so the lights keep going
-    if (gantryState === "demo") {
-      gantryState = "arming";
-      gantryMsg.textContent = "Wait for lights out…";
-    } else if (gantryState === "arming") {
+    if (gantryState === "arming") {
       resetLights();
       gantryState = "done";
-      gantryMsg.textContent = "Jump start. Tap to try again";
+      gantryMsg.textContent = "Too early. Wait for green, click to try again";
     } else if (gantryState === "armed") {
       const reaction = (performance.now() - lightsOutAt) / 1000;
       resetLights();
       gantryState = "done";
-      gantryMsg.textContent = reaction.toFixed(3) + "s. Tap to go again";
+      gantryMsg.textContent = reaction.toFixed(3) + "s. Click to go again";
       if (bestTime === null || reaction < bestTime) {
         bestTime = reaction;
         gantryBest.textContent = "Best " + bestTime.toFixed(3) + "s";
       }
     } else {
-      runLights(false);
+      runLights();
     }
   });
-
-  // run once on load
-  if (!reduceMotion) {
-    setTimeout(function () {
-      if (gantryState === "idle") runLights(true);
-    }, 900);
-  }
 }

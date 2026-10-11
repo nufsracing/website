@@ -503,10 +503,16 @@ html:not(.js-reveal) .lights-max i.on {
 
 /* prompt above the start lights */
 .gantry-ask {
-  margin: 0 0 14px;
+  margin: 0 0 6px;
   font-family: var(--display);
   font-size: clamp(22px, 2.4vw, 32px);
   line-height: 1.1;
+}
+
+.gantry-how {
+  margin: 0 0 18px;
+  font-size: 15px;
+  color: var(--smoke);
 }
 
 /* start lights hanging from a beam */
@@ -1066,14 +1072,15 @@ html:not(.js-reveal) .lights-max i.on {
   border: 1px solid var(--hair);
   border-radius: 3px;
   background: rgba(16, 11, 13, 0.72);
-  padding: clamp(18px, 2vw, 24px);
+  /* same padding and spacing as the tier cards so the price lines up */
+  padding: clamp(22px, 2.4vw, 30px);
 }
 
 .strip-head,
 .strip-get {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
 }
 
 .strip-get .btn {
