@@ -257,7 +257,7 @@ if (gantry) {
   const runLights = function () {
     resetLights();
     gantryState = "arming";
-    gantryMsg.textContent = "Wait for green…";
+    gantryMsg.textContent = "Wait… click when they turn green";
 
     pods.forEach(function (pod, i) {
       gantryTimers.push(setTimeout(function () {
@@ -275,11 +275,11 @@ if (gantry) {
       });
       gantryState = "armed";
       lightsOutAt = performance.now();
-      gantryMsg.textContent = "Go!";
+      gantryMsg.textContent = "Green! Click now!";
       gantryTimers.push(setTimeout(function () {
         resetLights();
         gantryState = "done";
-        gantryMsg.textContent = "Too slow. Click to try again";
+        gantryMsg.textContent = "Too slow. Click the lights to try again";
       }, 3000));
     }, hold));
   };
@@ -288,15 +288,15 @@ if (gantry) {
     if (gantryState === "arming") {
       resetLights();
       gantryState = "done";
-      gantryMsg.textContent = "Too early. Wait for green, click to try again";
+      gantryMsg.textContent = "Too early! Wait for green. Click the lights to try again";
     } else if (gantryState === "armed") {
       const reaction = (performance.now() - lightsOutAt) / 1000;
       resetLights();
       gantryState = "done";
-      gantryMsg.textContent = reaction.toFixed(3) + "s. Click to go again";
+      gantryMsg.textContent = "Your reaction time: " + reaction.toFixed(3) + " seconds. Click to try again";
       if (bestTime === null || reaction < bestTime) {
         bestTime = reaction;
-        gantryBest.textContent = "Best " + bestTime.toFixed(3) + "s";
+        gantryBest.textContent = "Your best: " + bestTime.toFixed(3) + " seconds";
       }
     } else {
       runLights();
