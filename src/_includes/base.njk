@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} | {{ site.shortName }}</title>
     <meta name="description" content="{{ description or site.description }}">
+    <!-- tells Google the real address of this page, so preview links and www don't count as duplicates -->
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     <!-- what messaging apps show when the link is shared -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ site.shortName }}">
