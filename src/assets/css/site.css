@@ -298,10 +298,6 @@ button:focus-visible {
   height: 20px;
 }
 
-.nav-cta .btn {
-  padding: 11px 20px;
-}
-
 /* styling the links */
 .nav-links {
   display: flex;
@@ -324,7 +320,6 @@ button:focus-visible {
   border-bottom-color: var(--ember);
 }
 
-.nav-links .btn,
 .nav-links .nav-social-row {
   display: none;
 }
@@ -1295,13 +1290,6 @@ button:focus-visible {
     display: block;
   }
 
-  .nav-links.open .btn {
-    display: inline-flex;
-    margin-top: 12px;
-    justify-content: center;
-    border-bottom: 0;
-  }
-
   /* the three line menu button */
   .nav-toggle {
     grid-column: 2;
@@ -1457,9 +1445,7 @@ button:focus-visible {
     background: #000;
   }
 
-  /* changed from the mockup: :not(.btn) stops the red Sponsor Us
-     button in the phone menu turning red text on red */
-  .nav-links a:not(.btn):hover {
+  .nav-links a:hover {
     color: var(--ember);
   }
 
