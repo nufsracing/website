@@ -1132,7 +1132,7 @@ html:not(.js-reveal) .lights-max i.on {
   color: var(--bone);
 }
 
-/* one column: Supporting first, then the note, then the cards */
+/* one column: the note first, then Supporting, then the cards */
 @media (max-width: 860px) {
   .strip {
     grid-template-columns: 1fr;
