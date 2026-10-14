@@ -249,8 +249,7 @@
   align-self: stretch;
 }
 
-/* .flagship.in rather than .reveal.in, the tiers section is a reveal too
-   and would start the lights before anyone scrolls down to this card */
+/* .flagship.in, not .reveal.in, so the lights wait until this card is on screen */
 .lights-max i.on,
 .js-reveal .flagship.in .lights-max i.on {
   background: #fff;
@@ -781,6 +780,49 @@ html:not(.js-reveal) .lights-max i.on {
 .split-kit .label,
 .split-kit .split-inner > p:not(.label) {
   color: var(--band-sub);
+}
+
+/* cash and kit open from the middle like doors, a cover slides off as a clipped half never reveals */
+.split-half {
+  --after: 450ms;
+  position: relative;
+}
+
+.js-reveal .split-half[data-reveal]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--ink);
+  pointer-events: none;
+}
+
+.js-reveal .split-cash[data-reveal]::after {
+  transform-origin: left;
+}
+
+.js-reveal .split-kit[data-reveal]::after {
+  transform-origin: right;
+}
+
+.js-reveal .split-half[data-reveal].in::after {
+  transform: scaleX(0);
+  transition: transform 1s var(--ease);
+}
+
+.js-reveal .split-kit[data-reveal].in::after {
+  transition-delay: 120ms;
+}
+
+@media (max-width: 860px) {
+  /* stacked on phones, so each half opens from its own side */
+  .js-reveal .split-cash[data-reveal]::after {
+    transform-origin: right;
+  }
+
+  .js-reveal .split-kit[data-reveal]::after {
+    transform-origin: left;
+  }
 }
 
 /* sized so Financial. fits inside half the screen */

@@ -15,9 +15,7 @@ module.exports = function (eleventyConfig) {
     events.filter((event) => event.type === type).reduce((total, event) => total + event.points, 0)
   );
 
-  // the live address, so link previews point at the right image. cloudflare
-  // sets CF_PAGES_URL on every build, so only branch previews use it and the
-  // live site always uses the real domain
+  // link previews use the real domain on main and the preview address on branch builds
   const isPreview =
     process.env.CF_PAGES_BRANCH && process.env.CF_PAGES_BRANCH !== "main";
   eleventyConfig.addGlobalData(

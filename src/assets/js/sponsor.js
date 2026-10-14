@@ -159,8 +159,7 @@ if (scrub && !reduceMotion) {
   scrub.classList.add("scrubbing");
 }
 
-// the statement pins to the screen for a couple of screens of scrolling.
-// the words fade in, then light one by one while the sim wheel clip plays
+// the statement pins while its words light up and the sim wheel clip plays
 if (scrubWords.length) {
   const pin = document.createElement("div");
   pin.className = "statement-pin";

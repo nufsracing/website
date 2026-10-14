@@ -126,6 +126,7 @@ A page can load its own CSS and JS with `pageCss` and `pageJs` in its front matt
 - The page title in the browser tab comes from each page's `title`, shown as `Title | NUFS Racing`
 - Partner logos go in `partials/logos.njk`, and there is a comment in `sponsor.njk` marking where the partnership banner goes once sponsors sign
 - Typography is Archivo and Archivo Black from Google Fonts, and the colours are set as variables at the top of `site.css`
+- Scroll reveals are listed in page order near the bottom of `site.js`, each one a selector and an effect name. The effects are styled under "scroll reveals" in `site.css`
 - Visitors who have reduced motion turned on in their device settings get a calmer site with the animations switched off
 
 ---
