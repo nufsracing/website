@@ -88,6 +88,10 @@ If the sponsorship brochure changes, this is the file to update so the site matc
 - `phases.json`: the four build phases in "Our plan" on the home page. Move `"status": "now"` to whichever phase the team is in
 - `events.json`: the Formula Student events and their points. The points totals on the home page add up from here, so update it if the rules change
 - `subteam.json`: the sub teams. The home page counts these for the "Sub teams" figure
+- `team.json`: the people on the Team page, in three groups (leads, committee, sub team leads). Each person has a `name`, `role`, `initials` (shown when there is no photo), `bio` and an optional `photo`. To add someone, copy an existing entry inside the right group. Leave `bio` as `""` and their popup says their story is on its way. If two people share a first name, give each a `short` with their full name so screen readers can tell the buttons apart
+
+#### Adding a person's photo
+Photos live in `src/assets/img/team/` and go in `team.json` as `"photo": "team/firstname.webp"`. The cards are portrait (4:5) and show the top of the photo, so crop to head and shoulders first, roughly 640 x 800 or bigger. Save as `.webp` to keep the page fast.
 
 ---
 
@@ -97,7 +101,10 @@ If the sponsorship brochure changes, this is the file to update so the site matc
 src/
   index.njk          home page
   sponsor.njk        sponsor page (/sponsor/)
-  team.njk           placeholder, not built yet
+  team.njk           team page (/team/), the people come from _data/team.json
+  404.njk            the page shown for addresses that don't exist
+  robots.njk         builds robots.txt
+  sitemap.njk        builds sitemap.xml from every live page
   join.njk           placeholder, not built yet
   partners.njk       placeholder, not built yet
   _data/             the JSON files above
@@ -107,9 +114,12 @@ src/
   assets/
     css/site.css     styles for the whole site
     css/sponsor.css  styles only the sponsor page loads
+    css/team.css     styles only the team page loads
     js/site.js       scroll reveals, countdowns, the nav menu, the racing line
     js/sponsor.js    the reaction test, the enquiry email builder, the pinned statement scene
+    js/team.js       the popup that opens when you pick a person
     img/             images, icons and the sim wheel clip
+    img/team/        one photo per person on the team page
 .eleventy.js         Eleventy settings and the small custom filters
 ```
 

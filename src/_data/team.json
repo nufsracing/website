@@ -8,7 +8,7 @@
         "name": "Angus Rawson",
         "role": "President",
         "initials": "AR",
-        "photo": "angus.webp",
+        "photo": "team/angus.webp",
         "bio": "My name is Angus. I am 20 and was born in Manchester. I have worked on a farm since I was 10 years old; this made me love everything which moved. Driving tractors and anything I was allowed to do instantly created a passion for engineering from a young age. With that, I have always loved the outdoors and am excited to travel the world at some point to discover the amazing countries out there. I have always loved sport as well and have played rugby and hockey since I can remember, somehow always balancing playing both on a Saturday; however, I couldn't imagine having it any other way. I am currently a second-year Mechanical Engineering student. I was in my first year, I was looking at doing an extra engineering project. After starting a discussion with a technician about the resources available to me, Formula Student was mentioned. I was told that many technicians have always wanted to start the project, but no student has taken it upon themselves to start it. Looking for something extra to do, I decided to start the society. After many calls and emails to get approval, we're here with 125+ members, all with a common goal. Looking at the society as a whole, we are so diverse, and I love that this process allows us to gain members from all courses, backgrounds and skill sets. This makes it incredible to be the president, being able to talk to so many different people and hopefully support everyone and take us to Silverstone. Alongside a very long to-do list, I am currently working on using our large society base for the greater good, alongside working towards building a car. I want to find a way to support a charity or local community and make a greater impact than just on a personal team level. So hopefully in the next few weeks we can find a way to develop this and start an outreach to support a charity. Any questions, please feel free to reach out to me."
       },
       {
@@ -34,7 +34,7 @@
         "name": "Ollie Mercer",
         "role": "Vice-President",
         "initials": "OM",
-        "photo": "olliemercer.webp",
+        "photo": "team/olliemercer.webp",
         "bio": "I am an engineer and have worked in the engineering industry with varying roles for the past 7 years. I am a petrol head with an unrelenting thirst for efficiency and speed. I have worked on cars and bikes and engines of all sorts for a number of years and want to build a fast car both on the straight and in the corners. I’m currently working on a 1982 mini and 2006 174 t5 with many other side projects ranging from woodwork to electrical to mechanical to metallic. I have an overwhelming desire to learn more about the industry and what there is to come ranging from energy and actually making it available and green to 3d printing and most importantly reliable transportation. I am an engineer working in surveying and contracts management/ manufacturing. My deepest desire in the working world is to earn plenty and better the planet and reliably prove green and efficient systems for cars energy and the entire infrastructure"
       },
       {
@@ -42,13 +42,14 @@
         "role": "Secretary",
         "initials": "JB",
         "short": "Joe Bagguley",
-        "photo": "joebagg.webp",
+        "photo": "team/joebagg.webp",
         "bio": "I'm in my second year studying Mechanical Engineering after working and travelling for two years - I joined NUFS because I wanted to be involved in something hands-on alongside my degree, and being part of a brand new team from day one was an amazing opportunity. My favourite thing so far is how quick we found our feet as a new team and society which has only happened because of how many people really care about what we’re trying to do. Alongside my role as secretary I’m working in the Chassis & Suspension sub-team finalising our design choices. I can't wait to see what we've built by the end of the year."
       },
       {
         "name": "Jack Gordon",
         "role": "Sponsorship Officer",
         "initials": "JG",
+        "photo": "team/jackgordon.webp",
         "bioLabel": "About Me",
         "bio": "I'm Jack (Jackson) Gordon, I'm from Newcastle and a fun fact about me is I have a friend group called Pizza Thursday! My favourite thing is about this society is the friendships that are forming so early on..... and socials. Currently I'm working on giving our team the best chance of securing professional, meaningful and lasting partnerships with foundational partners who want to support our journey!! (and I also work on the chassis)"
       },
@@ -57,21 +58,21 @@
         "role": "Treasurer",
         "initials": "JK",
         "short": "Joe Kendall",
-        "photo": "joek.webp",
+        "photo": "team/joek.webp",
         "bio": "I joined formula student to use all the skills we are learning and put them into a real world project! My favorite thing about the society is the team, whether we’re designing, building or going out a few drinks it’s always good fun! Currently working on the set up stages of the finances and assisting designing the rear wing for the car."
       },
       {
         "name": "Owen Sawyer",
         "role": "Media Lead",
         "initials": "OS",
-        "photo": "owensawyer.webp",
+        "photo": "team/owensawyer.webp",
         "bio": "I’m a third-year Mechanical Engineering student driven by a passion for visual storytelling and motorsport. I joined NUFS Racing to merge these interests, using my photography and design skills to document the incredible journey of our team. For me, the best part of this society is our shared dedication—there's an undeniable magic in watching our collective late nights and complex designs physically come to life. Right now, my main focus is managing our digital presence and telling our story online, while also contributing on the engineering side to the car's underbody aerodynamics."
       },
       {
         "name": "Emilia Salerno",
         "role": "Inclusivity & Welfare",
         "initials": "ES",
-        "photo": "emilia.webp",
+        "photo": "team/emilia.webp",
         "bio": "Hey I’m Emilia, I joined Formula Student after I was approached regarding “a role to make sure absolutely everything is legally compliant…” “on an f1 car btw”. I cannot say that I was sold from the initial part but being able to work closely with such an ambitious project was a no brainer to me. I love cars and it might make me my dad's favourite child for the year. I love how inclusive the society is, which actually leads me onto my second role. It's really cool being in a room with so many skill sets. I am currently working on ensuring the society is supported, diverse and inclusive. I look forward to what's to come!!"
       }
     ]
@@ -85,20 +86,23 @@
         "name": "Alfie Stanley",
         "role": "Powertrain & Engine",
         "initials": "AS",
-        "photo": "alfie.webp",
+        "photo": "team/alfie.webp",
         "bio": "I've been wanting to get a Northumbria Formula Student team together for ages now so when I heard about one getting setup I immediately joined because the experience you get from it is so valuable and no other project compares. Favourite thing about the society is how quickly everyone's come together since we've started it and how passionate people are about getting a car to Silverstone. Currently I'm working on powertrain and engines parts list and piecing together and pricing up everything we're going to need to make the car run."
       },
       {
-        "name": "Nathan Bently",
+        "name": "Sam Richardson",
         "role": "Chassis & Suspension",
-        "initials": "NB",
-        "bio": "I wanted to put my skills to the test, apply my engineering knowledge and build something im proud of. Joining formula student allowed me to do this. My favourite thing here is the freedom to plan for myself and find out what kind of leader I am. Currently my team are working on the geometry of the suspension and designing the chasis to fit the suspension for best results."
+        "initials": "SR",
+        "short": "Sam Richardson",
+        "photo": "team/samrichardson.webp",
+        "bio": "I'm Sam, and I'm from the Lake District. I joined Formula Student because I loved watching Formula 1 with my dad when I was younger, and I've always dreamed of working in motorsport. My favourite thing about the society is collaborating with my teammates to build the best possible car for Silverstone. I'm currently working on giving our team the best chassis and suspension we can."
       },
       {
         "name": "Sam Sorenson",
         "role": "Aerodynamics",
         "initials": "SS",
-        "photo": "sam.webp",
+        "short": "Sam Sorenson",
+        "photo": "team/sam.webp",
         "bio": "A friend from my course asked me try it out and I was excited to work on a project with so many other keen participants. I love how excited everyone is to take up the challenge. I have worked on so many group projects where myself and one or two others have done most of the work so it is incredible to see so many people working and wanting to contribute as much as possible. I am writing my dissertation this year on the turbo-machinery for a liquid rocket engine, I am both scared and looking forwards to the challenge. In the Aero team we are working on basic design concepts and especially looking at and active aero / DRS system."
       },
       {

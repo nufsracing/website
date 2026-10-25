@@ -1288,12 +1288,13 @@ button:focus-visible {
     padding-left: 0;
   }
 
-  /* phones only show the right hand sweep of the racing line, fainter, with no dot */
+  /* phones see a 1440 wide slice of the racing line, fainter. each page sets
+     racingLineShift so the part its dot travels stays on screen */
   .racing-line {
     left: auto;
     right: 0;
     width: 1440px;
-    transform: translateX(300px);
+    transform: translateX(var(--rl-shift, 300px));
   }
 
   .rl-core {
@@ -1304,9 +1305,6 @@ button:focus-visible {
     stroke-opacity: 0.04;
   }
 
-  .rl-dot {
-    display: none;
-  }
 }
 
 /* phones */
