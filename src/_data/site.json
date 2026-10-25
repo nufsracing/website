@@ -35,7 +35,7 @@
   },
   "nav": [
     { "label": "Home", "url": "/", "live": true },
-    { "label": "Team", "url": "/team/", "live": false },
+    { "label": "Team", "url": "/team/", "live": true },
     { "label": "Our Partners", "url": "/partners/", "live": false },
     { "label": "Join", "url": "/#closing", "live": false }
   ],

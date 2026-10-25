@@ -14,19 +14,16 @@
   });
 })();
 (() => {
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduce || !("IntersectionObserver" in window)) return;
-  document.documentElement.classList.add("js-reveal");
+  // base.njk adds js-reveal when motion is allowed, site.js has already done the hero and dividers
+  if (!document.documentElement.classList.contains("js-reveal")) return;
 
 
   const groups = [
-    ["main .hero-copy > *", "rise"],
     ["#leads .head > *, #committee .head > *, #sub-teams .head > *", "rise"],
     [".member", "rise"],
     ["#work-with-us .head > *", "rise"],
     [".ww-item", "rise"],
     [".ww-right > *", "rise"],
-    ["main .rule-top", "rule"],
   ];
 
  

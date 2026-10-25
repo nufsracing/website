@@ -1,151 +1,22 @@
+/* team page only. colours, fonts, layout, labels and the rise and rule
+   reveals all come from site.css */
 
-:root {
-  --ink: #070506;           
-  --ink-1: #100b0d;          
-  --ember: #ff2b2b;         
-  --ember-deep: #8d0b12;    
-  --bone: #f3eeee;           
-  --smoke: #b3a4a7;          
-  --smoke-dim: #9a8b8e;    
-  --hair: rgba(243, 238, 238, 0.12);  
-  --sans: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --display: "Archivo Black", "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --gutter: clamp(20px, 5vw, 72px);
-  --maxw: 1240px;
-  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
-  --dur: 0.7s;
-}
-
-
-main {
-  display: block;
-  background: var(--ink);
-  color: var(--bone);
-  font-family: var(--sans);
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-main,
-main *,
-main *::before,
-main *::after { box-sizing: border-box; }
-
-main h1,
-main h2,
-main h3 {
-  margin: 0;
-  font-family: var(--display);
-  font-weight: 400;
-  text-wrap: balance;
-}
-main h1 { font-size: clamp(40px, 5.4vw, 72px); line-height: 1; letter-spacing: -0.02em; }
-main h2 { font-size: clamp(28px, 3.4vw, 44px); line-height: 1.05; letter-spacing: -0.015em; }
-main h3 { font-size: 20px; line-height: 1.2; }
-main p { margin: 0; }
-
-
-.wrap {
-  width: 100%;
-  max-width: var(--maxw);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-}
-
-
-.band { padding-block: clamp(64px, 8vw, 120px); }
-
-
-.rule-top { position: relative; }
-.rule-top::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: var(--gutter);
-  right: var(--gutter);
-  border-top: 1px solid var(--hair);
-}
-
-
-.label {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--smoke-dim);
-}
-
-
-.lede {
-  font-size: 18px;
-  line-height: 1.55;
-  color: var(--smoke);
-  max-width: 58ch;
-}
-
-
-.head {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: clamp(28px, 4vw, 48px);
-}
-
-
-.hero { padding-block: clamp(56px, 7vw, 96px) clamp(40px, 5vw, 72px); }
-@media (min-width: 861px) and (min-height: 640px) {
-  .hero {
-    min-height: calc(100svh - 72px);
-    display: flex;
-    align-items: center;
-  }
-}
-.hero-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-.hero h1 .soft { color: var(--ember); } 
-
-
-.js-reveal main [data-reveal="rise"] {
-  opacity: 0;
-  transform: translateY(16px);
-}
-.js-reveal main [data-reveal="rise"].in {
-  opacity: 1;
-  transform: none;
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
-  transition-delay: calc(var(--i, 0) * 80ms);
-}
-
-
-.js-reveal main [data-reveal="words"] .w {
+/* headings that reveal word by word, team.js splits them into .w spans */
+.js-reveal [data-reveal="words"] .w {
   display: inline-block;
   vertical-align: top;
   overflow: hidden;
   padding-block: 0.08em 0.14em;
   margin-block: -0.08em -0.14em;
 }
-.js-reveal main [data-reveal="words"] .w > span {
+.js-reveal [data-reveal="words"] .w > span {
   display: inline-block;
   transform: translateY(110%);
 }
-.js-reveal main [data-reveal="words"].in .w > span {
+.js-reveal [data-reveal="words"].in .w > span {
   transform: none;
   transition: transform 0.8s var(--ease);
   transition-delay: calc(var(--i, 0) * 80ms + var(--w, 0) * 45ms);
-}
-
-
-.js-reveal main [data-reveal="rule"]::before {
-  transform: scaleX(0);
-  transform-origin: left;
-}
-.js-reveal main [data-reveal="rule"].in::before {
-  transform: scaleX(1);
-  transition: transform 0.9s var(--ease);
 }
 
 
@@ -518,10 +389,9 @@ main p { margin: 0; }
 
 
 @media (prefers-reduced-motion: reduce) {
-  main *,
+  /* site.css stops motion on elements, this covers the card sweep and popup backdrop */
   main *::before,
   main *::after,
-  .member-dialog,
   .member-dialog::backdrop {
     transition: none !important;
     animation: none !important;
