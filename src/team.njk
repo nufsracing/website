@@ -1,7 +1,126 @@
 ---
 layout: base.njk
 title: Team
-permalink: false
+permalink: /team/
+description: "Meet the students leading Northumbria's first Formula Student team, from the committee to the sub team leads."
+pageCss: team.css
+pageJs: team.js
 ---
 
-<h1>Team</h1>
+{# the people on this page live in src/_data/team.json, edit names, roles and bios there #}
+{% set plus %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>{% endset %}
+
+<!-- page head -->
+<section class="hero wrap tm-head">
+  <div class="hero-copy">
+    <h1 data-reveal="words">The people building <span class="soft">car one.</span></h1>
+    <p class="lede" data-reveal="rise">{{ site.members }}+ students across {{ subteam | length }} sub teams. These are the people leading them.<br>Pick anyone to read why they joined.</p>
+  </div>
+</section>
+
+<!-- leads, committee and sub team leads. the photo is added by team.js and the initials show if it is missing -->
+{% for group in team %}
+<section class="band wrap rule-top" id="{{ group.id }}" data-reveal="rule">
+  <div class="head">
+    <p class="label" data-reveal="rise">{{ group.label }}</p>
+    <h2 data-reveal="words">{{ group.heading }}</h2>
+  </div>
+
+  <div class="tm-grid">
+    {% for person in group.people %}
+    <article class="member" data-reveal="rise"{% if person.linkedin %} data-linkedin="{{ person.linkedin }}"{% endif %}{% if person.photo %} data-photo="/assets/img/{{ person.photo }}"{% endif %}>
+      <div class="member-card">
+        <span class="member-face" aria-hidden="true">{{ person.initials }}</span>
+        <button class="member-open" type="button" aria-haspopup="dialog" aria-label="Read about {{ person.short or person.name.split(' ')[0] }}">
+          {{ plus | safe }}
+        </button>
+      </div>
+      <div class="member-tag">
+        <h3 class="member-name">{{ person.name }}</h3>
+        <p class="member-role">{{ person.role }}</p>
+      </div>
+      <div class="member-bio" hidden>
+        <p class="label">{{ person.bioLabel or "Why I joined" }}</p>
+        <p>{{ person.bio }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endfor %}
+
+<!-- the popup that opens when a person is clicked, filled in by team.js -->
+<dialog class="member-dialog" id="memberDialog" aria-labelledby="mdName">
+  <div class="md-bg" aria-hidden="true"></div>
+  <div class="md-face" id="mdFace" aria-hidden="true"></div>
+  <div class="md-info" tabindex="-1" autofocus>
+    <p class="label md-role" id="mdRole"></p>
+    <h2 class="md-name" id="mdName"></h2>
+    <div class="md-body" id="mdBody"></div>
+    <a class="md-link" id="mdLink" href="#" target="_blank" rel="noopener" hidden>LinkedIn <span aria-hidden="true">&rarr;</span></a>
+  </div>
+  <button class="md-close" type="button" id="mdClose" aria-label="Close">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+</dialog>
+
+<!-- for partners, links through to the sponsor page tiers -->
+<section class="band wrap rule-top" id="work-with-us" data-reveal="rule">
+  <div class="ww-grid">
+
+    <div class="ww-left">
+      <div class="head">
+        <p class="label" data-reveal="rise">For partners</p>
+        <h2 data-reveal="words">Work with these students.</h2>
+        <p class="lede" data-reveal="rise">The people on this page are the ones you would mentor, recruit and build with. Our top partners don't just see their logo on the car, they get to know the team behind it.</p>
+      </div>
+
+      <ol class="ww-list">
+        <li class="ww-item" data-reveal="rise">
+          <span class="ww-n">01</span>
+          <div>
+            <h3>Mentoring</h3>
+            <p>Your engineers advise ours while the car is still being designed, when advice can still change it.</p>
+          </div>
+        </li>
+        <li class="ww-item" data-reveal="rise">
+          <span class="ww-n">02</span>
+          <div>
+            <h3>Placements and graduates</h3>
+            <p>Meet students who have designed, built and run a race car, before they go on the market.</p>
+          </div>
+        </li>
+        <li class="ww-item" data-reveal="rise">
+          <span class="ww-n">03</span>
+          <div>
+            <h3>Site visits</h3>
+            <p>Bring the team to your workshop or come and see the car being built at Northumbria.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="ww-right">
+      <article class="ww-card">
+        <div class="ww-card-top">
+          <span class="label">Innovation Partner</span>
+          <span class="ww-price">From &pound;2,500</span>
+        </div>
+        <p>A hands-on partnership for organisations who want to be visible, engaged, and connected to the students building the car.</p>
+        <a class="ww-link" href="{{ site.sponsorUrl }}#tier-innovation">See what's included <span aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="ww-card ww-card-founding">
+        <div class="ww-card-top">
+          <span class="label">Founding Partner</span>
+          <span class="ww-price">Negotiated</span>
+        </div>
+        <p>Our flagship partnership, designed for an organisation that wants to play a genuine role in shaping NUFS from the very beginning.</p>
+        <a class="ww-link" href="{{ site.sponsorUrl }}#tier-founding">See what's included <span aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <p class="ww-email">Or email <a href="mailto:{{ site.emails.sponsorship }}">{{ site.emails.sponsorship }}</a></p>
+    </div>
+
+  </div>
+</section>
