@@ -67,45 +67,47 @@ racingLine: "M 1300,-40 L 1300,240 C 1300,330 1120,350 1120,450 C 1120,560 1330,
   </button>
 </dialog>
 
-<!-- for partners, what working with the team looks like, then one button to the sponsor page -->
-<section class="band wrap rule-top" id="work-with-us">
-  <div class="ww-grid">
+<!-- the whole team, full width, with the one button through to the sponsor page -->
+<section class="tm-band" id="team-photo" aria-labelledby="bandTitle">
+  <img class="tm-band-photo" src="/assets/img/team-photo.webp" width="2048" height="878" loading="lazy" alt="Around a hundred NUFS Racing members standing together outside a Northumbria University building">
+  <div class="tm-band-in wrap">
+    <p class="label">The team &middot; Season {{ site.season }}</p>
+    <h2 id="bandTitle">{{ site.members }}+ students. <span class="soft">One car.</span></h2>
+    <a class="btn" href="{{ site.sponsorUrl }}">Support the students <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</section>
 
-    <div class="ww-left">
-      <div class="head">
-        <p class="label">For partners</p>
-        <h2>Work with these students.</h2>
-        <p class="lede">The people on this page are the ones you would mentor, recruit and build with. Our top partners don't just see their logo on the car, they get to know the team behind it.</p>
-      </div>
-
-      <ol class="ww-list">
-        <li class="ww-item">
-          <span class="ww-n">01</span>
-          <div>
-            <h3>Mentoring</h3>
-            <p>Your engineers advise ours while the car is still being designed, when advice can still change it.</p>
-          </div>
-        </li>
-        <li class="ww-item">
-          <span class="ww-n">02</span>
-          <div>
-            <h3>Placements and graduates</h3>
-            <p>Meet students who have designed, built and run a race car, before they go on the market.</p>
-          </div>
-        </li>
-        <li class="ww-item">
-          <span class="ww-n">03</span>
-          <div>
-            <h3>Site visits</h3>
-            <p>Bring the team to your workshop or come and see the car being built at Northumbria.</p>
-          </div>
-        </li>
-      </ol>
+<!-- for partners, what working with the team looks like -->
+<section class="band wrap" id="work-with-us">
+  <div class="ww-left">
+    <div class="head">
+      <p class="label">For partners</p>
+      <h2>Work with these students.</h2>
+      <p class="lede">The people on this page are the ones you would mentor, recruit and build with. Our top partners don't just see their logo on the car, they get to know the team behind it.</p>
     </div>
 
-    <div class="ww-right">
-      <a class="btn" href="{{ site.sponsorUrl }}">Support the students <span aria-hidden="true">&rarr;</span></a>
-    </div>
-
+    <ol class="ww-list">
+      <li class="ww-item">
+        <span class="ww-n">01</span>
+        <div>
+          <h3>Mentoring</h3>
+          <p>Your engineers advise ours while the car is still being designed, when advice can still change it.</p>
+        </div>
+      </li>
+      <li class="ww-item">
+        <span class="ww-n">02</span>
+        <div>
+          <h3>Placements and graduates</h3>
+          <p>Meet students who have designed, built and run a race car, before they go on the market.</p>
+        </div>
+      </li>
+      <li class="ww-item">
+        <span class="ww-n">03</span>
+        <div>
+          <h3>Site visits</h3>
+          <p>Bring the team to your workshop or come and see the car being built at Northumbria.</p>
+        </div>
+      </li>
+    </ol>
   </div>
 </section>

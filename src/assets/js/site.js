@@ -271,9 +271,9 @@ if (document.documentElement.classList.contains("js-reveal")) {
     // team page, top to bottom
     ["#leads .head > *, #committee .head > *, #sub-teams .head > *", "rise"],
     [".member", "rise"],
+    [".tm-band-in > *", "rise"],
     ["#work-with-us .head > *", "rise"],
     [".ww-item", "rise"],
-    [".ww-right > .btn", "rise"],
     // every page
     [".rule-top", "rule"],
     [".foot", "rule"],

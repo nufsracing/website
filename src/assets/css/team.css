@@ -267,14 +267,57 @@
 }
 
 
-/* for partners. the list on the left, the button sits level with the bottom of it on the right */
-.ww-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 40px clamp(40px, 8vw, 96px);
-  align-items: end;
+/* the full width team photo. it fades into the page at the top and bottom,
+   and the headline and button sit in the tarmac under everyone */
+.tm-band {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(460px, 46vw, 720px);
+  overflow: hidden;
+  isolation: isolate;
 }
+.tm-band-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+.tm-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    var(--ink) 0,
+    rgba(7, 5, 6, 0.35) 14%,
+    rgba(7, 5, 6, 0.3) 45%,
+    rgba(7, 5, 6, 0.86) 80%,
+    var(--ink) 100%
+  );
+}
+.tm-band-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: clamp(48px, 6vw, 88px);
+  text-align: center;
+}
+.tm-band-in .label { color: rgba(243, 238, 238, 0.82); }
+.tm-band-in h2 {
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  text-shadow: 0 2px 24px rgba(7, 5, 6, 0.6);
+}
+.tm-band-in h2 .soft { color: var(--ember); }
 
+/* for partners, under the photo */
+.ww-left { max-width: 820px; }
 .ww-left .head { margin-bottom: clamp(32px, 4vw, 48px); }
 
 .ww-list {
@@ -305,8 +348,10 @@
   color: var(--smoke);
 }
 
-@media (max-width: 900px) {
-  .ww-grid { grid-template-columns: 1fr; }
+@media (max-width: 700px) {
+  /* taller than wide on phones, so the middle of the group fills the frame */
+  .tm-band { min-height: 520px; }
+  .tm-band-photo { object-position: 50% 48%; }
 }
 @media (max-width: 480px) {
   .ww-item { grid-template-columns: 44px 1fr; padding-block: 20px 22px; }
