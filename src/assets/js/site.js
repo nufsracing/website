@@ -14,13 +14,43 @@ toggle.addEventListener("click", function () {
   toggle.setAttribute("aria-expanded", isOpen);
 });
 
+const closeMenu = function () {
+  links.classList.remove("open");
+  toggle.setAttribute("aria-expanded", "false");
+};
+
 // automatically closes the menu when you press a page
 links.addEventListener("click", function (event) {
-  if (event.target.closest("a")) {
-    links.classList.remove("open");
-    toggle.setAttribute("aria-expanded", "false");
+  if (event.target.closest("a")) closeMenu();
+});
+
+// escape closes the menu and puts focus back on the button
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape" && links.classList.contains("open")) {
+    closeMenu();
+    toggle.focus();
   }
 });
+
+// closes it if the window gets wide enough for the full nav, same width as site.css
+window.matchMedia("(min-width: 861px)").addEventListener("change", function (event) {
+  if (event.matches) closeMenu();
+});
+
+// months to race day, worked out in the browser so it is right between builds
+const monthsEl = document.querySelector("#monthsLeft");
+let totalMonths = 0;
+
+if (monthsEl) {
+  const raceMonth = new Date(monthsEl.dataset.start);
+  const now = new Date();
+  totalMonths = Math.max(
+    0,
+    (raceMonth.getFullYear() - now.getFullYear()) * 12 +
+      (raceMonth.getMonth() - now.getMonth()),
+  );
+  monthsEl.textContent = totalMonths;
+}
 
 //race day countdown, it ticks once per second
 const race = document.querySelector("#raceDay");
@@ -150,8 +180,6 @@ if (!reduce && path && dot) {
   );
   const phases = document.querySelectorAll(".phase");
   const planSegs = document.querySelectorAll(".plan-track .seg");
-  const monthsEl = document.querySelector("#monthsLeft");
-  const totalMonths = 10;
   const placePin = function () {
     if (!pin || !pinMedia.matches) {
       document.documentElement.classList.remove("js-pin");
@@ -240,6 +268,12 @@ if (document.documentElement.classList.contains("js-reveal")) {
     [".split-inner > :not(.kit-uses)", "rise"],
     ["#enquire .head > *", "rise"],
     [".enquiry > *", "rise"],
+    // team page, top to bottom
+    ["#leads .head > *, #committee .head > *, #sub-teams .head > *", "rise"],
+    [".member", "rise"],
+    ["#work-with-us .head > *", "rise"],
+    [".ww-item", "rise"],
+    [".ww-right > .btn", "rise"],
     // every page
     [".rule-top", "rule"],
     [".foot", "rule"],

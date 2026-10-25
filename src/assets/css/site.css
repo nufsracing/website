@@ -1239,7 +1239,7 @@ button:focus-visible {
     top: 60px;
     left: 0;
     right: 0;
-    background: rgba(7, 5, 6, 0.98);
+    background: var(--ink);
     border-bottom: 1px solid var(--hair);
     padding: 12px var(--gutter) 20px;
   }

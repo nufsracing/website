@@ -1,0 +1,19 @@
+---
+layout: base.njk
+title: Page not found
+permalink: /404.html
+eleventyExcludeFromCollections: true
+---
+
+<!-- shown for any address that doesn't exist, set up in wrangler.jsonc -->
+<section class="hero wrap">
+  <div class="hero-copy">
+    <p class="label">404</p>
+    <h1>Wrong <span class="soft">turn.</span></h1>
+    <p class="lede">This page doesn't exist, or it has moved. Head back to the start and try again.</p>
+    <div class="actions">
+      <a class="btn" href="/">Back to home <span aria-hidden="true">&rarr;</span></a>
+      <a class="btn btn-ghost" href="{{ site.sponsorUrl }}">Sponsor Us</a>
+    </div>
+  </div>
+</section>

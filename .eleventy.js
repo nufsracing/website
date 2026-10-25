@@ -15,13 +15,8 @@ module.exports = function (eleventyConfig) {
     events.filter((event) => event.type === type).reduce((total, event) => total + event.points, 0)
   );
 
-  // link previews use the real domain on main and the preview address on branch builds
-  const isPreview =
-    process.env.CF_PAGES_BRANCH && process.env.CF_PAGES_BRANCH !== "main";
-  eleventyConfig.addGlobalData(
-    "baseUrl",
-    isPreview ? process.env.CF_PAGES_URL : "https://nufsracing.co.uk",
-  );
+  // the year the site was built, for the footer copyright
+  eleventyConfig.addGlobalData("year", new Date().getFullYear());
 
   return { dir: { input: "src" } };
 };

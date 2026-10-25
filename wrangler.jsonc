@@ -4,7 +4,9 @@
   "compatibility_date": "2026-10-10",
   // eleventy builds the site into _site
   "assets": {
-    "directory": "./_site"
+    "directory": "./_site",
+    // unknown addresses get 404.html instead of a blank error
+    "not_found_handling": "404-page"
   },
   // lets branch pushes make preview links
   "previews": {}

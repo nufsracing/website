@@ -143,18 +143,23 @@ let scrubWords = [];
 
 // wrap each word so it can light up
 if (scrub && !reduceMotion) {
-  const parts = [];
-  scrub.childNodes.forEach(function (node) {
+  // built as elements rather than an html string, so any text in the statement stays text
+  const frag = document.createDocumentFragment();
+  Array.from(scrub.childNodes).forEach(function (node) {
     const isKey = node.nodeName === "EM";
     node.textContent.split(/(\s+)/).forEach(function (word) {
+      if (!word) return;
       if (!word.trim()) {
-        parts.push(word);
+        frag.appendChild(document.createTextNode(word));
         return;
       }
-      parts.push('<span class="w' + (isKey ? " key" : "") + '">' + word + "</span>");
+      const span = document.createElement("span");
+      span.className = isKey ? "w key" : "w";
+      span.textContent = word;
+      frag.appendChild(span);
     });
   });
-  scrub.innerHTML = parts.join("");
+  scrub.replaceChildren(frag);
   scrubWords = scrub.querySelectorAll(".w");
   scrub.classList.add("scrubbing");
 }
@@ -182,11 +187,17 @@ if (scrubWords.length) {
     clip.setAttribute("aria-hidden", "true");
     still.after(clip);
 
-    // load the whole clip first so every frame can be jumped to
-    fetch(statementBand.dataset.clip)
-      .then(function (res) { return res.blob(); })
-      .then(function (blob) { clip.src = URL.createObjectURL(blob); })
-      .catch(function () { clip.remove(); });
+    // load the whole clip first so every frame can be jumped to. it waits until the
+    // scene is about a screen away, so people who never scroll that far don't download it
+    const loadClip = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      loadClip.disconnect();
+      fetch(statementBand.dataset.clip)
+        .then(function (res) { return res.blob(); })
+        .then(function (blob) { clip.src = URL.createObjectURL(blob); })
+        .catch(function () { clip.remove(); });
+    }, { rootMargin: "100% 0px" });
+    loadClip.observe(pin);
 
     clip.addEventListener("loadeddata", function () {
       // some phones only allow jumping around once the clip has played
@@ -256,7 +267,7 @@ if (gantry) {
   const runLights = function () {
     resetLights();
     gantryState = "arming";
-    gantryMsg.textContent = "Wait… click when they turn green";
+    gantryMsg.textContent = "Wait… tap when they turn green";
 
     pods.forEach(function (pod, i) {
       gantryTimers.push(setTimeout(function () {
@@ -274,11 +285,11 @@ if (gantry) {
       });
       gantryState = "armed";
       lightsOutAt = performance.now();
-      gantryMsg.textContent = "Green! Click now!";
+      gantryMsg.textContent = "Green! Tap now!";
       gantryTimers.push(setTimeout(function () {
         resetLights();
         gantryState = "done";
-        gantryMsg.textContent = "Too slow. Click the lights to try again";
+        gantryMsg.textContent = "Too slow. Tap the lights to try again";
       }, 3000));
     }, hold));
   };
@@ -287,12 +298,12 @@ if (gantry) {
     if (gantryState === "arming") {
       resetLights();
       gantryState = "done";
-      gantryMsg.textContent = "Too early! Wait for green. Click the lights to try again";
+      gantryMsg.textContent = "Too early! Wait for green. Tap the lights to try again";
     } else if (gantryState === "armed") {
       const reaction = (performance.now() - lightsOutAt) / 1000;
       resetLights();
       gantryState = "done";
-      gantryMsg.textContent = "Your reaction time: " + reaction.toFixed(3) + " seconds. Click to try again";
+      gantryMsg.textContent = "Your reaction time: " + reaction.toFixed(3) + " seconds. Tap to try again";
       if (bestTime === null || reaction < bestTime) {
         bestTime = reaction;
         gantryBest.textContent = "Your best: " + bestTime.toFixed(3) + " seconds";
