@@ -9,7 +9,7 @@
       <h4 class="label">Pages</h4>
       <ul>
         {% for item in site.nav %}
-          {% if item.live and item.url != "/" %}
+          {% if item.live %}
             <li><a href="{{ item.url }}">{{ item.label }}</a></li>
           {% endif %}
         {% endfor %}
