@@ -286,110 +286,18 @@
 }
 
 
-.ww-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
-  gap: clamp(40px, 8vw, 96px);
-  align-items: start;
-}
-
-.ww-left .head { margin-bottom: clamp(32px, 4vw, 52px); }
-.ww-left .lede { font-size: 17px; }
-
-.ww-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.ww-item {
-  display: grid;
-  grid-template-columns: 64px 1fr;  
-  border-top: 1px solid var(--hair);
-}
-.ww-n {
-  padding-top: 5px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--ember);
-  font-variant-numeric: tabular-nums;
-}
-.ww-item h3 { margin-bottom: 6px; }
-.ww-item p {
-  max-width: 46ch;
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--smoke);
-}
-
-
-.ww-right {
+/* closing band, text on the left and the button on the right */
+.tm-cta {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding-top: 4px;
-}
-.ww-card {
-  padding: clamp(28px, 3vw, 36px);
-  border: 1px solid var(--hair);
-  border-radius: 3px;
-  background: var(--ink-1);
-}
-.ww-card-top {
-  display: flex;
-  align-items: baseline;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 18px;
+  gap: 24px 48px;
 }
-.ww-price {
-  font-family: var(--display);
-  font-size: 20px;
-  line-height: 1;
-  color: var(--bone);
-  white-space: nowrap;
-}
-.ww-card p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--smoke);
-}
-.ww-link {
-  display: inline-flex;
-  gap: 4px;
-  margin-top: 18px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--ember);
-  text-decoration: none;
-}
-.ww-link span { transition: transform 0.2s var(--ease); }
-.ww-link:hover span { transform: translateX(4px); }
-.ww-link:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.tm-cta .head { margin-bottom: 0; }
+.tm-cta .btn { flex-shrink: 0; }
 
-
-.ww-card-founding {
-  border-color: rgba(255, 90, 74, 0.3);
-  background: linear-gradient(158deg, var(--ember-deep), #45060b 80%);
-}
-.ww-card-founding .label { color: rgba(255, 255, 255, 0.72); }
-.ww-card-founding p { color: rgba(255, 255, 255, 0.9); }
-.ww-card-founding .ww-link { color: #fff; }
-
-.ww-email {
-  font-size: 14px;
-  color: var(--smoke-dim);
-}
-.ww-email a { color: var(--bone); }
-.ww-email a:hover { color: var(--ember); }
-
-
-@media (max-width: 900px) {
-  .ww-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 480px) {
-  .ww-item { grid-template-columns: 44px 1fr; }
-  .ww-card-top { flex-direction: column; gap: 8px; }
+@media (max-width: 700px) {
+  .tm-cta { flex-direction: column; align-items: flex-start; }
 }
 
 
