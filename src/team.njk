@@ -9,7 +9,7 @@ pageJs: team.js
 racingLine: "M 1300,-40 L 1300,240 C 1300,330 1120,350 1120,450 C 1120,560 1330,580 1330,700 L 1330,960"
 ---
 
-{# the people on this page live in src/_data/team.json, edit names, roles and bios there #}
+{# the people on this page live in src/_data/team.json, edit names, roles, photos and bios there #}
 {% set plus %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>{% endset %}
 
 <!-- page head -->
@@ -20,7 +20,7 @@ racingLine: "M 1300,-40 L 1300,240 C 1300,330 1120,350 1120,450 C 1120,560 1330,
   </div>
 </section>
 
-<!-- leads, committee and sub team leads. the photo is added by team.js and the initials show if it is missing -->
+<!-- leads, committee and sub team leads. the initials show under the photo, so anyone without one still has a card -->
 {% for group in team %}
 <section class="band wrap rule-top" id="{{ group.id }}">
   <div class="head">
@@ -30,9 +30,10 @@ racingLine: "M 1300,-40 L 1300,240 C 1300,330 1120,350 1120,450 C 1120,560 1330,
 
   <div class="tm-grid">
     {% for person in group.people %}
-    <article class="member"{% if person.linkedin %} data-linkedin="{{ person.linkedin }}"{% endif %}{% if person.photo %} data-photo="/assets/img/{{ person.photo }}"{% endif %}>
+    <article class="member"{% if person.linkedin %} data-linkedin="{{ person.linkedin }}"{% endif %}>
       <div class="member-card">
         <span class="member-face" aria-hidden="true">{{ person.initials }}</span>
+        {% if person.photo %}<img class="member-photo" src="/assets/img/{{ person.photo }}" alt="" width="600" height="750" loading="lazy" decoding="async">{% endif %}
         <button class="member-open" type="button" aria-haspopup="dialog" aria-label="Read about {{ person.short or person.name.split(' ')[0] }}">
           {{ plus | safe }}
         </button>
@@ -103,7 +104,7 @@ racingLine: "M 1300,-40 L 1300,240 C 1300,330 1120,350 1120,450 C 1120,560 1330,
     </div>
 
     <div class="ww-right">
-      <a class="btn" href="{{ site.sponsorUrl }}" data-track="team_support">Support the students <span aria-hidden="true">&rarr;</span></a>
+      <a class="btn" href="{{ site.sponsorUrl }}">Support the students <span aria-hidden="true">&rarr;</span></a>
     </div>
 
   </div>

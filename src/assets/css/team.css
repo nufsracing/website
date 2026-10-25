@@ -1,24 +1,5 @@
-/* team page only. colours, fonts, layout, labels and the rise and rule
-   reveals all come from site.css */
-
-/* headings that reveal word by word, team.js splits them into .w spans */
-.js-reveal [data-reveal="words"] .w {
-  display: inline-block;
-  vertical-align: top;
-  overflow: hidden;
-  padding-block: 0.08em 0.14em;
-  margin-block: -0.08em -0.14em;
-}
-.js-reveal [data-reveal="words"] .w > span {
-  display: inline-block;
-  transform: translateY(110%);
-}
-.js-reveal [data-reveal="words"].in .w > span {
-  transform: none;
-  transition: transform 0.8s var(--ease);
-  transition-delay: calc(var(--i, 0) * 80ms + var(--w, 0) * 45ms);
-}
-
+/* team page only. colours, fonts, layout, labels and every scroll reveal
+   come from site.css */
 
 /* flex rather than grid so a part filled last row sits in the middle.
    --cols sets how many per row, the card width is worked out from it */
