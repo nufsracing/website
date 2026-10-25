@@ -36,12 +36,14 @@ if (race) {
     return String(n).padStart(2, "0");
   };
 
-  const tick = function () {
+  // f runs from 0 to 1 while the numbers spin up on load, then stays at 1
+  const tick = function (f) {
+    if (typeof f !== "number") f = 1;
     const left = Math.max(0, start - Date.now());
-    const days = Math.floor(left / 86400000);
-    const hours = Math.floor(left / 3600000) % 24;
-    const mins = Math.floor(left / 60000) % 60;
-    const secs = Math.floor(left / 1000) % 60;
+    const days = Math.round(Math.floor(left / 86400000) * f);
+    const hours = Math.round((Math.floor(left / 3600000) % 24) * f);
+    const mins = Math.round((Math.floor(left / 60000) % 60) * f);
+    const secs = Math.round((Math.floor(left / 1000) % 60) * f);
 
     units.days.textContent = days;
     units.hours.textContent = pad(hours);
@@ -50,7 +52,7 @@ if (race) {
     summary.textContent = days + " days to race day";
 
     //once the events start don't count into the negatives
-    if (left === 0) {
+    if (left === 0 && f === 1) {
       race.classList.add("race-on");
       race.querySelector(".race-live").lastChild.textContent = "Race Week";
       clearInterval(timer);
@@ -58,7 +60,20 @@ if (race) {
   };
 
   const timer = setInterval(tick, 1000);
-  tick();
+
+  // on load the clock spins up from zero over 1.2s, then ticks as normal
+  if (reduce) {
+    tick();
+  } else {
+    const spinFrom = performance.now();
+    const spin = function (now) {
+      const t = Math.min(1, Math.max(0, (now - spinFrom) / 1200));
+      tick(1 - Math.pow(1 - t, 3));
+      if (t < 1) requestAnimationFrame(spin);
+    };
+    tick(0);
+    requestAnimationFrame(spin);
+  }
 }
 
 const path = document.querySelector("#rl");
@@ -191,37 +206,41 @@ if (!reduce && path && dot) {
 if (document.documentElement.classList.contains("js-reveal")) {
   // selector, then which reveal it gets
   const groups = [
+    // shared
     [".hero-copy > *", "rise"],
-    [".season", "rise"],
+    // home page, top to bottom
     [".fig", "rise"],
     [".photo-grid", "wipe"],
-    [".venue-copy", "rise"],
+    [".venue-copy > *", "rise"],
     [".venue-art", "rise"],
-    ["#about .head", "rise"],
+    ["#about .head > *", "rise"],
     [".about-body > p", "rise"],
     [".score-head", "rise"],
     [".score-seg", "grow"],
     [".ev-group .label", "rise"],
     [".ev-row", "slide"],
-    ["#plan .head", "rise"],
+    ["#plan .head > *", "rise"],
     [".phase", "line"],
     [".partner-band", "band"],
-    [".partner-head", "rise"],
+    [".partner-head .head > *", "rise"],
+    [".partner-head > .btn", "rise"],
     [".tier", "rise"],
-    [".join", "rise"],
+    [".join > *", "rise"],
     [".pitch", "rise"],
-    // sponsor page
+    // sponsor page, top to bottom
     [".gantry-wrap", "rise"],
-    [".split-inner", "rise"],
-    ["#enquire .head", "rise"],
-    [".enquiry > *", "rise"],
-    ["#tiers .head", "rise"],
-    [".pkg", "rise"],
-    [".strip", "rise"],
-    [".tier-note", "rise"],
-    [".flagship", "rise"],
-    ["#why .head", "rise"],
+    ["#why .head > *", "rise"],
     [".why-item", "rise"],
+    ["#tiers .head > *", "rise"],
+    [".tier-note", "rise"],
+    [".strip", "rise"],
+    [".pkg", "rise"],
+    [".flagship", "rise"],
+    [".split-half", "door"],
+    [".split-inner > :not(.kit-uses)", "rise"],
+    ["#enquire .head > *", "rise"],
+    [".enquiry > *", "rise"],
+    // every page
     [".rule-top", "rule"],
     [".foot", "rule"],
   ];
@@ -241,6 +260,32 @@ if (document.documentElement.classList.contains("js-reveal")) {
       if (t < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
+  };
+
+  // wraps each word in a clipping span, a &nbsp; keeps two words together
+  const splitWords = function (heading) {
+    let w = 0;
+    const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+    const texts = [];
+    while (walker.nextNode()) texts.push(walker.currentNode);
+    texts.forEach(function (text) {
+      const frag = document.createDocumentFragment();
+      text.textContent.split(/([ \n\t]+)/).forEach(function (part) {
+        if (!part) return;
+        if (/^[ \n\t]+$/.test(part)) {
+          frag.appendChild(document.createTextNode(" "));
+          return;
+        }
+        const outer = document.createElement("span");
+        const inner = document.createElement("span");
+        outer.className = "w";
+        outer.style.setProperty("--w", w++);
+        inner.textContent = part;
+        outer.appendChild(inner);
+        frag.appendChild(outer);
+      });
+      text.replaceWith(frag);
+    });
   };
 
   const io = new IntersectionObserver(
@@ -267,7 +312,13 @@ if (document.documentElement.classList.contains("js-reveal")) {
         lastParent = el.parentNode;
       }
       el.style.setProperty("--i", Math.min(n++, 9));
-      el.dataset.reveal = effect;
+      // big headings rise word by word out of a slot instead of fading
+      if (effect === "rise" && el.matches("h1, h2")) {
+        splitWords(el);
+        el.dataset.reveal = "words";
+      } else {
+        el.dataset.reveal = effect;
+      }
       el.classList.add("reveal");
       el.querySelectorAll("[data-count]").forEach(function (number) {
         number.textContent = "0";

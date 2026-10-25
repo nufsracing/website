@@ -36,6 +36,7 @@
   "nav": [
     { "label": "Home", "url": "/", "live": true },
     { "label": "Team", "url": "/team/", "live": true },
+    { "label": "Sponsor Us", "url": "/sponsor/", "live": true },
     { "label": "Our Partners", "url": "/partners/", "live": false },
     { "label": "Join", "url": "/#closing", "live": false }
   ],

@@ -10,7 +10,8 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
 
 <!-- page head  -->
 <section class="hero wrap sp-head">
-  <p class="gantry-ask">How quick are you?</p>
+  <p class="gantry-ask">How fast are your reactions?</p>
+  <p class="gantry-how">Click the lights to start, wait while the red lights come on, then click as fast as you can when they turn <b class="go-word">green</b>. It's the same test a racing driver faces at every start.</p>
   <div class="gantry-wrap">
     <button class="gantry" id="gantry" type="button" aria-describedby="gantryMsg">
       <span class="gantry-lights" aria-hidden="true">
@@ -19,7 +20,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
       <span class="visually-hidden">Reaction test</span>
     </button>
     <div class="gantry-foot">
-      <p class="label gantry-msg" id="gantryMsg" aria-live="polite">Tap the lights to start</p>
+      <p class="label gantry-msg" id="gantryMsg" aria-live="polite">Click the lights to start</p>
       <p class="label gantry-days" id="spLive" data-start="{{ site.competition.raceDay }}" hidden>
         <span id="spDays"></span> days to lights out at {{ site.competition.venue }}{% if not site.competition.raceDayConfirmed %} &middot; date TBC{% endif %}
       </p>
@@ -29,9 +30,10 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
 
   <div class="hero-copy sp-copy">
     <h1>Why back a <span class="soft">first season.</span></h1>
-    <p class="lede">{{ site.members }} Northumbria students are building the university's first Formula Student car from scratch and taking it to {{ site.competition.venue }}. Partners who join now are with us from the first cut of metal.</p>
+    <p class="lede">{{ site.members }}+ Northumbria students are building the university's first Formula Student car from scratch and taking it to {{ site.competition.venue }}. Partners who join now are with us from the first cut of metal.</p>
     <div class="actions">
-      <a class="btn" href="#enquire" data-track="sponsor_enquire">Get in touch <span aria-hidden="true">&rarr;</span></a>
+      <a class="btn" href="#tiers">See sponsorship packages <span aria-hidden="true">&rarr;</span></a>
+      <a class="btn btn-ghost" href="#enquire">Get in touch</a>
     </div>
   </div>
 </section>
@@ -84,18 +86,18 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
   </div>
 
   <div class="tier-grid">
-    <!-- Supporting Partner sits over Team and Innovation -->
-    {% for tier in tiers %}
-      {% if tier.strip %}{% include "partials/tier-strip.njk" %}{% endif %}
-    {% endfor %}
-
-    <!-- cash or kit note, above Community -->
+    <!-- cash or kit note, above Community. first in the code so phones show it first -->
     <aside class="tier-note" aria-label="Cash or in kind">
       <span class="label">Cash or in kind</span>
       <h3>Every tier can be backed in kind.</h3>
       <p>Give money, or anything you can offer, from materials and software to expertise or your time. We value what you give and place you in the tier it matches.</p>
       <a class="note-link" href="#inkind">Ideas for what you could offer <span aria-hidden="true">&rarr;</span></a>
     </aside>
+
+    <!-- Supporting Partner sits over Team and Innovation -->
+    {% for tier in tiers %}
+      {% if tier.strip %}{% include "partials/tier-strip.njk" %}{% endif %}
+    {% endfor %}
 
     {% for tier in tiers %}
       {% if not tier.flagship and not tier.strip %}
@@ -217,7 +219,7 @@ racingLine: "M 1110,-40 L 1110,430 C 1110,620 1050,700 920,760 C 800,815 740,880
       </div>
       <pre class="enq-body" id="enqBody"></pre>
       <div class="actions">
-        <a class="btn btn-light" id="enqSend" href="mailto:{{ site.emails.sponsorship }}" data-track="sponsor_email">Open in email <span aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-light" id="enqSend" href="mailto:{{ site.emails.sponsorship }}">Open in email <span aria-hidden="true">&rarr;</span></a>
         <button class="btn btn-ghost" type="button" id="enqCopy">Copy email</button>
       </div>
       <p class="enq-hint">The Open in email button starts the message in your default mail app. If nothing opens, use the Copy email button and paste it into whichever email app you use.</p>

@@ -3,9 +3,8 @@
     "id": "supporting",
     "tier": 1,
     "name": "Supporting Partner",
-    "price": "From £100",
+    "price": "From £50",
     "summary": "An entry point for anyone who wants to support Northumbria students' journey.",
-    "featured": false,
     "strip": true,
     "lights": 2,
     "benefits": [
@@ -20,7 +19,6 @@
     "name": "Community Partner",
     "price": "From £500",
     "summary": "The right entry point for local businesses and organisations who want to support Northumbria students doing something ambitious.",
-    "featured": false,
     "lights": 4,
     "inherits": "Supporting Partner",
     "benefits": [
@@ -36,7 +34,6 @@
     "name": "Team Partner",
     "price": "From £1,000",
     "summary": "A closer partnership with greater visibility and direct connection to the team and its work.",
-    "featured": false,
     "lights": 6,
     "inherits": "Community Partner",
     "benefits": [
@@ -52,7 +49,6 @@
     "name": "Innovation Partner",
     "price": "From £2,500",
     "summary": "A hands-on partnership for organisations who want to be visible, engaged, and connected to the students building the car.",
-    "featured": false,
     "lights": 8,
     "inherits": "Team Partner",
     "benefits": [
@@ -70,7 +66,6 @@
     "tag": "Bespoke",
     "price": "Negotiated",
     "summary": "Our flagship partnership, designed for an organisation that wants to play a genuine role in shaping NUFS from the very beginning.",
-    "featured": false,
     "flagship": true,
     "lights": 10,
     "inherits": "Innovation Partner",

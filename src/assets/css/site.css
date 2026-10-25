@@ -298,10 +298,6 @@ button:focus-visible {
   height: 20px;
 }
 
-.nav-cta .btn {
-  padding: 11px 20px;
-}
-
 /* styling the links */
 .nav-links {
   display: flex;
@@ -324,7 +320,6 @@ button:focus-visible {
   border-bottom-color: var(--ember);
 }
 
-.nav-links .btn,
 .nav-links .nav-social-row {
   display: none;
 }
@@ -446,27 +441,6 @@ button:focus-visible {
   border-radius: 50%;
   background: #fff;
   box-shadow: 0 0 0 4px rgba(255, 91, 74, 0.28);
-}
-
-/* styling the names for the phases */
-.phase-names {
-  list-style: none;
-  margin: -12px 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 4px;
-}
-
-.phase-names li {
-  font-size: 12px;
-  line-height: 1.35;
-  color: var(--smoke-dim);
-}
-
-.phase-names li.now {
-  color: var(--ember);
-  font-weight: 600;
 }
 
 /* Styling the figures */
@@ -771,8 +745,7 @@ button:focus-visible {
   border-top-color: var(--ember);
 }
 
-/* the plan pins while the four phases take turns. hidden below
-   laptop size, where the plan just stacks as normal */
+/* the plan pins while the phases take turns, below laptop size it just stacks */
 .plan-track {
   display: none;
 }
@@ -851,15 +824,13 @@ button:focus-visible {
 
 /* The partner band */
 
-/* light strip across the full page width. the wrap inside keeps
-   the text lined up with the rest of the site */
+/* full width light strip, the wrap inside keeps the text lined up */
 .partner-band {
   background: var(--band);
   color: var(--band-ink);
 }
 
-/* a bit tighter than the dark sections, a light block looks
-   bigger than a dark one at the same size */
+/* tighter than the dark sections, a light block looks bigger at the same size */
 .partner-band-inner {
   padding-block: calc(var(--gap) * 0.8);
 }
@@ -904,18 +875,6 @@ button:focus-visible {
 .tier:first-child {
   border-left: 0;
   padding-left: 0;
-}
-
-.tier-price {
-  font-family: var(--display);
-  font-size: clamp(26px, 2.6vw, 34px);
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-
-/* the founding tier gets the red price */
-.tier.featured .tier-price {
-  color: var(--ember-deep);
 }
 
 .tier-summary {
@@ -1295,13 +1254,6 @@ button:focus-visible {
     display: block;
   }
 
-  .nav-links.open .btn {
-    display: inline-flex;
-    margin-top: 12px;
-    justify-content: center;
-    border-bottom: 0;
-  }
-
   /* the three line menu button */
   .nav-toggle {
     grid-column: 2;
@@ -1336,8 +1288,7 @@ button:focus-visible {
     padding-left: 0;
   }
 
-  /* phones have no spare column: show only the right hand sweep
-     of the racing line, fainter, with no dot */
+  /* phones only show the right hand sweep of the racing line, fainter, with no dot */
   .racing-line {
     left: auto;
     right: 0;
@@ -1434,11 +1385,7 @@ button:focus-visible {
   }
 }
 
-/* ============================================================
-   HOVER
-   Only on devices that can hover. On a phone a tap counts as
-   hover and the style sticks until you tap somewhere else.
-   ============================================================ */
+/* hover styles, only on devices that can hover so a tap on a phone doesn't stick */
 @media (hover: hover) {
   .btn:hover {
     background: var(--ember-hot);
@@ -1457,9 +1404,7 @@ button:focus-visible {
     background: #000;
   }
 
-  /* changed from the mockup: :not(.btn) stops the red Sponsor Us
-     button in the phone menu turning red text on red */
-  .nav-links a:not(.btn):hover {
+  .nav-links a:hover {
     color: var(--ember);
   }
 
@@ -1483,7 +1428,29 @@ button:focus-visible {
   transition:
     opacity var(--dur) var(--ease),
     transform var(--dur) var(--ease);
-  transition-delay: calc(var(--i, 0) * 80ms);
+  transition-delay: calc(var(--i, 0) * 80ms + var(--after, 0ms));
+}
+
+/* words: headings rise word by word, the padding stops the clip cutting off letters */
+.js-reveal [data-reveal="words"] .w {
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  padding-block: 0.08em 0.14em;
+  margin-block: -0.08em -0.14em;
+}
+
+.js-reveal [data-reveal="words"] .w > span {
+  display: inline-block;
+  transform: translateY(110%);
+}
+
+.js-reveal [data-reveal="words"].in .w > span {
+  transform: none;
+  transition: transform 0.8s var(--ease);
+  transition-delay: calc(
+    var(--i, 0) * 80ms + var(--w, 0) * 45ms + var(--after, 0ms)
+  );
 }
 
 /* slide: in from the left, for list rows */
@@ -1561,9 +1528,7 @@ button:focus-visible {
   stroke-dashoffset: 0;
 }
 
-/* the partner band starts the same dark as the page and the light
-   switches on underneath as it scrolls in. no fade or rise, a full
-   width block sliding would leave a dark gap along its top */
+/* the partner band starts dark and the light switches on, a sliding block would leave a gap */
 .js-reveal .partner-band.reveal {
   opacity: 1;
   transform: none;
@@ -1575,8 +1540,7 @@ button:focus-visible {
   background: var(--band);
 }
 
-/* photos wipe open from the bottom while the picture settles
-   from a slight zoom, then the title rises into place */
+/* photos wipe open from the bottom and settle from a slight zoom */
 .js-reveal .photo-grid.reveal {
   opacity: 1;
   transform: none;
@@ -1628,8 +1592,7 @@ button:focus-visible {
   transform: none;
 }
 
-/* the caption comes up after the wipe, label first then the heading,
-   slow enough to be noticed */
+/* the caption comes up after the wipe, label first then the heading */
 .js-reveal .photo-grid.reveal .ph-title {
   opacity: 1;
   transform: none;
@@ -1657,8 +1620,7 @@ button:focus-visible {
   transition-delay: calc(var(--d, 0) * 140ms + 1.05s);
 }
 
-/* while a photo is on screen it keeps drifting in slowly, tied
-   to the scroll. Browsers without scroll timelines skip it. */
+/* photos drift in slowly with the scroll, browsers without scroll timelines skip it */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .ph img {
@@ -1679,15 +1641,13 @@ button:focus-visible {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* in page links glide rather than jump; the padding keeps
-     headings clear of the sticky nav */
+  /* in page links glide, the padding keeps headings clear of the sticky nav */
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 88px;
   }
 
-  /* page to page transitions. The nav has its own name, so it
-     stays still while the page cross fades underneath it */
+  /* page to page fade, the nav has its own name so it stays still */
   @view-transition {
     navigation: auto;
   }
