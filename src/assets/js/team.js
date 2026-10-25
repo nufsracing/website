@@ -21,8 +21,9 @@
   const groups = [
     ["#leads .head > *, #committee .head > *, #sub-teams .head > *", "rise"],
     [".member", "rise"],
-    ["#support .head > *", "rise"],
-    [".tm-cta > .btn", "rise"],
+    ["#work-with-us .head > *", "rise"],
+    [".ww-item", "rise"],
+    [".ww-right > .btn", "rise"],
   ];
 
  

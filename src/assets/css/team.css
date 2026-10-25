@@ -286,18 +286,49 @@
 }
 
 
-/* closing band, text on the left and the button on the right */
-.tm-cta {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px 48px;
+/* for partners. the list on the left, the button sits level with the bottom of it on the right */
+.ww-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 40px clamp(40px, 8vw, 96px);
+  align-items: end;
 }
-.tm-cta .head { margin-bottom: 0; }
-.tm-cta .btn { flex-shrink: 0; }
 
-@media (max-width: 700px) {
-  .tm-cta { flex-direction: column; align-items: flex-start; }
+.ww-left .head { margin-bottom: clamp(32px, 4vw, 48px); }
+
+.ww-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--hair);
+}
+.ww-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  padding-block: 24px 26px;
+  border-top: 1px solid var(--hair);
+}
+.ww-n {
+  padding-top: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ember);
+  font-variant-numeric: tabular-nums;
+}
+.ww-item h3 { margin-bottom: 8px; }
+.ww-item p {
+  max-width: 52ch;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--smoke);
+}
+
+@media (max-width: 900px) {
+  .ww-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .ww-item { grid-template-columns: 44px 1fr; padding-block: 20px 22px; }
 }
 
 
