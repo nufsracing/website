@@ -15,13 +15,15 @@
         "name": "Niall McSween",
         "role": "Lead Technician",
         "initials": "NM",
+        "photo": "team/Niall.webp",
         "bio": ""
       },
       {
         "name": "Dominika Zabiegaj",
         "role": "Academic",
         "initials": "DZ",
-        "bio": "jfiowefijvnijenvijenvijvneiv"
+        "photo": "team/Dominika.webp",
+        "bio": "I'm Dr Dominika Zabiegaj, an Assistant Professor in Mechanical Engineering at Northumbria University and the Academic Lead for Northumbria Formula Student (NUFS). I'm passionate about engineering, innovation, and helping students discover their potential. I joined Formula Student because of our shared love of engineering and the excitement of bringing together people who are passionate about creating, designing, experimenting, and turning ambitious ideas into reality. For me, engineering is not just a profession; it's a passion that connects people. My favourite thing about the society is undoubtedly the people! Their enthusiasm, creativity, ambition, and willingness to support one another are truly inspiring. Formula Student is about much more than building a racing car. It's about building a community, creating a sense of belonging, sharing experiences, and forming friendships that will hopefully last a lifetime, well beyond university. As Academic Lead, I'm currently focused on helping our growing society thrive, strengthening connections with industry and alumni, raising our visibility, and opening doors to new opportunities and resources. My role isn't to tell students what to do, but to help them achieve what they set out to do. I'm here to support their ambitions, encourage their ideas, and help them overcome challenges."
       }
     ]
   },
@@ -109,12 +111,14 @@
         "name": "Matheus Da Silva",
         "role": "Brakes & Dynamics",
         "initials": "MDS",
+        "photo": "team/Matheus.webp",
         "bio": "My favourite aspect of the society is the opportunity to gain practical experience while working with people who share my passion for engineering and motorsport. I also value the chance to build industry connections and contribute to the development of a competitive car. As Brakes and Dynamics Lead, I'm currently working on developing the car's braking systems and improving my understanding of vehicle dynamics. I'm excited to develop my technical and teamwork skills while contributing to the team's success."
       },
       {
         "name": "Muhammad Malik",
         "role": "Manufacturing & Fabrication",
         "initials": "MM",
+        "photo": "team/Malik.webp",
         "short": "Malik",
         "bioLabel": "About Me",
         "bio": "Hi, I'm Malik! I'm from Karachi, Pakistan, and I'm currently in my second year of Mechanical Engineering at Northumbria. I've been into cars for as long as I can remember, and my latest project is fitting a Honda K24 into my RWD Corolla. Working on cars back home taught me to be resourceful with limited tools, equipment and parts, which I'm sure will come in handy as I lead Manufacturing & Fabrication for our team's first Formula Student car. Most of what I know about cars comes from my own research and plenty of trial and error, and I'm really hoping to build on that (without too much error hopefully). I've been collaborating with the other sub-teams to develop the best possible designs for our car while making sure they're practical to manufacture and stay within budget, which has also been my favourite part of the society so far."
@@ -123,6 +127,7 @@
         "name": "Indiana Eldon",
         "role": "Electrical",
         "initials": "IE",
+        "photo": "team/Indiana.webp",
         "bio": "I am an Automotive Engineering graduate, currently studying for an MSc in Engineering Management. I joined Formula Student to gain practical experience in motorsport and work alongside people who share my passion for cars. My favourite part of the society is collaborating to design and build a car as well as meeting like-minded people. My focus will be on developing a plan for the car's electrical components, while also being committed to promoting women in STEM, and helping encourage more to purse their interests within engineering."
       }
     ]
