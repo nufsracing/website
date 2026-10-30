@@ -15,7 +15,7 @@
   flex: 0 0 calc((100% - (var(--cols) - 1) * var(--col-gap)) / var(--cols));
   min-width: 0;
 }
-#sub-teams .tm-grid { --cols: 5; --col-gap: 20px; }
+#sub-teams .tm-grid { --cols: 6; --col-gap: 20px; }
 
 .member { cursor: pointer; }
 
