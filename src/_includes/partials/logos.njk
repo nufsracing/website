@@ -1,9 +1,11 @@
 {# partner logos, read from _data/partners.json. Every logo sits in the same size box so no partner looks bigger than another #}
-{% if partners and partners.length %}
+{# only partners with "show": true appear, so new ones can wait here until they're signed off #}
+{% set shownPartners = partners | selectattr("show") %}
+{% if shownPartners | length %}
 <div class="partner-logos">
   <p class="label">Supported by</p>
   <ul class="logo-row">
-    {% for partner in partners %}
+    {% for partner in shownPartners %}
       <li class="logo-item">
         <a href="{{ partner.url }}" target="_blank" rel="noopener" aria-label="{{ partner.name }} (opens in a new tab)">
           <img src="{{ partner.logo }}" alt="{{ partner.name }} logo" width="{{ partner.width }}" height="{{ partner.height }}" loading="lazy" decoding="async">
